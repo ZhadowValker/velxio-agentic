@@ -1,0 +1,28 @@
+{
+  "benchmarks": [
+    {
+      "id": "benchmark-01-blink",
+      "name": "Standard Blink",
+      "description": "Simple LED + Resistor on a digital pin. Verifies basic synthesis.",
+      "expected_components": ["wokwi-led", "wokwi-resistor"],
+      "expected_pins": ["D13"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "benchmark-02-i2c-temp",
+      "name": "I2C Temperature Bridge",
+      "description": "DHT22 or BMP280 over I2C. Verifies bus wiring and pin-mapping logic.",
+      "expected_components": ["wokwi-dht22"],
+      "expected_pins": ["SDA", "SCL"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "benchmark-03-servo-pot",
+      "name": "Analog Control Loop",
+      "description": "Potentiometer controlling a Servo. Verifies analog input and PWM output.",
+      "expected_components": ["wokwi-potentiometer", "wokwi-servo"],
+      "expected_pins": ["A0", "D9"],
+      "difficulty": "medium"
+    }
+  ]
+}

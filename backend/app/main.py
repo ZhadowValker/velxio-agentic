@@ -1,0 +1,165 @@
+import logging
+import sys
+import asyncio
+from contextlib import asynccontextmanager
+from pathlib import Path
+
+logging.basicConfig(level=logging.INFO, format='%(levelname)s %(name)s: %(message)s')
+
+# Load environment variables from .env file
+from dotenv import load_dotenv
+backend_dir = Path(__file__).parent.parent
+load_dotenv(backend_dir / '.env')
+
+# On Windows, asyncio defaults to SelectorEventLoop which does NOT support
+# create_subprocess_exec (raises NotImplementedError). Force ProactorEventLoop.
+if sys.platform == 'win32':
+    asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
+
+from app.api.routes import compile, libraries
+from app.api.routes.admin import router as admin_router
+from app.api.routes.auth import router as auth_router
+from app.api.routes.metrics import router as metrics_router
+from app.api.routes.projects import router as projects_router
+from app.api.routes.agent_sessions import router as agent_sessions_router
+from app.api.routes.llm_providers import router as llm_providers_router
+from app.core.config import settings
+from app.database.session import Base, async_engine
+
+# Import models so SQLAlchemy registers them before create_all
+import app.models.user  # noqa: F401
+import app.models.project  # noqa: F401
+import app.models.usage_event  # noqa: F401
+import app.models.agent_session  # noqa: F401
+import app.models.agent_session_event  # noqa: F401
+
+
+logger = logging.getLogger(__name__)
+
+
+def _asyncio_exception_handler(loop: asyncio.AbstractEventLoop, context: dict) -> None:
+    """Prevent unhandled asyncio task exceptions from killing the uvicorn process.
+
+    Normally uvicorn re-raises unhandled task exceptions at the event-loop level,
+    which can crash the whole process. The main culprit is a race condition in
+    websockets <12.0 (legacy/protocol.py AssertionError during keepalive ping).
+    Upgrading websockets>=12.0 is the primary fix; this handler is a safety net.
+    """
+    exc = context.get("exception")
+    msg = context.get("message", "")
+    if exc is not None:
+        logger.error("Unhandled asyncio task exception (swallowed): %s — %r", msg, exc)
+    else:
+        # No exception object — let default handler deal with it
+        loop.default_exception_handler(context)
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    asyncio.get_event_loop().set_exception_handler(_asyncio_exception_handler)
+    async with async_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+        # Lightweight auto-migrations for legacy DBs. Each statement is wrapped
+        # in try/except so re-runs after the column already exists are no-ops.
+        legacy_migrations = [
+            "ALTER TABLE users ADD COLUMN is_admin BOOLEAN NOT NULL DEFAULT 0",
+            # Phase: usage metrics
+            "ALTER TABLE users ADD COLUMN total_compiles INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE users ADD COLUMN total_compile_errors INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE users ADD COLUMN total_runs INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE users ADD COLUMN last_active_at DATETIME",
+            "ALTER TABLE projects ADD COLUMN compile_count INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE projects ADD COLUMN compile_error_count INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE projects ADD COLUMN run_count INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE projects ADD COLUMN update_count INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE projects ADD COLUMN last_compiled_at DATETIME",
+            "ALTER TABLE projects ADD COLUMN last_run_at DATETIME",
+            "ALTER TABLE projects ADD COLUMN snapshot_json TEXT",
+            # Country tracking (CF-IPCountry)
+            "ALTER TABLE users ADD COLUMN signup_country VARCHAR(2)",
+            "ALTER TABLE users ADD COLUMN last_country VARCHAR(2)",
+            "ALTER TABLE usage_events ADD COLUMN country VARCHAR(2)",
+            # Agent sessions
+            "ALTER TABLE agent_sessions ADD COLUMN status VARCHAR(32) NOT NULL DEFAULT 'queued'",
+            "ALTER TABLE agent_sessions ADD COLUMN model_name VARCHAR(120) NOT NULL DEFAULT 'openai:gpt-5.4-mini'",
+            "ALTER TABLE agent_sessions ADD COLUMN base_snapshot_json TEXT NOT NULL DEFAULT '{}'",
+            "ALTER TABLE agent_sessions ADD COLUMN draft_snapshot_json TEXT NOT NULL DEFAULT '{}'",
+            "ALTER TABLE agent_sessions ADD COLUMN created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP",
+            "ALTER TABLE agent_sessions ADD COLUMN updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP",
+            "ALTER TABLE agent_session_events ADD COLUMN session_id VARCHAR NOT NULL DEFAULT ''",
+            "ALTER TABLE agent_session_events ADD COLUMN seq INTEGER NOT NULL DEFAULT 0",
+            "ALTER TABLE agent_session_events ADD COLUMN event_type VARCHAR(80) NOT NULL DEFAULT ''",
+            "ALTER TABLE agent_session_events ADD COLUMN payload_json TEXT NOT NULL DEFAULT '{}'",
+            "ALTER TABLE agent_session_events ADD COLUMN created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP",
+            # GitHub Copilot per-user token
+            "ALTER TABLE users ADD COLUMN github_copilot_token VARCHAR",
+        ]
+        for stmt in legacy_migrations:
+            try:
+                await conn.execute(text(stmt))
+            except Exception:
+                pass  # Column already exists
+    yield
+
+
+app = FastAPI(
+    title="Arduino Emulator API",
+    description="Compilation and project management API",
+    version="1.0.0",
+    lifespan=lifespan,
+    # Moved from /docs to /api/docs so the frontend /docs/* documentation
+    # routes are served by the React SPA without any nginx conflict.
+    docs_url="/api/docs",
+    redoc_url="/api/redoc",
+    openapi_url="/api/openapi.json",
+)
+
+# CORS for local development
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175",
+        settings.FRONTEND_URL,
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include routers
+app.include_router(compile.router, prefix="/api/compile", tags=["compilation"])
+app.include_router(libraries.router, prefix="/api/libraries", tags=["libraries"])
+app.include_router(auth_router, prefix="/api/auth", tags=["auth"])
+app.include_router(projects_router, prefix="/api", tags=["projects"])
+app.include_router(agent_sessions_router, prefix="/api/agent", tags=["agent"])
+app.include_router(llm_providers_router, prefix="/api/llm", tags=["llm-providers"])
+app.include_router(metrics_router, prefix="/api/metrics", tags=["metrics"])
+app.include_router(admin_router, prefix="/api/admin", tags=["admin"])
+
+# WebSockets
+from app.api.routes import simulation
+app.include_router(simulation.router, prefix="/api/simulation", tags=["simulation"])
+
+# IoT Gateway — HTTP proxy for ESP32 web servers
+from app.api.routes import iot_gateway
+app.include_router(iot_gateway.router, prefix="/api/gateway", tags=["iot-gateway"])
+
+@app.get("/")
+def root():
+    return {
+        "message": "Arduino Emulator API",
+        "version": "1.0.0",
+        "docs": "/api/docs",
+    }
+
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
+

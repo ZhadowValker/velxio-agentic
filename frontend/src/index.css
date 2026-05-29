@@ -1,0 +1,345 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* ── Global Apple Design System (auth / legacy pages) ───────────────────
+   Velxio brand tokens use the --velxio-* prefix so they do not clash with
+   shadcn/Tailwind semantic tokens (--background, --accent, --radius, …). */
+
+:root {
+  /* Velxio brand (not used by shadcn) */
+  --velxio-accent: #0071e3;
+  --velxio-accent-hover: #0077ed;
+  --velxio-radius: 18px;
+
+  --bg: #000000;
+  --bg-card: #141416;
+  --bg-elevated: #2c2c2e;
+  --bg-input: #1c1c1e;
+  /* Legacy Velxio page borders (auth, etc.); shadcn uses --border below */
+  --velxio-border: rgba(255, 255, 255, 0.09);
+  --border-hi: rgba(255, 255, 255, 0.16);
+  --text: #f5f5f7;
+  --text-muted: #86868b;
+  --text-dim: #6e6e73;
+
+  /* Typography */
+  --font:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial,
+    sans-serif;
+  --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+  --radius-pill: 100px;
+
+  /* shadcn + Tailwind UI — required for @/components/ui and ai-elements */
+  --radius: 0.625rem;
+  --background: oklch(0.14 0.02 250);
+  --foreground: oklch(0.93 0.02 250);
+  --card: oklch(0.17 0.02 250);
+  --card-foreground: oklch(0.93 0.02 250);
+  --popover: oklch(0.17 0.02 250);
+  --popover-foreground: oklch(0.93 0.02 250);
+  --primary: oklch(0.58 0.17 252);
+  --primary-foreground: oklch(0.98 0.01 252);
+  --secondary: oklch(0.22 0.03 250);
+  --secondary-foreground: oklch(0.93 0.02 250);
+  --muted: oklch(0.22 0.03 250);
+  --muted-foreground: oklch(0.65 0.03 250);
+  --accent: oklch(0.24 0.04 250);
+  --accent-foreground: oklch(0.93 0.02 250);
+  --destructive: oklch(0.55 0.2 25);
+  --border: oklch(0.93 0.02 250 / 0.12);
+  --input: oklch(0.93 0.02 250 / 0.14);
+  --ring: oklch(0.55 0.12 252);
+  --chart-1: oklch(0.58 0.17 252);
+  --chart-2: oklch(0.65 0.15 180);
+  --chart-3: oklch(0.7 0.15 80);
+  --chart-4: oklch(0.6 0.2 300);
+  --chart-5: oklch(0.6 0.18 40);
+  --sidebar: oklch(0.14 0.02 250);
+  --sidebar-foreground: oklch(0.93 0.02 250);
+  --sidebar-primary: oklch(0.58 0.17 252);
+  --sidebar-primary-foreground: oklch(0.98 0.01 252);
+  --sidebar-accent: oklch(0.22 0.03 250);
+  --sidebar-accent-foreground: oklch(0.93 0.02 250);
+  --sidebar-border: oklch(0.93 0.02 250 / 0.12);
+  --sidebar-ring: oklch(0.55 0.12 252);
+
+  /* Shadows */
+  --shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.3);
+
+  font-family: var(--font);
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: var(--text);
+  background-color: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ── Shared auth / page utility classes ─────────────────── */
+
+/* Full-page centered layout */
+.ap-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 32px 16px;
+  font-family: var(--font);
+}
+
+/* Auth card */
+.ap-card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ap-card-title {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.8px;
+  text-align: center;
+}
+
+.ap-card-sub {
+  margin: 0 0 32px;
+  font-size: 15px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Form fields */
+.ap-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.ap-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ap-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.1px;
+}
+
+.ap-input {
+  background: var(--bg-input);
+  border: 1px solid var(--border-hi);
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: var(--text);
+  font-size: 15px;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.ap-input:focus {
+  border-color: var(--velxio-accent);
+}
+
+/* Buttons */
+.ap-btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  background: var(--velxio-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--font);
+  cursor: pointer;
+  transition:
+    filter 0.2s,
+    transform 0.15s;
+  letter-spacing: -0.1px;
+  margin-top: 6px;
+}
+
+.ap-btn-primary:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: scale(1.01);
+}
+
+.ap-btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ap-btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--font);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  letter-spacing: -0.1px;
+}
+
+.ap-btn-secondary:hover {
+  background: #3a3a3c;
+  transform: scale(1.01);
+}
+
+.ap-btn-white {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px;
+  background: #ffffff;
+  color: #1d1d1f;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.ap-btn-white:hover {
+  filter: brightness(0.95);
+}
+
+/* Divider */
+.ap-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.ap-divider::before,
+.ap-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-hi);
+}
+
+/* Error */
+.ap-error {
+  background: #2d0e0e;
+  border: 1px solid #7f1d1d;
+  border-radius: 10px;
+  color: #f87171;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+/* Footer link */
+.ap-footer {
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+  margin: 20px 0 0;
+}
+
+.ap-link {
+  color: var(--velxio-accent);
+  text-decoration: none;
+}
+
+.ap-link:hover {
+  text-decoration: underline;
+}

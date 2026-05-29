@@ -10,6 +10,10 @@ type EventHandlers = {
 };
 
 const AGENT_SSE_EVENT_TYPES = [
+    "hardware.verify.start",
+    "hardware.verify.fail",
+    "hardware.verify.success",
+    "hardware.auto-patch.started",
   'session.created',
   'message.received',
   'run.started',

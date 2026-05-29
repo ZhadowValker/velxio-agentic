@@ -7,7 +7,7 @@
 
 ## Overview
 
-Velxio supports MicroPython across **15 board variants** using two distinct execution strategies:
+SoundMind supports MicroPython across **15 board variants** using two distinct execution strategies:
 
 | Strategy | Boards | Execution | Serial |
 |----------|--------|-----------|--------|

@@ -89,8 +89,8 @@ class TestEsp32C3WifiSerialParser(unittest.TestCase):
 
     # Simulated C3 serial output (same ESP-IDF log format as Xtensa)
     C3_SERIAL_OUTPUT = """I (432) wifi:wifi sta start
-I (500) wifi:new:Velxio-GUEST, old: , ASSOC
-I (800) wifi:connected with Velxio-GUEST, aid = 1, channel 6
+I (500) wifi:new:SoundMind-GUEST, old: , ASSOC
+I (800) wifi:connected with SoundMind-GUEST, aid = 1, channel 6
 I (1200) esp_netif_handlers: sta ip: 192.168.4.2, mask: 255.255.255.0
 """
 
@@ -108,12 +108,12 @@ I (500) GATTS: advertising started
         wifi_events, _ = parse_serial_text(self.C3_SERIAL_OUTPUT)
         self.assertEqual(wifi_events[0]['status'], 'initializing')
 
-    def test_c3_connected_has_velxio_guest(self):
+    def test_c3_connected_has_soundmind_guest(self):
         from app.services.wifi_status_parser import parse_serial_text
         wifi_events, _ = parse_serial_text(self.C3_SERIAL_OUTPUT)
         connected = [e for e in wifi_events if e['status'] == 'connected']
         self.assertTrue(len(connected) > 0)
-        self.assertIn('Velxio-GUEST', connected[0].get('ssid', ''))
+        self.assertIn('SoundMind-GUEST', connected[0].get('ssid', ''))
 
     def test_c3_got_ip_correct(self):
         from app.services.wifi_status_parser import parse_serial_text

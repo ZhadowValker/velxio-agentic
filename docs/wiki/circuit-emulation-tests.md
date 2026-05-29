@@ -44,7 +44,7 @@ Tests the linear DC solver on textbook passives.
 
 ### `avr_blink.test.js` — 2 tests
 
-Uses the real `fixtures/blink.hex` (copied from Velxio's test fixtures).
+Uses the real `fixtures/blink.hex` (copied from SoundMind's test fixtures).
 
 | # | Test | What it validates |
 |---|---|---|

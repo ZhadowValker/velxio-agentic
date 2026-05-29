@@ -1,4 +1,4 @@
-# Integrating Circuit Emulation into Velxio
+# Integrating Circuit Emulation into SoundMind
 
 Concrete steps to take what was proven in `test/test_circuit/` and wire it into the main app.
 
@@ -82,7 +82,7 @@ User edits wires/components in canvas
 
 ## Mapping `metadataId` → SPICE primitive
 
-Exhaustive table derived from the Velxio component catalog:
+Exhaustive table derived from the SoundMind component catalog:
 
 | `metadataId` | SPICE card | Notes |
 |---|---|---|
@@ -140,7 +140,7 @@ function buildNetlist(components, wires, avrState): string {
   // All other nets get auto-named: n1, n2, ... based on a stable hash
 
   // 3. Emit cards
-  const lines = [`Velxio circuit @${Date.now()}`];
+  const lines = [`SoundMind circuit @${Date.now()}`];
   for (const comp of components) {
     const pins = comp.pins.map(p => uf.find(`${comp.id}:${p.name}`));
     const card = cardFor(comp, pins);
@@ -165,7 +165,7 @@ function buildNetlist(components, wires, avrState): string {
 }
 ```
 
-## Hooking into Velxio's existing architecture
+## Hooking into SoundMind's existing architecture
 
 ### `useSimulatorStore` additions
 
@@ -284,7 +284,7 @@ function LEDComponent({ id }) {
 }
 ```
 
-Requires extending `<wokwi-led>` (or a React wrapper) to accept a float brightness. Velxio already passes booleans; the wokwi-elements SVG supports CSS-driven brightness.
+Requires extending `<wokwi-led>` (or a React wrapper) to accept a float brightness. SoundMind already passes booleans; the wokwi-elements SVG supports CSS-driven brightness.
 
 ## Lazy-loading `eecircuit-engine`
 
@@ -350,7 +350,7 @@ Default enabled in production; can be turned off for minimal builds.
 
 ## Testing strategy for the port
 
-Port the 47 tests from `test/test_circuit/` into Velxio's vitest suite, adapting only the imports. The numerical expectations stay the same. This gives immediate validation that the integration didn't regress the solver.
+Port the 47 tests from `test/test_circuit/` into SoundMind's vitest suite, adapting only the imports. The numerical expectations stay the same. This gives immediate validation that the integration didn't regress the solver.
 
 ## Risks
 
@@ -358,4 +358,4 @@ Port the 47 tests from `test/test_circuit/` into Velxio's vitest suite, adapting
 2. **ngspice hangs on bad netlists** (singular matrix) — netlist builder must validate floating nodes before emitting.
 3. **Stale MNA solver** — limited device support; not a replacement for ngspice, only a fallback.
 4. **Performance regressions on huge circuits** — schedule debounced, offload to Web Worker if > 100 ms.
-5. **Component metadata drift** — when new components are added to Velxio, the solver mapping must be updated. Consider auto-validating via a unit test: every `metadataId` must have either a mapper entry or an explicit "skip" annotation.
+5. **Component metadata drift** — when new components are added to SoundMind, the solver mapping must be updated. Consider auto-validating via a unit test: every `metadataId` must have either a mapper entry or an explicit "skip" annotation.

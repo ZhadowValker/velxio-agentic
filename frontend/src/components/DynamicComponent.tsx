@@ -18,11 +18,11 @@ import { PartSimulationRegistry } from '../simulation/parts';
 import { isBoardComponent, boardPinToNumber } from '../utils/boardPinMapping';
 
 // Side-effect imports: register every web component we'll create at runtime.
-// `@wokwi/elements` covers the upstream catalog; `../velxio-elements` adds
-// the velxio-local elements (e.g. <velxio-capacitor-electrolytic>,
-// <velxio-instr-voltmeter>) that don't exist upstream.
+// `@wokwi/elements` covers the upstream catalog; `../soundmind-elements` adds
+// the soundmind-local elements (e.g. <soundmind-capacitor-electrolytic>,
+// <soundmind-instr-voltmeter>) that don't exist upstream.
 import '@wokwi/elements';
-import '../velxio-elements';
+import '../soundmind-elements';
 import { reportPinInfoObservation } from '../services/agentPinCatalog';
 
 interface DynamicComponentProps {

@@ -12,8 +12,8 @@ jobs:
     timeout-minutes: 30
 
     env:
-      QEMU_RELEASE_URL: https://github.com/davidmonterocrespo24/velxio/releases/download/qemu-prebuilt
-      QEMU_DIR: /opt/velxio-qemu
+      QEMU_RELEASE_URL: https://github.com/davidmonterocrespo24/soundmind/releases/download/qemu-prebuilt
+      QEMU_DIR: /opt/soundmind-qemu
       BACKEND_URL: http://localhost:8001
 
     steps:
@@ -125,8 +125,8 @@ jobs:
             > /tmp/backend.log 2>&1 &
           echo "Backend PID: $!"
         env:
-          QEMU_ESP32_LIB: /opt/velxio-qemu/libqemu-xtensa.so
-          QEMU_RISCV32_LIB: /opt/velxio-qemu/libqemu-riscv32.so
+          QEMU_ESP32_LIB: /opt/soundmind-qemu/libqemu-xtensa.so
+          QEMU_RISCV32_LIB: /opt/soundmind-qemu/libqemu-riscv32.so
 
       - name: Wait for backend to be ready
         run: |

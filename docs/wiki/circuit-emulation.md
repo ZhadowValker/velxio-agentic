@@ -1,6 +1,6 @@
 # Circuit Emulation — Wiki Entry Point
 
-Full electrical simulation experiment for Velxio. Validates that Arduino sketches can be co-simulated with real analog circuit behaviour inside the Velxio emulator.
+Full electrical simulation experiment for SoundMind. Validates that Arduino sketches can be co-simulated with real analog circuit behaviour inside the SoundMind emulator.
 
 ## TL;DR
 
@@ -19,11 +19,11 @@ The full documentation is split into focused pages:
 3. [**MNA Solver (hand-rolled)**](circuit-emulation-mna-solver.md) — the ~500-line JS SPICE kernel and why we built it first.
 4. [**ngspice-WASM (`eecircuit-engine`)**](circuit-emulation-ngspice.md) — installation, API, netlist syntax, gotchas.
 5. [**Component Catalog**](circuit-emulation-components.md) — every R/L/C/D/BJT/MOSFET/op-amp/NTC we validated, with parameters.
-6. [**AVR Bridge**](circuit-emulation-avr-bridge.md) — how `avr8js` is wrapped (mirroring Velxio) and how `AVRSpiceBridge` does mixed-signal co-simulation.
+6. [**AVR Bridge**](circuit-emulation-avr-bridge.md) — how `avr8js` is wrapped (mirroring SoundMind) and how `AVRSpiceBridge` does mixed-signal co-simulation.
 7. [**Test Catalog**](circuit-emulation-tests.md) — all 47 tests enumerated, with expected results.
 8. [**Gotchas**](circuit-emulation-gotchas.md) — every bug we hit and how we fixed it.
 9. [**Performance**](circuit-emulation-performance.md) — benchmarks, memory footprint, lazy-load plan.
-10. [**Velxio Integration Plan**](circuit-emulation-velxio-integration.md) — concrete files/changes to ship this in the main app. **Superseded by** [`test/test_circuit/plan/phase_8_velxio_implementation.md`](../../test/test_circuit/plan/phase_8_velxio_implementation.md) — more detailed, with new analog components and measurement instruments.
+10. [**SoundMind Integration Plan**](circuit-emulation-soundmind-integration.md) — concrete files/changes to ship this in the main app. **Superseded by** [`test/test_circuit/plan/phase_8_soundmind_implementation.md`](../../test/test_circuit/plan/phase_8_soundmind_implementation.md) — more detailed, with new analog components and measurement instruments.
 11. [**API Reference**](circuit-emulation-api.md) — every exported function and class.
 12. [**Appendix**](circuit-emulation-appendix.md) — reference netlists, AVR opcode tables, model parameters, glossary.
 
@@ -93,6 +93,6 @@ console.log(raw);                     // 511 → matches 2.5/5 * 1023
 
 ## What this proves
 
-Velxio can realistically integrate a **full electrical simulator** (ngspice or a hand-rolled fallback) alongside its existing MCU emulators, giving students and hobbyists circuits that behave the way they would on a real breadboard — correct voltages, correct currents, correct LED brightness, correct ADC readings, real op-amp saturation, real RC filter time constants, real Bode plots. All in ~5 seconds of test time, all within a browser-compatible JavaScript/WASM stack.
+SoundMind can realistically integrate a **full electrical simulator** (ngspice or a hand-rolled fallback) alongside its existing MCU emulators, giving students and hobbyists circuits that behave the way they would on a real breadboard — correct voltages, correct currents, correct LED brightness, correct ADC readings, real op-amp saturation, real RC filter time constants, real Bode plots. All in ~5 seconds of test time, all within a browser-compatible JavaScript/WASM stack.
 
-The groundwork and the port plan are ready. See [Velxio Integration](circuit-emulation-velxio-integration.md) for the next step.
+The groundwork and the port plan are ready. See [SoundMind Integration](circuit-emulation-soundmind-integration.md) for the next step.

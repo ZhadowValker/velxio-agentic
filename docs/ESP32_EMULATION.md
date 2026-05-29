@@ -248,11 +248,11 @@ The `firmware.merged.bin` file is what gets loaded into the emulation.
 
 ```bash
 docker run -d \
-  --name velxio \
+  --name soundmind \
   -p 3080:80 \
   -v $(pwd)/data:/app/data \
   -e SECRET_KEY=your-secret \
-  ghcr.io/davidmonterocrespo24/velxio:master
+  ghcr.io/davidmonterocrespo24/soundmind:master
 ```
 
 ESP32 emulation with full GPIO is active automatically. No additional environment variables are needed.
@@ -260,10 +260,10 @@ ESP32 emulation with full GPIO is active automatically. No additional environmen
 ### 2.2 Local Image Build
 
 ```bash
-git clone https://github.com/davidmonterocrespo24/velxio.git
-cd velxio
-docker build -f Dockerfile.standalone -t velxio .
-docker run -d -p 3080:80 -e SECRET_KEY=secret velxio
+git clone https://github.com/davidmonterocrespo24/soundmind.git
+cd soundmind
+docker build -f Dockerfile.standalone -t soundmind .
+docker run -d -p 3080:80 -e SECRET_KEY=secret soundmind
 ```
 
 > **Build time note:** QEMU compilation takes 15-30 minutes the first time.
@@ -1108,14 +1108,14 @@ The connection logic lives in `SimulatorCanvas.tsx`: it detects the tag of the w
 
 ```bash
 # Docker — fully automatic, no extra variables needed:
-docker run -d -p 3080:80 -e SECRET_KEY=secret ghcr.io/davidmonterocrespo24/velxio:master
+docker run -d -p 3080:80 -e SECRET_KEY=secret ghcr.io/davidmonterocrespo24/soundmind:master
 
 # Windows with lib (full emulation: GPIO + WiFi + ADC + I2C + SPI + RMT + LEDC):
 cd backend && venv\Scripts\activate
 uvicorn app.main:app --reload --port 8001
 
 # Linux with lib at custom path:
-QEMU_ESP32_LIB=/opt/velxio/libqemu-xtensa.so uvicorn app.main:app --port 8001
+QEMU_ESP32_LIB=/opt/soundmind/libqemu-xtensa.so uvicorn app.main:app --port 8001
 
 # Without lib (fallback: UART serial only via QEMU subprocess):
 QEMU_ESP32_BINARY=/usr/bin/qemu-system-xtensa uvicorn app.main:app --port 8001
@@ -1297,7 +1297,7 @@ void loop() {
 
 ## 17. lcgamboa Fork Modifications — Incremental Rebuild
 
-This section documents all modifications made to the [lcgamboa/qemu](https://github.com/lcgamboa/qemu) fork for Velxio, and how to recompile only the modified files.
+This section documents all modifications made to the [lcgamboa/qemu](https://github.com/lcgamboa/qemu) fork for SoundMind, and how to recompile only the modified files.
 
 ### 17.1 Modified File: `hw/gpio/esp32_gpio.c`
 

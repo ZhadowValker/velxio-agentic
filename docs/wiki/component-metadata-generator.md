@@ -21,7 +21,7 @@ Documentation of the component metadata auto-generation system and the override 
 
 ## Overview
 
-Velxio uses 48+ electronic components from the [wokwi-elements](https://github.com/wokwi/wokwi-elements) library. Each component needs metadata (properties, categories, pin counts, controls) for the UI to render property dialogs, component picker, and simulation logic.
+SoundMind uses 48+ electronic components from the [wokwi-elements](https://github.com/wokwi/wokwi-elements) library. Each component needs metadata (properties, categories, pin counts, controls) for the UI to render property dialogs, component picker, and simulation logic.
 
 Instead of maintaining this metadata manually, a **generator script** scans the wokwi-elements TypeScript source files, extracts `@property` decorators, `@customElement` tag names, and `pinInfo` getters, then produces `frontend/public/components-metadata.json`.
 
@@ -76,7 +76,7 @@ This is a reasonable default, but some components need **richer controls** that 
 
 - **LED `color`**: The wokwi-elements source declares `@property() color = 'red'` (a plain string). But in the UI, we want a **dropdown select** with predefined colors (`red`, `green`, `blue`, etc.), not a free-text input.
 
-- **SSD1306 `protocol`**: The wokwi-elements source has no `protocol` property at all — it's a Velxio-specific concept for choosing between I2C and SPI communication modes. We need to **inject an entirely new property** that doesn't exist in wokwi-elements.
+- **SSD1306 `protocol`**: The wokwi-elements source has no `protocol` property at all — it's a SoundMind-specific concept for choosing between I2C and SPI communication modes. We need to **inject an entirely new property** that doesn't exist in wokwi-elements.
 
 Previously, these customizations were made by hand-editing `components-metadata.json`. But every time the generator ran (e.g., after updating wokwi-libs), it would **overwrite the entire file** and the customizations would be lost.
 
@@ -209,7 +209,7 @@ The wokwi LED element accepts any CSS color string, but in practice users want t
 **Control:** `select` with `["i2c", "spi"]`
 **Default:** `"i2c"`
 
-The real SSD1306 OLED display supports both I2C and SPI communication. In Velxio, the simulation logic reads this property to decide which bus to attach:
+The real SSD1306 OLED display supports both I2C and SPI communication. In SoundMind, the simulation logic reads this property to decide which bus to attach:
 
 - **I2C mode**: Registers as an `I2CDevice` on the simulator's I2C bus. Responds to address `0x3C`. Uses control byte (`0x00` = command, `0x40` = data).
 - **SPI mode**: Hooks into the SPI `onByte` callback. Uses the DC (Data/Command) pin to distinguish commands from data.

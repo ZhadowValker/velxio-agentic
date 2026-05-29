@@ -1,6 +1,6 @@
-# Velxio MCP Server
+# SoundMind MCP Server
 
-Velxio exposes a [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that allows AI agents (e.g. Claude, Cursor) to:
+SoundMind exposes a [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that allows AI agents (e.g. Claude, Cursor) to:
 
 - **Create and update circuits** using a structured JSON format
 - **Import and export** circuits in the Wokwi `diagram.json` format
@@ -15,8 +15,8 @@ Velxio exposes a [Model Context Protocol](https://modelcontextprotocol.io/) (MCP
 |------|-------------|
 | `compile_project` | Compile Arduino sketch files → Intel HEX / binary |
 | `run_project` | Compile and mark artifact as simulation-ready |
-| `import_wokwi_json` | Parse a Wokwi `diagram.json` → Velxio circuit |
-| `export_wokwi_json` | Serialise a Velxio circuit → Wokwi `diagram.json` |
+| `import_wokwi_json` | Parse a Wokwi `diagram.json` → SoundMind circuit |
+| `export_wokwi_json` | Serialise a SoundMind circuit → Wokwi `diagram.json` |
 | `create_circuit` | Create a new circuit definition |
 | `update_circuit` | Merge changes into an existing circuit |
 | `generate_code_files` | Generate starter `.ino` code from a circuit |
@@ -39,9 +39,9 @@ python mcp_server.py
 ```json
 {
   "mcpServers": {
-    "velxio": {
+    "soundmind": {
       "command": "python",
-      "args": ["/absolute/path/to/velxio/backend/mcp_server.py"]
+      "args": ["/absolute/path/to/soundmind/backend/mcp_server.py"]
     }
   }
 }
@@ -61,7 +61,7 @@ python mcp_sse_server.py --port 8002
 ```json
 {
   "mcpServers": {
-    "velxio": {
+    "soundmind": {
       "url": "http://localhost:8002/sse"
     }
   }
@@ -218,7 +218,7 @@ python mcp_sse_server.py --port 8002
 {
   "version": 1,
   "author": "my-agent",
-  "editor": "velxio",
+  "editor": "soundmind",
   "parts": [
     { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
     { "type": "wokwi-led", "id": "led1", "top": 100, "left": 200, "rotate": 0, "attrs": {} }
@@ -233,7 +233,7 @@ python mcp_sse_server.py --port 8002
 
 ## Circuit Data Format
 
-Velxio circuits are plain JSON objects:
+SoundMind circuits are plain JSON objects:
 
 ```json
 {

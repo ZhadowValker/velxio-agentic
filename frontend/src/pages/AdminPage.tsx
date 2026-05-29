@@ -612,7 +612,7 @@ function AdminDashboard() {
       <div style={s.header}>
         <div style={s.headerLeft}>
           <Link to="/" style={s.backLink}>
-            Velxio
+            SoundMind
           </Link>
           <span style={s.headerSep}>/</span>
           <span style={s.headerTitle}>Admin panel</span>
@@ -671,9 +671,9 @@ type AdminPageState = 'loading' | 'setup' | 'not-admin' | 'dashboard';
 
 export const AdminPage: React.FC = () => {
   useSEO({
-    title: 'Admin — Velxio',
-    description: 'Velxio administration panel.',
-    url: 'https://velxio.dev/admin',
+    title: 'Admin — SoundMind',
+    description: 'SoundMind administration panel.',
+    url: 'https://soundmind.dev/admin',
     noindex: true,
   });
 

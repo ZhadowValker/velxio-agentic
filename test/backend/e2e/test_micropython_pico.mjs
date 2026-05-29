@@ -46,7 +46,7 @@ const FLASH_START_ADDR = 0x10000000;
 // Python code injected once ">>>" is seen
 const INJECT_CODE = [
   'import sys',
-  'print("velxio_pico_ok")',
+  'print("soundmind_pico_ok")',
   'print("py_version:" + sys.version.split(" ")[0])',
   'print("math_check:" + str(6 * 7))',
 ].join('\n');
@@ -101,7 +101,7 @@ async function checkBackendCompile() {
   const SKETCH = `
 void setup() {
   Serial.begin(115200);
-  Serial.println("velxio_pico_compile_ok");
+  Serial.println("soundmind_pico_compile_ok");
 }
 void loop() {}
 `.trim();
@@ -280,9 +280,9 @@ function runPicoSimulation(uf2Bytes) {
         if (line.startsWith('MicroPython')) {
           ok(`MicroPython booted: ${line}`);
         }
-        if (line.includes('velxio_pico_ok')) {
+        if (line.includes('soundmind_pico_ok')) {
           outputOk = true;
-          ok('"velxio_pico_ok" received ✓');
+          ok('"soundmind_pico_ok" received ✓');
         }
         if (line.includes('math_check:42')) {
           mathCheck = true;
@@ -352,7 +352,7 @@ async function main() {
     }
     if (result.error)       FAIL(result.error);
     if (!result.replReady)  FAIL('MicroPython REPL ">>>" never appeared within timeout');
-    if (!result.outputOk)   FAIL('"velxio_pico_ok" not found in USBCDC output (REPL injection failed?)');
+    if (!result.outputOk)   FAIL('"soundmind_pico_ok" not found in USBCDC output (REPL injection failed?)');
     if (!result.mathCheck)  FAIL('"math_check:42" not found (6×7 computation did not execute)');
 
     if (exitCode === 0) {

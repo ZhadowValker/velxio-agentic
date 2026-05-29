@@ -1,5 +1,5 @@
 /**
- * BackendManager — Spawns and manages the Velxio FastAPI backend process.
+ * BackendManager — Spawns and manages the SoundMind FastAPI backend process.
  *
  * The backend provides:
  * - /api/compile — Arduino sketch compilation via arduino-cli
@@ -33,7 +33,7 @@ export class BackendManager {
     if (this.process && this._ready) return this._port;
 
     this._port = await this.findFreePort();
-    const configPort = vscode.workspace.getConfiguration('velxio').get<number>('backendPort');
+    const configPort = vscode.workspace.getConfiguration('soundmind').get<number>('backendPort');
     if (configPort && configPort > 0) {
       this._port = configPort;
     }
@@ -41,7 +41,7 @@ export class BackendManager {
     // Find the backend directory
     const backendDir = await this.findBackendDir();
     if (!backendDir) {
-      throw new Error('Velxio backend not found. Please install the Velxio backend or set the path in settings.');
+      throw new Error('SoundMind backend not found. Please install the SoundMind backend or set the path in settings.');
     }
 
     this.outputChannel.appendLine(`[Backend] Starting on port ${this._port}...`);

@@ -7,7 +7,7 @@
 
 ## Target audience
 
-Anyone touching the electrical-simulation layer in Velxio, or trying to make
+Anyone touching the electrical-simulation layer in SoundMind, or trying to make
 an Arduino/RP2040 sketch sample an AC source with real-world fidelity.
 
 ---

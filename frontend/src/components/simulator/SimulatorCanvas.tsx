@@ -1,6 +1,6 @@
 import { useSimulatorStore, getEsp32Bridge } from '../../store/useSimulatorStore';
 import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
-import { ESP32_ADC_PIN_MAP } from '../velxio-components/Esp32Element';
+import { ESP32_ADC_PIN_MAP } from '../soundmind-components/Esp32Element';
 import { ComponentPickerModal } from '../ComponentPickerModal';
 import { ComponentPropertyDialog } from './ComponentPropertyDialog';
 import { SensorControlPanel } from './SensorControlPanel';
@@ -279,7 +279,7 @@ export const SimulatorCanvas = ({
   }, [initSimulator]);
 
   // Runtime parts (pots, switches, sensor panels) emit
-  // `velxio:property-change` instead of writing the store directly — one
+  // `soundmind:property-change` instead of writing the store directly — one
   // listener here routes every mutation through `updateComponent()`, which
   // is the same path the Property Dialog uses. Keeps parts decoupled from
   // Zustand and guarantees the SPICE netlist memo invalidates on every
@@ -1539,9 +1539,9 @@ export const SimulatorCanvas = ({
                     onClick={() => hasIp && window.open(gatewayUrl, '_blank')}
                     title={
                       hasIp
-                        ? `WiFi: ${activeBoard.wifiStatus.ssid ?? 'Velxio-GUEST'} — IP: ${activeBoard.wifiStatus.ip}\nClick to open IoT Gateway ↗`
+                        ? `WiFi: ${activeBoard.wifiStatus.ssid ?? 'SoundMind-GUEST'} — IP: ${activeBoard.wifiStatus.ip}\nClick to open IoT Gateway ↗`
                         : status === 'connected'
-                          ? `WiFi: ${activeBoard.wifiStatus.ssid ?? 'Velxio-GUEST'} — Connecting...`
+                          ? `WiFi: ${activeBoard.wifiStatus.ssid ?? 'SoundMind-GUEST'} — Connecting...`
                           : status === 'initializing'
                             ? 'WiFi: Initializing...'
                             : 'WiFi: Disconnected'

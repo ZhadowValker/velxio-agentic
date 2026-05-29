@@ -1,7 +1,7 @@
 /**
- * velxio-74hc595 — 8-bit Serial-to-Parallel Shift Register (SN74HC595)
+ * soundmind-74hc595 — 8-bit Serial-to-Parallel Shift Register (SN74HC595)
  *
- * DIP-16 package custom element for use in Velxio/Wokwi simulations.
+ * DIP-16 package custom element for use in SoundMind/Wokwi simulations.
  */
 
 class IC74HC595Element extends HTMLElement {
@@ -128,8 +128,8 @@ class IC74HC595Element extends HTMLElement {
   }
 }
 
-if (!customElements.get('velxio-74hc595')) {
-  customElements.define('velxio-74hc595', IC74HC595Element);
+if (!customElements.get('soundmind-74hc595')) {
+  customElements.define('soundmind-74hc595', IC74HC595Element);
 }
 
 export { IC74HC595Element };

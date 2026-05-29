@@ -1,5 +1,5 @@
 /**
- * Thin wrapper around avr8js that mirrors how Velxio's AVRSimulator drives
+ * Thin wrapper around avr8js that mirrors how SoundMind's AVRSimulator drives
  * the ATmega328P. Exposes:
  *   - load(hexText)
  *   - runCycles(n)

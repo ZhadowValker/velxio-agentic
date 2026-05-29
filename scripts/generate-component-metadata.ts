@@ -171,7 +171,7 @@ class MetadataGenerator {
    *  - Add entirely new properties to a component
    *  - Merge extra defaultValues
    *  - Inject brand-new components via the `_customComponents` array
-   *    (used for Velxio-only parts not defined in wokwi-elements, e.g. logic
+   *    (used for SoundMind-only parts not defined in wokwi-elements, e.g. logic
    *    gates, discrete analog components, instruments).
    */
   private applyOverrides(components: ComponentMetadata[]): void {

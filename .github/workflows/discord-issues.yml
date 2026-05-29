@@ -23,7 +23,7 @@ jobs:
               : '*(none)*';
 
             const payload = {
-              content: '@everyone 📢 **New issue reported on Velxio!**',
+              content: '@everyone 📢 **New issue reported on SoundMind!**',
               embeds: [{
                 title: `🐛 Issue #${issue.number}: ${issue.title}`,
                 url: issue.html_url,
@@ -38,7 +38,7 @@ jobs:
                   url: `https://github.com/${issue.user.login}`,
                   icon_url: issue.user.avatar_url
                 },
-                footer: { text: 'Velxio · GitHub Issues' },
+                footer: { text: 'SoundMind · GitHub Issues' },
                 timestamp: issue.created_at
               }]
             };

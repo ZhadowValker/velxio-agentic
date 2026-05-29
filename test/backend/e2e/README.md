@@ -10,7 +10,7 @@ These tests **run in GitHub Actions** via `.github/workflows/backend-e2e-tests.y
 The CI workflow:
 
 1. Downloads `libqemu-xtensa-amd64.so` and `libqemu-riscv32-amd64.so` from the
-   [qemu-prebuilt](https://github.com/davidmonterocrespo24/velxio/releases/tag/qemu-prebuilt) release.
+   [qemu-prebuilt](https://github.com/davidmonterocrespo24/soundmind/releases/tag/qemu-prebuilt) release.
 2. Downloads ROM files: `esp32-v3-rom.bin`, `esp32-v3-rom-app.bin`, `esp32c3-rom.bin`.
 3. Installs arduino-cli + `esp32:esp32` core.
 4. Starts `uvicorn app.main:app --port 8001` with `QEMU_ESP32_LIB` and `QEMU_RISCV32_LIB` set.

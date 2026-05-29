@@ -1,14 +1,14 @@
 {
-  "name": "velxio-simulator",
-  "displayName": "Velxio Simulator",
+  "name": "soundmind-simulator",
+  "displayName": "SoundMind Simulator",
   "description": "Local Arduino & ESP32 simulator for VS Code — compile, simulate, and debug embedded projects without leaving your editor",
   "version": "0.1.0",
-  "publisher": "velxio",
+  "publisher": "soundmind",
   "license": "MIT",
   "icon": "media/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/davidmonterocrespo24/velxio"
+    "url": "https://github.com/davidmonterocrespo24/soundmind"
   },
   "engines": {
     "vscode": "^1.85.0"
@@ -30,56 +30,56 @@
     "electronics"
   ],
   "activationEvents": [
-    "workspaceContains:velxio.toml",
+    "workspaceContains:soundmind.toml",
     "workspaceContains:diagram.json"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "velxio.openSimulator",
+        "command": "soundmind.openSimulator",
         "title": "Open Simulator",
-        "category": "Velxio",
+        "category": "SoundMind",
         "icon": "$(circuit-board)"
       },
       {
-        "command": "velxio.compile",
+        "command": "soundmind.compile",
         "title": "Compile Sketch",
-        "category": "Velxio",
+        "category": "SoundMind",
         "icon": "$(tools)"
       },
       {
-        "command": "velxio.run",
+        "command": "soundmind.run",
         "title": "Run Simulation",
-        "category": "Velxio",
+        "category": "SoundMind",
         "icon": "$(play)"
       },
       {
-        "command": "velxio.stop",
+        "command": "soundmind.stop",
         "title": "Stop Simulation",
-        "category": "Velxio",
+        "category": "SoundMind",
         "icon": "$(debug-stop)"
       },
       {
-        "command": "velxio.selectBoard",
+        "command": "soundmind.selectBoard",
         "title": "Select Board",
-        "category": "Velxio",
+        "category": "SoundMind",
         "icon": "$(list-selection)"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "velxio.run",
+          "command": "soundmind.run",
           "when": "resourceExtname == .ino || resourceExtname == .py",
           "group": "navigation"
         }
       ]
     },
     "configuration": {
-      "title": "Velxio Simulator",
+      "title": "SoundMind Simulator",
       "properties": {
-        "velxio.defaultBoard": {
+        "soundmind.defaultBoard": {
           "type": "string",
           "default": "arduino-uno",
           "enum": [
@@ -95,17 +95,17 @@
           ],
           "description": "Default board type for new projects"
         },
-        "velxio.autoStartBackend": {
+        "soundmind.autoStartBackend": {
           "type": "boolean",
           "default": true,
           "description": "Automatically start the compilation backend when needed"
         },
-        "velxio.backendPort": {
+        "soundmind.backendPort": {
           "type": "number",
           "default": 0,
           "description": "Fixed port for the backend (0 = auto-assign)"
         },
-        "velxio.arduinoCliPath": {
+        "soundmind.arduinoCliPath": {
           "type": "string",
           "default": "",
           "description": "Path to arduino-cli executable (leave empty to auto-detect)"

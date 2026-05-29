@@ -2,12 +2,12 @@
 
 Location: [`test/test_circuit/src/avr/`](../../test/test_circuit/src/avr/), [`test/test_circuit/src/spice/AVRSpiceBridge.js`](../../test/test_circuit/src/spice/AVRSpiceBridge.js)
 
-## Mirroring Velxio's `AVRSimulator.ts`
+## Mirroring SoundMind's `AVRSimulator.ts`
 
-The sandbox harness is a deliberately faithful reproduction of what Velxio already does in `frontend/src/simulation/AVRSimulator.ts`:
+The sandbox harness is a deliberately faithful reproduction of what SoundMind already does in `frontend/src/simulation/AVRSimulator.ts`:
 
 ```typescript
-// Velxio (trimmed)
+// SoundMind (trimmed)
 this.cpu = new CPU(programWords, 8192);
 this.portB = new AVRIOPort(this.cpu, portBConfig);
 this.portC = new AVRIOPort(this.cpu, portCConfig);
@@ -46,11 +46,11 @@ avrInstruction(this.cpu);
 this.cpu.tick();
 ```
 
-If it works in the sandbox, it works in Velxio. Confirmed with `fixtures/blink.hex` which is a byte-for-byte copy of `frontend/src/__tests__/fixtures/avr-blink/avr-blink.ino.hex`.
+If it works in the sandbox, it works in SoundMind. Confirmed with `fixtures/blink.hex` which is a byte-for-byte copy of `frontend/src/__tests__/fixtures/avr-blink/avr-blink.ino.hex`.
 
 ## Intel HEX parser
 
-Velxio uses `utils/hexParser.ts`. The sandbox reimplements the same Intel HEX format from scratch in [`src/avr/intelHex.js`](../../test/test_circuit/src/avr/intelHex.js):
+SoundMind uses `utils/hexParser.ts`. The sandbox reimplements the same Intel HEX format from scratch in [`src/avr/intelHex.js`](../../test/test_circuit/src/avr/intelHex.js):
 
 ```javascript
 export function parseIntelHex(text) {

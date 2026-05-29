@@ -58,6 +58,6 @@ class Bmp280Element extends HTMLElement {
   }
 }
 
-if (!customElements.get('velxio-bmp280')) {
-  customElements.define('velxio-bmp280', Bmp280Element);
+if (!customElements.get('soundmind-bmp280')) {
+  customElements.define('soundmind-bmp280', Bmp280Element);
 }

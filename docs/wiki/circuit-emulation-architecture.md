@@ -62,7 +62,7 @@ test/test_circuit/
 │   │   ├── passive.js           # R, V, I, C, Pot, NTC, Switch
 │   │   └── active.js            # Diode, LED, BJT
 │   ├── avr/                     # Shared AVR harness
-│   │   ├── intelHex.js          # Intel HEX parser (same format as Velxio)
+│   │   ├── intelHex.js          # Intel HEX parser (same format as SoundMind)
 │   │   ├── AVRHarness.js        # Thin wrapper over avr8js
 │   │   ├── asm.js               # Mini AVR assembler (LDI, OUT, STS, LDS, RJMP, SBRC/S, NOP)
 │   │   └── programs.js          # Hand-assembled Arduino programs (pot→PWM, adcRead)
@@ -166,11 +166,11 @@ It is **not good enough** for:
 - Oscillators where the analog side drives a digital input and vice versa with tight timing
 - Noise / jitter analysis
 
-For the tight-coupling cases, a co-simulation framework would need to arbitrate time advancement between the two engines (see [Velxio Integration](circuit-emulation-velxio-integration.md) for future work).
+For the tight-coupling cases, a co-simulation framework would need to arbitrate time advancement between the two engines (see [SoundMind Integration](circuit-emulation-soundmind-integration.md) for future work).
 
 ## Shared Arduino harness
 
-Both pipelines use `AVRHarness` to drive `avr8js`. This class **mirrors exactly** what Velxio's `frontend/src/simulation/AVRSimulator.ts` does:
+Both pipelines use `AVRHarness` to drive `avr8js`. This class **mirrors exactly** what SoundMind's `frontend/src/simulation/AVRSimulator.ts` does:
 
 - `new CPU(programUint16, sramBytes)`
 - `new AVRIOPort(cpu, portBConfig/portCConfig/portDConfig)`
@@ -180,7 +180,7 @@ Both pipelines use `AVRHarness` to drive `avr8js`. This class **mirrors exactly*
 - Listeners per port: `port.addListener((newValue, oldValue) => ...)` with bit-by-bit diff and Arduino pin mapping (D0–D7, D8–D13, A0–A5 via port C).
 - PWM duty read via `cpu.data[ocrAddress]` where ocrAddress for Timer0A is `0x47`, Timer1AL is `0x88`, etc.
 
-This parity is important: any lesson learned in the sandbox transfers one-for-one to Velxio's main app.
+This parity is important: any lesson learned in the sandbox transfers one-for-one to SoundMind's main app.
 
 See [circuit-emulation-avr-bridge.md](circuit-emulation-avr-bridge.md) for the full harness reference.
 
@@ -188,6 +188,6 @@ See [circuit-emulation-avr-bridge.md](circuit-emulation-avr-bridge.md) for the f
 
 To exercise the full sketch path (C++ → avr-gcc → hex) we would normally compile Arduino code. The sandbox does not have `avr-gcc` installed, so we use:
 
-1. **Copied from Velxio**: `fixtures/blink.hex` — the same Intel HEX used by `frontend/src/__tests__/fixtures/avr-blink/avr-blink.ino.hex`. Tests that load this file exercise the full Arduino core init (reset vectors, library init, `setup()`, `loop()`).
+1. **Copied from SoundMind**: `fixtures/blink.hex` — the same Intel HEX used by `frontend/src/__tests__/fixtures/avr-blink/avr-blink.ino.hex`. Tests that load this file exercise the full Arduino core init (reset vectors, library init, `setup()`, `loop()`).
 
 2. **Hand-assembled programs**: `src/avr/programs.js` exposes `potToPwmProgram()` and `adcReadProgram()`, built with the mini-assembler in `src/avr/asm.js`. These bypass the Arduino core and directly configure ADC and Timer0 registers. They produce ~18–22 instruction words each. Full opcode breakdown is in [circuit-emulation-appendix.md](circuit-emulation-appendix.md).

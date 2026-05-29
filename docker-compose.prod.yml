@@ -1,16 +1,16 @@
 services:
-  velxio:
+  soundmind:
     build:
       context: .
       dockerfile: Dockerfile.standalone
-    container_name: velxio-app
+    container_name: soundmind-app
     restart: unless-stopped
     ports:
       - "3080:80"
     env_file:
       - ./backend/.env
     environment:
-      - DATABASE_URL=sqlite+aiosqlite:////app/data/velxio.db
+      - DATABASE_URL=sqlite+aiosqlite:////app/data/soundmind.db
       - DATA_DIR=/app/data
       - IDF_PATH=/opt/esp-idf
       - IDF_TOOLS_PATH=/root/.espressif

@@ -71,7 +71,7 @@ const ARDUINO_CLI_AVAILABLE = (() => {
 
 // ─── Compile helper ──────────────────────────────────────────────────────────
 
-const HEX_CACHE = join(tmpdir(), 'velxio-pong-nano.hex');
+const HEX_CACHE = join(tmpdir(), 'soundmind-pong-nano.hex');
 
 function compileSketch(): string {
   // Return cached hex if we already compiled
@@ -84,7 +84,7 @@ function compileSketch(): string {
 
   // arduino-cli requires: folder name === sketch name (pong/pong.ino)
   // Create a temp PARENT, then a "pong" subdirectory inside it
-  const workDir = mkdtempSync(join(tmpdir(), 'velxio-pong-'));
+  const workDir = mkdtempSync(join(tmpdir(), 'soundmind-pong-'));
   const sketchDir = join(workDir, 'pong');
   mkdirSync(sketchDir);
   writeFileSync(join(sketchDir, 'pong.ino'), readFileSync(PONG_INO, 'utf-8'));

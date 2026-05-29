@@ -8,10 +8,10 @@ import { trackSignUp } from '../utils/analytics';
 
 export const RegisterPage: React.FC = () => {
   useSEO({
-    title: 'Create Account — Velxio',
+    title: 'Create Account — SoundMind',
     description:
-      'Create a free Velxio account to save your Arduino projects and share simulations.',
-    url: 'https://velxio.dev/register',
+      'Create a free SoundMind account to save your Arduino projects and share simulations.',
+    url: 'https://soundmind.dev/register',
     noindex: true,
   });
   const navigate = useNavigate();

@@ -5,7 +5,7 @@
  * Sends LED_ON / LED_OFF commands and reads the ESP32's replies.
  *
  * ── Wiring ─────────────────────────────────────────────────────────────────
- *   In Velxio canvas:
+ *   In SoundMind canvas:
  *     Wire Arduino pin 11 (SoftSerial TX) → ESP32 GPIO1 (UART0 RX)
  *     Wire Arduino pin 10 (SoftSerial RX) ← ESP32 GPIO3 (UART0 TX)
  *

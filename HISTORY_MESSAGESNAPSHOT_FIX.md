@@ -70,7 +70,7 @@ const AgUiChatCore = ({ sessionId, ...props }) => {
   useAgentSync(sessionId);
   
   // Backend emits MessagesSnapshotEvent at stream start to display history
-  return <CopilotChat className="agu-chat" agentId="velxio" threadId={sessionId} />;
+  return <CopilotChat className="agu-chat" agentId="soundmind" threadId={sessionId} />;
 };
 ```
 

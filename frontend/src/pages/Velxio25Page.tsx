@@ -1,5 +1,5 @@
 /**
- * /v2-5 — Velxio 2.5 Release Landing Page
+ * /v2-5 — SoundMind 2.5 Release Landing Page
  * Highlights ngspice-WASM analog co-simulation, expanded SPICE catalog,
  * real-time instruments (ammeter, voltmeter, oscilloscope), and the new
  * hybrid digital+analog workflow.
@@ -12,9 +12,9 @@ import { useSEO } from '../utils/useSEO';
 import { getSeoMeta } from '../seoRoutes';
 import { trackClickCTA } from '../utils/analytics';
 import './SEOPage.css';
-import './Velxio2Page.css';
+import './SoundMind2Page.css';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/velxio';
+const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
 const DISCORD_URL = 'https://discord.gg/3mARjJrh4E';
 
 /* ── SVG Icons (no emojis) ─────────────────────────────── */
@@ -112,13 +112,13 @@ const JSON_LD: object[] = [
   {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Velxio 2.5 — Arduino + SPICE Analog Circuit Simulator',
+    name: 'SoundMind 2.5 — Arduino + SPICE Analog Circuit Simulator',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Any (browser-based)',
     softwareVersion: '2.5.0',
     description:
-      'Velxio 2.5 brings real-time ngspice-WASM analog simulation to the browser. Hybrid digital+analog co-simulation: resistors, capacitors, inductors, op-amps, transistors, voltmeters, ammeters — wired to Arduino, ESP32, RP2040 GPIO/ADC. 40+ circuit examples. Free and open-source.',
-    url: 'https://velxio.dev/v2-5',
+      'SoundMind 2.5 brings real-time ngspice-WASM analog simulation to the browser. Hybrid digital+analog co-simulation: resistors, capacitors, inductors, op-amps, transistors, voltmeters, ammeters — wired to Arduino, ESP32, RP2040 GPIO/ADC. 40+ circuit examples. Free and open-source.',
+    url: 'https://soundmind.dev/v2-5',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     author: { '@type': 'Person', name: 'David Montero Crespo' },
     license: 'https://www.gnu.org/licenses/agpl-3.0.html',
@@ -127,8 +127,8 @@ const JSON_LD: object[] = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Velxio', item: 'https://velxio.dev/' },
-      { '@type': 'ListItem', position: 2, name: 'Velxio 2.5', item: 'https://velxio.dev/v2-5' },
+      { '@type': 'ListItem', position: 1, name: 'SoundMind', item: 'https://soundmind.dev/' },
+      { '@type': 'ListItem', position: 2, name: 'SoundMind 2.5', item: 'https://soundmind.dev/v2-5' },
     ],
   },
   {
@@ -137,10 +137,10 @@ const JSON_LD: object[] = [
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'What is new in Velxio 2.5?',
+        name: 'What is new in SoundMind 2.5?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Velxio 2.5 adds real-time analog circuit simulation via ngspice-WASM. You can now mix SPICE-accurate analog parts — resistors, capacitors, inductors, diodes, transistors, op-amps, voltage regulators — with Arduino, ESP32, and RP2040 boards on the same canvas. Includes live ammeters, voltmeters, an oscilloscope, and 40+ new circuit examples.',
+          text: 'SoundMind 2.5 adds real-time analog circuit simulation via ngspice-WASM. You can now mix SPICE-accurate analog parts — resistors, capacitors, inductors, diodes, transistors, op-amps, voltage regulators — with Arduino, ESP32, and RP2040 boards on the same canvas. Includes live ammeters, voltmeters, an oscilloscope, and 40+ new circuit examples.',
         },
       },
       {
@@ -148,7 +148,7 @@ const JSON_LD: object[] = [
         name: 'Is this a SPICE simulator in the browser?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes. Velxio 2.5 runs ngspice compiled to WebAssembly (via eecircuit-engine) entirely in the browser. No server, no install, no account. Works offline after first load.',
+          text: 'Yes. SoundMind 2.5 runs ngspice compiled to WebAssembly (via eecircuit-engine) entirely in the browser. No server, no install, no account. Works offline after first load.',
         },
       },
       {
@@ -283,7 +283,7 @@ const CHANGE_SECTIONS = [
   },
 ];
 
-export const Velxio25Page: React.FC = () => {
+export const SoundMind25Page: React.FC = () => {
   useSEO({ ...getSeoMeta('/v2-5')!, jsonLd: JSON_LD });
 
   return (
@@ -296,7 +296,7 @@ export const Velxio25Page: React.FC = () => {
             <IcoRocket /> Version 2.5
           </div>
           <h1>
-            Velxio 2.5
+            SoundMind 2.5
             <br />
             <span className="accent">Arduino meets SPICE in your browser</span>
           </h1>
@@ -309,10 +309,10 @@ export const Velxio25Page: React.FC = () => {
             <Link
               to="/editor"
               className="seo-btn-primary"
-              onClick={() => trackClickCTA('velxio-v2-5', '/editor')}
+              onClick={() => trackClickCTA('soundmind-v2-5', '/editor')}
             >
               <IcoLightning />
-              Try Velxio 2.5
+              Try SoundMind 2.5
             </Link>
             <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="seo-btn-secondary">
               <IcoGitHub /> View on GitHub
@@ -335,7 +335,7 @@ export const Velxio25Page: React.FC = () => {
         <section className="seo-section">
           <h2>From digital-only to full circuit emulation</h2>
           <p className="lead">
-            Velxio 2.0 simulated your firmware perfectly. Velxio 2.5 simulates the circuit around
+            SoundMind 2.0 simulated your firmware perfectly. SoundMind 2.5 simulates the circuit around
             it — with the same ngspice engine used by professional EDA tools, running entirely in
             your browser tab.
           </p>
@@ -344,7 +344,7 @@ export const Velxio25Page: React.FC = () => {
             <div className="seo-card">
               <h3>Not a linear approximation</h3>
               <p>
-                Velxio solves the full Modified Nodal Analysis every tick. Non-linear devices —
+                SoundMind solves the full Modified Nodal Analysis every tick. Non-linear devices —
                 diodes, BJTs, MOSFETs, op-amps with saturation — behave like the real thing, not
                 like textbook idealisations.
               </p>
@@ -398,7 +398,7 @@ export const Velxio25Page: React.FC = () => {
           <h2>Hybrid digital + analog co-simulation</h2>
           <p className="lead">
             Most browser simulators run either your firmware OR a circuit — never both together.
-            Velxio 2.5 solves them on the same clock.
+            SoundMind 2.5 solves them on the same clock.
           </p>
           <div className="seo-grid">
             <div className="seo-card">
@@ -490,7 +490,7 @@ export const Velxio25Page: React.FC = () => {
         <section className="seo-section">
           <h2>The outcome</h2>
           <p className="lead">
-            Velxio 2.5 closes the loop between firmware and hardware: the same tool that runs your
+            SoundMind 2.5 closes the loop between firmware and hardware: the same tool that runs your
             sketch now solves the circuit around it.
           </p>
           <div className="seo-grid">
@@ -522,7 +522,7 @@ export const Velxio25Page: React.FC = () => {
         <section className="seo-section">
           <h2>Built on open-source</h2>
           <p className="lead">
-            Velxio 2.5 stands on the shoulders of decades of electronics tooling. Huge thanks to
+            SoundMind 2.5 stands on the shoulders of decades of electronics tooling. Huge thanks to
             the maintainers of every project below.
           </p>
           <div className="v2-repos">
@@ -530,7 +530,7 @@ export const Velxio25Page: React.FC = () => {
               <IcoGitHub />
               <div>
                 <h3>ngspice</h3>
-                <p>The open-source SPICE circuit simulator — powers every analog solve in Velxio 2.5</p>
+                <p>The open-source SPICE circuit simulator — powers every analog solve in SoundMind 2.5</p>
               </div>
             </a>
             <a href="https://github.com/danchitnis/eecircuit-engine" target="_blank" rel="noopener noreferrer" className="v2-repo-card">
@@ -564,7 +564,7 @@ export const Velxio25Page: React.FC = () => {
             <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="v2-repo-card v2-repo-card--primary">
               <IcoGitHub />
               <div>
-                <h3>Velxio</h3>
+                <h3>SoundMind</h3>
                 <p>This project — free, open-source Arduino + SPICE co-simulator</p>
               </div>
             </a>
@@ -573,12 +573,12 @@ export const Velxio25Page: React.FC = () => {
 
         {/* ── Bottom CTA ── */}
         <div className="seo-bottom">
-          <h2>Try Velxio 2.5 now</h2>
+          <h2>Try SoundMind 2.5 now</h2>
           <p>Open the editor and start simulating — firmware and analog circuit, same canvas, zero setup.</p>
           <Link
             to="/editor"
             className="seo-btn-primary"
-            onClick={() => trackClickCTA('velxio-v2-5', '/editor')}
+            onClick={() => trackClickCTA('soundmind-v2-5', '/editor')}
           >
             Launch Simulator
           </Link>
@@ -596,7 +596,7 @@ export const Velxio25Page: React.FC = () => {
 
           <div className="seo-internal-links">
             <Link to="/">Home</Link>
-            <Link to="/v2">Velxio 2.0</Link>
+            <Link to="/v2">SoundMind 2.0</Link>
             <Link to="/examples">Examples</Link>
             <Link to="/docs/intro">Documentation</Link>
             <Link to="/arduino-simulator">Arduino Simulator</Link>

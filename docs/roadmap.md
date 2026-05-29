@@ -1,6 +1,6 @@
 # Roadmap
 
-This document lists the features that are implemented, in progress, and planned for future releases of Velxio.
+This document lists the features that are implemented, in progress, and planned for future releases of SoundMind.
 
 ---
 
@@ -100,6 +100,6 @@ This document lists the features that are implemented, in progress, and planned 
 
 ## Contributing
 
-Feature requests, bug reports, and pull requests are welcome at [github.com/davidmonterocrespo24/velxio](https://github.com/davidmonterocrespo24/velxio).
+Feature requests, bug reports, and pull requests are welcome at [github.com/davidmonterocrespo24/soundmind](https://github.com/davidmonterocrespo24/soundmind).
 
 All contributors must sign a Contributor License Agreement (CLA); a CLA check runs automatically on pull requests.

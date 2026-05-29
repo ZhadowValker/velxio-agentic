@@ -125,7 +125,7 @@ export async function loadExample(
     setComponents(
       componentsWithoutBoard.map((comp) => ({
         id: comp.id,
-        metadataId: comp.type.replace(/^(wokwi|velxio)-/, ''),
+        metadataId: comp.type.replace(/^(wokwi|soundmind)-/, ''),
         x: comp.x,
         y: comp.y,
         properties: comp.properties,
@@ -170,7 +170,7 @@ export async function loadExample(
     setComponents(
       componentsWithoutBoard.map((comp) => ({
         id: comp.id,
-        metadataId: comp.type.replace(/^(wokwi|velxio)-/, ''),
+        metadataId: comp.type.replace(/^(wokwi|soundmind)-/, ''),
         x: comp.x,
         y: comp.y,
         properties: comp.properties,

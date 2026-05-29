@@ -7,10 +7,10 @@ import { trackLogin } from '../utils/analytics';
 
 export const LoginPage: React.FC = () => {
   useSEO({
-    title: 'Sign In — Velxio',
+    title: 'Sign In — SoundMind',
     description:
-      'Sign in to your Velxio account to save projects and access your Arduino simulations.',
-    url: 'https://velxio.dev/login',
+      'Sign in to your SoundMind account to save projects and access your Arduino simulations.',
+    url: 'https://soundmind.dev/login',
     noindex: true,
   });
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ export const LoginPage: React.FC = () => {
     <div className="ap-page">
       <div className="ap-card">
         <h1 className="ap-card-title">Sign in</h1>
-        <p className="ap-card-sub">to continue to Velxio</p>
+        <p className="ap-card-sub">to continue to SoundMind</p>
 
         {error && <div className="ap-error">{error}</div>}
 

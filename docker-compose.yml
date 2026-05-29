@@ -2,18 +2,18 @@
 # Usage: docker compose up --build
 # Access: http://localhost:3080
 services:
-  velxio:
+  soundmind:
     build:
       context: .
       dockerfile: Dockerfile.standalone
-    container_name: velxio-dev
+    container_name: soundmind-dev
     restart: unless-stopped
     ports:
       - "3080:80"
     env_file:
       - ./backend/.env
     environment:
-      - DATABASE_URL=sqlite+aiosqlite:////app/data/velxio.db
+      - DATABASE_URL=sqlite+aiosqlite:////app/data/soundmind.db
       - DATA_DIR=/app/data
       - IDF_PATH=/opt/esp-idf
       - IDF_TOOLS_PATH=/root/.espressif

@@ -359,7 +359,7 @@ describe('AVRSimulator Mega — PWM OCR mapping differs from Uno', () => {
 
 const SKETCH_DIR = resolve(__dirname, '../../../example_zip/extracted/mega-blink-test');
 const SKETCH_INO = join(SKETCH_DIR, 'mega-blink-test.ino');
-const HEX_CACHE = join(tmpdir(), 'velxio-mega-blink-v2.hex');
+const HEX_CACHE = join(tmpdir(), 'soundmind-mega-blink-v2.hex');
 
 // ─── arduino-cli availability ─────────────────────────────────────────────────
 
@@ -376,7 +376,7 @@ function compileSketch(): string {
 
   console.log('[compile] Compiling mega-blink-test.ino for arduino:avr:mega:cpu=atmega2560…');
 
-  const workDir = mkdtempSync(join(tmpdir(), 'velxio-mega-'));
+  const workDir = mkdtempSync(join(tmpdir(), 'soundmind-mega-'));
   const sketchDir = join(workDir, 'mega-blink-test');
   mkdirSync(sketchDir);
   writeFileSync(join(sketchDir, 'mega-blink-test.ino'), readFileSync(SKETCH_INO, 'utf-8'));

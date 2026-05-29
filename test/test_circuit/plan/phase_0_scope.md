@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Probar que podemos emular circuitos completos (analógicos + digitales + Arduino) en JavaScript puro, validando el enfoque antes de integrarlo en Velxio. El plan1.md propone usar ngspice-WASM (40 MB); esta campaña explora una alternativa **nativa JS** más ligera.
+Probar que podemos emular circuitos completos (analógicos + digitales + Arduino) en JavaScript puro, validando el enfoque antes de integrarlo en SoundMind. El plan1.md propone usar ngspice-WASM (40 MB); esta campaña explora una alternativa **nativa JS** más ligera.
 
 ## No es objetivo
 
@@ -14,7 +14,7 @@ Probar que podemos emular circuitos completos (analógicos + digitales + Arduino
 
 1. Solver DC (MNA) resuelve redes con R, V, I, diodo, LED, termistor, potenciómetro con error < 1 % vs valor analítico conocido.
 2. Solver transitorio resuelve RC charging, filtro pasa-bajos con error < 5 % vs solución analítica en t = τ.
-3. Integración con `avr8js` (igual que Velxio) ejecuta una .hex real y el solver responde al estado de pines en cada frame.
+3. Integración con `avr8js` (igual que SoundMind) ejecuta una .hex real y el solver responde al estado de pines en cada frame.
 4. Caso end-to-end: potenciómetro → `analogRead(A0)` → `analogWrite(9, val/4)` → brillo de LED varía monótonamente con la posición del potenciómetro.
 5. Caso end-to-end: termistor NTC + divisor → lectura ADC corresponde a una temperatura esperada vía Steinhart-Hart.
 

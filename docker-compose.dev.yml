@@ -3,14 +3,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.standalone
-    container_name: velxio-backend-dev
+    container_name: soundmind-backend-dev
     restart: unless-stopped
     env_file:
       - ./backend/.env
     environment:
       - PYTHONUNBUFFERED=1
       - WATCHFILES_FORCE_POLLING=true
-      - DATABASE_URL=sqlite+aiosqlite:////app/data/velxio.db
+      - DATABASE_URL=sqlite+aiosqlite:////app/data/soundmind.db
       - DATA_DIR=/app/data
       - IDF_PATH=/opt/esp-idf
       - IDF_TOOLS_PATH=/root/.espressif
@@ -32,7 +32,7 @@ services:
 
   frontend:
     image: node:20
-    container_name: velxio-frontend-dev
+    container_name: soundmind-frontend-dev
     restart: unless-stopped
     working_dir: /app/frontend
     environment:

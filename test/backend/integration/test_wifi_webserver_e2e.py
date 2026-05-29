@@ -19,14 +19,14 @@ BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORKER_SCRIPT = os.path.join(BACKEND_DIR, 'app', 'services', 'esp32_worker.py')
 LIBQEMU_XTENSA = os.path.join(BACKEND_DIR, 'app', 'services', 'libqemu-xtensa.dll')
 
-# WiFi WebServer sketch (ESP32 Xtensa) — uses Velxio-GUEST AP
+# WiFi WebServer sketch (ESP32 Xtensa) — uses SoundMind-GUEST AP
 WEBSERVER_SKETCH = r'''
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <WebServer.h>
 #include <uri/UriBraces.h>
 
-#define WIFI_SSID "Velxio-GUEST"
+#define WIFI_SSID "SoundMind-GUEST"
 #define WIFI_PASSWORD ""
 #define WIFI_CHANNEL 6
 

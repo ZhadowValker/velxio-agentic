@@ -83,6 +83,6 @@ class PiPicoWElement extends HTMLElement {
   }
 }
 
-if (!customElements.get('velxio-pi-pico-w')) {
-  customElements.define('velxio-pi-pico-w', PiPicoWElement);
+if (!customElements.get('soundmind-pi-pico-w')) {
+  customElements.define('soundmind-pi-pico-w', PiPicoWElement);
 }

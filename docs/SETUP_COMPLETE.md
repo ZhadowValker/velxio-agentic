@@ -1,4 +1,4 @@
-# Project Status - Velxio Arduino Emulator
+# Project Status - SoundMind Arduino Emulator
 
 ## Summary of Implemented Features
 

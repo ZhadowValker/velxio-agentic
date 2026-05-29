@@ -141,7 +141,7 @@ def _parse_json_list(value: str | list[dict[str, Any]] | None) -> list[dict[str,
 
 def _component_from_legacy(raw: dict[str, Any]) -> SnapshotComponent:
     metadata_id = raw.get("metadataId") or raw.get("type") or ""
-    metadata_id = str(metadata_id).removeprefix("wokwi-").removeprefix("velxio-")
+    metadata_id = str(metadata_id).removeprefix("wokwi-").removeprefix("soundmind-")
     return SnapshotComponent(
         id=str(raw.get("id", "")),
         metadataId=metadata_id,
@@ -212,7 +212,7 @@ def _resolve_endpoint_component_id(
     if raw in component_ids or raw in board_ids:
         return raw
 
-    normalized = raw.removeprefix("wokwi-").removeprefix("velxio-")
+    normalized = raw.removeprefix("wokwi-").removeprefix("soundmind-")
     if normalized in component_ids or normalized in board_ids:
         return normalized
 
@@ -231,7 +231,7 @@ def _looks_like_board_id(value: str) -> bool:
 def _is_board_component(raw: dict[str, Any]) -> bool:
     raw_id = str(raw.get("id", ""))
     raw_type = str(raw.get("metadataId") or raw.get("type") or "")
-    normalized_type = raw_type.removeprefix("wokwi-").removeprefix("velxio-")
+    normalized_type = raw_type.removeprefix("wokwi-").removeprefix("soundmind-")
     return raw_id in BOARD_COMPONENT_IDS or normalized_type in BOARD_COMPONENT_IDS
 
 

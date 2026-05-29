@@ -1,7 +1,7 @@
 # Fase 9 — Expansión del catálogo de componentes
 
 > **Destino:** `frontend/src/simulation/spice/componentToSpice.ts`, `frontend/src/simulation/parts/`, `scripts/generate-component-metadata.ts` + `scripts/component-overrides.json`, `frontend/src/components/components-wokwi/`.
-> **Pre-requisito leído:** [`autosearch/05_velxio_component_inventory.md`](../autosearch/05_velxio_component_inventory.md) — auditoría completa de lo que existe por capa.
+> **Pre-requisito leído:** [`autosearch/05_soundmind_component_inventory.md`](../autosearch/05_soundmind_component_inventory.md) — auditoría completa de lo que existe por capa.
 > **Meta:** cerrar los huecos de compuertas lógicas (XNOR, 3/4-input, SPICE mappers) y completar las familias analógicas básicas (PNP, P-MOSFET, op-amps reales, reguladores, fuentes).
 
 ---
@@ -225,7 +225,7 @@ Cada mapper nuevo debe:
 
 ## 6. Referencias
 
-- [`autosearch/05_velxio_component_inventory.md`](../autosearch/05_velxio_component_inventory.md) — auditoría que motiva este plan
+- [`autosearch/05_soundmind_component_inventory.md`](../autosearch/05_soundmind_component_inventory.md) — auditoría que motiva este plan
 - [`test/test_circuit/test/spice_logic_gates.test.js`](../test/spice_logic_gates.test.js) — 12 tests con las expresiones B-source ya validadas
 - [`test/test_circuit/test/spice_transistors.test.js`](../test/spice_transistors.test.js) — 12 tests incluyendo PNP 2N3906 que aún no tiene mapper
 - [`test/test_circuit/test/spice_analog_advanced.test.js`](../test/spice_analog_advanced.test.js) — 8 tests de circuitos que usan op-amps ideales; referencia para validar los op-amps reales

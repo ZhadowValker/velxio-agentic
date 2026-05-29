@@ -1,6 +1,6 @@
 /**
  * useElectricalStore — state slice for the ngspice-powered electrical
- * simulation. SPICE is **always active** in Velxio so that every circuit —
+ * simulation. SPICE is **always active** in SoundMind so that every circuit —
  * digital or analog — is solved with real-world fidelity (voltages,
  * currents, MOSFET I-V curves, diode drops, reverse-leakage, …).
  *

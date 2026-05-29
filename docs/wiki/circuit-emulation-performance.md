@@ -65,7 +65,7 @@ For the trivially small circuits we target (< 20 nodes):
 | `solveTransient` — RC, 600 steps | ~20 ms |
 | `solveTransient` — 4-diode bridge rectifier, 400 steps | *not implemented (no inductor, and BJT/diode-heavy circuits not profiled)* |
 
-At larger circuit sizes (50+ nodes), the dense Gaussian elimination becomes quadratic and eventually uncompetitive with ngspice's sparse solver. For Velxio's expected circuit sizes (≤ 30 nodes in typical hobby circuits), hand-rolled is competitive with ngspice on DC but loses on transient.
+At larger circuit sizes (50+ nodes), the dense Gaussian elimination becomes quadratic and eventually uncompetitive with ngspice's sparse solver. For SoundMind's expected circuit sizes (≤ 30 nodes in typical hobby circuits), hand-rolled is competitive with ngspice on DC but loses on transient.
 
 ## Memory footprint
 
@@ -75,7 +75,7 @@ At larger circuit sizes (50+ nodes), the dense Gaussian elimination becomes quad
 | `avr8js` shared harness | ~1.5 MB | a few MB for CPU + SRAM + listeners |
 | `eecircuit-engine` | **39 MB** | ~15–20 MB when booted (WASM linear memory) |
 
-**Velxio production impact**: adding ngspice-WASM grows the browser bundle by 39 MB (the WASM is bundled inside the JS module). Unacceptable as a hard dependency for every page load; tolerable behind a lazy-loaded "⚡ Electrical simulation" feature flag. The user clicks to activate; the browser fetches, caches, and initializes; ~400 ms later they can simulate.
+**SoundMind production impact**: adding ngspice-WASM grows the browser bundle by 39 MB (the WASM is bundled inside the JS module). Unacceptable as a hard dependency for every page load; tolerable behind a lazy-loaded "⚡ Electrical simulation" feature flag. The user clicks to activate; the browser fetches, caches, and initializes; ~400 ms later they can simulate.
 
 ## Scalability projections
 
@@ -88,9 +88,9 @@ Rough extrapolation of ngspice to larger circuits (based on ngspice's sparse sol
 | 100 | 60 ms | 1.5 s |
 | 300 | 300 ms | 8 s |
 
-In Velxio, the expected typical circuit has 10–30 components. Each component contributes 1–3 nodes (most are 2-terminal). So 20–90 nodes. We are firmly in the sub-second-per-simulation zone.
+In SoundMind, the expected typical circuit has 10–30 components. Each component contributes 1–3 nodes (most are 2-terminal). So 20–90 nodes. We are firmly in the sub-second-per-simulation zone.
 
-For the Velxio UI to feel responsive, one `solveDC()` should complete in < 100 ms. That is the budget for a real-time "update voltages overlay" flow.
+For the SoundMind UI to feel responsive, one `solveDC()` should complete in < 100 ms. That is the budget for a real-time "update voltages overlay" flow.
 
 ## Co-simulation overhead
 
@@ -104,9 +104,9 @@ For the Velxio UI to feel responsive, one `solveDC()` should complete in < 100 m
 | Inject ADC voltage | < 1 ms |
 | Per-slice total | 45–105 ms |
 
-For 1 simulated second of real AVR time: 1000 slices × ~70 ms = **~70 seconds wall-clock**. That's a 70× slowdown. Acceptable for test scenarios; **too slow for live interactive use** in Velxio.
+For 1 simulated second of real AVR time: 1000 slices × ~70 ms = **~70 seconds wall-clock**. That's a 70× slowdown. Acceptable for test scenarios; **too slow for live interactive use** in SoundMind.
 
-### Mitigations for live use in Velxio
+### Mitigations for live use in SoundMind
 
 1. **Larger slices**: 10 ms instead of 1 ms → 7× fewer ngspice calls. OK if the analog network's time constants are > 10 ms.
 2. **Don't solve the analog circuit unless pins changed**: debounce `onPinChange` 50 ms; only `runNetlist` when the user moves a knob or the AVR toggles a pin.

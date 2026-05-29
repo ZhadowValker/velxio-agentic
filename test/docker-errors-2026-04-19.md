@@ -1,6 +1,6 @@
 # Docker Production Error Report — 2026-04-19
 
-Errors extracted from `docker logs velxio-app` (last 24h).
+Errors extracted from `docker logs soundmind-app` (last 24h).
 Compilation errors from user code (syntax, missing libraries) are excluded — those are expected.
 
 ---

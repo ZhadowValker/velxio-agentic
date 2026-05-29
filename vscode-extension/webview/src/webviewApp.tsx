@@ -1,5 +1,5 @@
 /**
- * WebView App — Stripped-down Velxio simulator for VS Code WebView.
+ * WebView App — Stripped-down SoundMind simulator for VS Code WebView.
  *
  * This is a minimal React app that embeds:
  * - SimulatorCanvas (board visualization + components)
@@ -77,7 +77,7 @@ const App: React.FC = () => {
     <div style={styles.container}>
       {/* Header */}
       <div style={styles.header}>
-        <span style={styles.logo}>Velxio</span>
+        <span style={styles.logo}>SoundMind</span>
         <span style={styles.boardBadge}>{board}</span>
         <span style={{
           ...styles.statusDot,
@@ -101,7 +101,7 @@ const App: React.FC = () => {
           )}
           {!running && !hexLoaded && (
             <div style={styles.hint}>
-              Use <code>Velxio: Run Simulation</code> to start
+              Use <code>SoundMind: Run Simulation</code> to start
             </div>
           )}
           {!running && hexLoaded && (

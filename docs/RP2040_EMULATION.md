@@ -170,7 +170,7 @@ arduino-cli compile \
 # Output: build/my_sketch.ino.bin  ← raw binary
 ```
 
-The Velxio backend automatically finds `sketch.ino.bin` (or `sketch.ino.uf2` as fallback), encodes it as base64, and sends it to the frontend in `CompileResponse.binary_content`.
+The SoundMind backend automatically finds `sketch.ino.bin` (or `sketch.ino.uf2` as fallback), encodes it as base64, and sends it to the frontend in `CompileResponse.binary_content`.
 
 ### 5.2 Serial Redirection (Important)
 

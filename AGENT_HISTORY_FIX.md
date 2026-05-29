@@ -161,7 +161,7 @@ useEffect(() => {
 ```typescript
 <CopilotChat 
   className="agu-chat" 
-  agentId="velxio" 
+  agentId="soundmind" 
   threadId={sessionId}
   initialMessages={initialMessages}
 />

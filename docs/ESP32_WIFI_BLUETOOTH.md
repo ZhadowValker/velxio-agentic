@@ -1,6 +1,6 @@
 # ESP32 WiFi & Bluetooth Emulation
 
-Velxio emula WiFi y Bluetooth (BLE) en el ESP32 usando el fork de QEMU de lcgamboa con soporte de red slirp. Cada instancia de emulación obtiene su propia red NAT aislada — ideal para múltiples usuarios simultáneos.
+SoundMind emula WiFi y Bluetooth (BLE) en el ESP32 usando el fork de QEMU de lcgamboa con soporte de red slirp. Cada instancia de emulación obtiene su propia red NAT aislada — ideal para múltiples usuarios simultáneos.
 
 ## Tabla de Contenidos
 
@@ -80,7 +80,7 @@ Velxio emula WiFi y Bluetooth (BLE) en el ESP32 usando el fork de QEMU de lcgamb
 │                         │                                        │
 │  ┌──────────────────────┴──────────────────────────────────────┐ │
 │  │  esp32_wifi_ap.c — Access Points emulados:                   │ │
-│  │    • "Velxio-GUEST"  (ch 6, -20 dBm, open)                  │ │
+│  │    • "SoundMind-GUEST"  (ch 6, -20 dBm, open)                  │ │
 │  │    • "PICSimLabWifi" (ch 1, -25 dBm)                        │ │
 │  │    • "Espressif"     (ch 5, -30 dBm)                        │ │
 │  │    • "MasseyWifi"    (ch 10, -40 dBm)                       │ │
@@ -105,13 +105,13 @@ Cada instancia de QEMU ejecuta su propia red WiFi emulada usando **slirp** (user
 - **Sin configuración de red del host** — no requiere TAP, bridge, ni permisos de administrador
 - **Aislamiento por usuario** — cada sesión de emulación tiene su propia red `192.168.4.0/24`
 - **Acceso a internet** — el ESP32 emulado puede hacer peticiones HTTP, DNS, etc. vía NAT del host
-- **SSID principal**: `Velxio-GUEST` (canal 6, abierto, sin contraseña)
+- **SSID principal**: `SoundMind-GUEST` (canal 6, abierto, sin contraseña)
 
 QEMU emula la capa MAC 802.11 completa: beacons, scan, asociación y DHCP. El firmware ESP-IDF del ESP32 interactúa con el hardware WiFi emulado exactamente como lo haría con hardware real.
 
 ### Detección Automática de WiFi
 
-Cuando presionas "Run" en el editor, Velxio escanea automáticamente tu código buscando patrones WiFi:
+Cuando presionas "Run" en el editor, SoundMind escanea automáticamente tu código buscando patrones WiFi:
 
 ```typescript
 // Patrones detectados:
@@ -126,7 +126,7 @@ Si se detecta cualquiera de estos, se activa `wifi_enabled=true` automáticament
 ### Flujo de Estado WiFi
 
 ```
-Sketch ejecuta WiFi.begin("Velxio-GUEST", "")
+Sketch ejecuta WiFi.begin("SoundMind-GUEST", "")
          │
          ▼
 QEMU UART0: "I (432) wifi:wifi sta start"
@@ -138,10 +138,10 @@ Backend: wifi_status_parser → { status: "initializing" }
 WebSocket → Frontend: wifi_status event
          │
          ▼
-QEMU UART0: "I (800) wifi:connected with Velxio-GUEST, aid = 1"
+QEMU UART0: "I (800) wifi:connected with SoundMind-GUEST, aid = 1"
          │
          ▼
-Backend: { status: "connected", ssid: "Velxio-GUEST" }
+Backend: { status: "connected", ssid: "SoundMind-GUEST" }
          │
          ▼
 QEMU UART0: "I (1200) esp_netif_handlers: sta ip: 192.168.4.15"
@@ -155,7 +155,7 @@ SimulatorCanvas: ícono WiFi cambia a verde ✓
 
 ### IoT Gateway (Servidor HTTP)
 
-Cuando tu sketch ejecuta un WebServer en el ESP32, Velxio crea un proxy HTTP reverso para que puedas acceder desde tu navegador:
+Cuando tu sketch ejecuta un WebServer en el ESP32, SoundMind crea un proxy HTTP reverso para que puedas acceder desde tu navegador:
 
 1. QEMU inicia con `hostfwd=tcp::{puerto}-192.168.4.15:80`
 2. El backend asigna un puerto dinámico libre
@@ -171,7 +171,7 @@ Browser → http://localhost:8001/api/gateway/board-1/
 
 ### Bluetooth Low Energy (BLE)
 
-Velxio detecta el uso de BLE en tu sketch y muestra el estado de inicialización:
+SoundMind detecta el uso de BLE en tu sketch y muestra el estado de inicialización:
 
 ```typescript
 // Patrones BLE detectados:
@@ -191,7 +191,7 @@ El estado BLE se muestra en el canvas del simulador (ícono Bluetooth azul).
 ### WiFi Básico
 
 1. **Escribe tu sketch** usando `#include <WiFi.h>`
-2. **Usa el SSID `Velxio-GUEST`** (sin contraseña)
+2. **Usa el SSID `SoundMind-GUEST`** (sin contraseña)
 3. **Presiona Run** — WiFi se activa automáticamente
 4. **Observa el Serial Monitor** — verás los logs de conexión ESP-IDF
 5. **Mira el ícono WiFi** en el canvas del simulador
@@ -201,7 +201,7 @@ El estado BLE se muestra en el canvas del simulador (ícono Bluetooth azul).
 
 void setup() {
   Serial.begin(115200);
-  WiFi.begin("Velxio-GUEST", "");
+  WiFi.begin("SoundMind-GUEST", "");
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -219,8 +219,8 @@ void loop() {
 **Salida esperada en Serial Monitor:**
 ```
 I (432) wifi:wifi sta start
-I (500) wifi:new:Velxio-GUEST, old: , ASSOC
-I (800) wifi:connected with Velxio-GUEST, aid = 1, channel 6
+I (500) wifi:new:SoundMind-GUEST, old: , ASSOC
+I (800) wifi:connected with SoundMind-GUEST, aid = 1, channel 6
 I (1200) esp_netif_handlers: sta ip: 192.168.4.15, mask: 255.255.255.0
 ...
 Conectado!
@@ -233,7 +233,7 @@ IP: 192.168.4.15
 #include <WiFi.h>
 #include <WebServer.h>
 
-const char* ssid = "Velxio-GUEST";
+const char* ssid = "SoundMind-GUEST";
 const char* password = "";
 
 WebServer server(80);
@@ -274,7 +274,7 @@ Una vez que el Serial Monitor muestre "Servidor HTTP iniciado", puedes acceder a
 
 void setup() {
   Serial.begin(115200);
-  BLEDevice::init("Velxio-ESP32");
+  BLEDevice::init("SoundMind-ESP32");
   BLEServer *pServer = BLEDevice::createServer();
   BLEAdvertising *pAdv = BLEDevice::getAdvertising();
   pAdv->start();
@@ -292,7 +292,7 @@ void loop() {
 
 ## Ejemplos Completos
 
-Velxio incluye 4 ejemplos pre-cargados accesibles desde la galería de ejemplos:
+SoundMind incluye 4 ejemplos pre-cargados accesibles desde la galería de ejemplos:
 
 ### 1. WiFi Scan
 
@@ -319,7 +319,7 @@ void loop() { delay(10000); }
 **Salida esperada:**
 ```
 Networks found:
-1: Velxio-GUEST (-20 dBm)
+1: SoundMind-GUEST (-20 dBm)
 2: PICSimLabWifi (-25 dBm)
 3: Espressif (-30 dBm)
 4: MasseyWifi (-40 dBm)
@@ -327,7 +327,7 @@ Networks found:
 
 ### 2. WiFi Connect
 
-Conecta a `Velxio-GUEST` y muestra la información de red.
+Conecta a `SoundMind-GUEST` y muestra la información de red.
 
 ```cpp
 #include <WiFi.h>
@@ -335,7 +335,7 @@ Conecta a `Velxio-GUEST` y muestra la información de red.
 void setup() {
   Serial.begin(115200);
   Serial.print("Connecting to WiFi");
-  WiFi.begin("Velxio-GUEST", "", 6);
+  WiFi.begin("SoundMind-GUEST", "", 6);
   while (WiFi.status() != WL_CONNECTED) {
     delay(100);
     Serial.print(".");
@@ -360,7 +360,7 @@ WebServer server(80);
 
 void setup() {
   Serial.begin(115200);
-  WiFi.begin("Velxio-GUEST", "", 6);
+  WiFi.begin("SoundMind-GUEST", "", 6);
   while (WiFi.status() != WL_CONNECTED) delay(100);
   server.on("/", []() {
     server.send(200, "text/html", "<h1>Hello from ESP32!</h1>");
@@ -384,7 +384,7 @@ Inicializa BLE y comienza advertising (detección solamente).
 
 void setup() {
   Serial.begin(115200);
-  BLEDevice::init("Velxio-ESP32");
+  BLEDevice::init("SoundMind-ESP32");
   BLEServer *pServer = BLEDevice::createServer();
   BLEAdvertising *pAdv = BLEDevice::getAdvertising();
   pAdv->start();
@@ -426,7 +426,7 @@ El canvas del simulador muestra íconos de estado para WiFi y BLE junto al board
 
 | Parámetro | Valor |
 |-----------|-------|
-| SSID | `Velxio-GUEST` |
+| SSID | `SoundMind-GUEST` |
 | Contraseña | *(vacía — red abierta)* |
 | Canal | 6 |
 | Seguridad | Open (sin cifrado) |
@@ -441,7 +441,7 @@ El canvas del simulador muestra íconos de estado para WiFi y BLE junto al board
 
 | SSID | Canal | Señal |
 |------|-------|-------|
-| Velxio-GUEST | 6 | -20 dBm |
+| SoundMind-GUEST | 6 | -20 dBm |
 | PICSimLabWifi | 1 | -25 dBm |
 | Espressif | 5 | -30 dBm |
 | MasseyWifi | 10 | -40 dBm |
@@ -462,7 +462,7 @@ El canvas del simulador muestra íconos de estado para WiFi y BLE junto al board
 
 | Limitación | Detalle |
 |------------|---------|
-| **SSID fijo** | Debes usar `"Velxio-GUEST"` (sin contraseña). No puedes crear tu propio AP ni usar otro SSID para conectar. |
+| **SSID fijo** | Debes usar `"SoundMind-GUEST"` (sin contraseña). No puedes crear tu propio AP ni usar otro SSID para conectar. |
 | **Sin WPA/WPA2** | La red es abierta. El firmware puede intentar cifrado pero no se verificará. |
 | **Sin ICMP (ping)** | `ping` no funciona — es una limitación de slirp. Usa TCP/HTTP para verificar conectividad. |
 | **MAC fija** | Todas las instancias usan `24:0a:c4:00:01:10` por defecto. Configurable vía eFuse emulado pero no expuesto en UI. |
@@ -497,7 +497,7 @@ El canvas del simulador muestra íconos de estado para WiFi y BLE junto al board
 
 | Archivo | Cambio |
 |---------|--------|
-| `wokwi-libs/qemu-lcgamboa/hw/misc/esp32_wifi_ap.c` | Añadido SSID "Velxio-GUEST" al array de access points |
+| `wokwi-libs/qemu-lcgamboa/hw/misc/esp32_wifi_ap.c` | Añadido SSID "SoundMind-GUEST" al array de access points |
 
 ### Backend (Python)
 
@@ -575,8 +575,8 @@ python -m pytest tests/test_esp32_wifi.py tests/test_esp32c3_wifi.py tests/test_
 - Asegúrate de que tu sketch incluya `#include <WiFi.h>` o use `WiFi.begin(`
 
 ### WiFi se queda en "initializing"
-- El firmware debe usar el SSID `"Velxio-GUEST"` — otros SSIDs no funcionarán
-- No uses contraseña: `WiFi.begin("Velxio-GUEST", "")`
+- El firmware debe usar el SSID `"SoundMind-GUEST"` — otros SSIDs no funcionarán
+- No uses contraseña: `WiFi.begin("SoundMind-GUEST", "")`
 - Verifica en el Serial Monitor que QEMU muestra los logs ESP-IDF de WiFi
 
 ### No puedo acceder al servidor HTTP del ESP32

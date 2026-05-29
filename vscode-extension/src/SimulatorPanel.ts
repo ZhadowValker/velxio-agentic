@@ -1,7 +1,7 @@
 /**
  * SimulatorPanel — Manages the VS Code WebView panel that hosts the simulation UI.
  *
- * The WebView runs a stripped-down version of the Velxio React frontend
+ * The WebView runs a stripped-down version of the SoundMind React frontend
  * (SimulatorCanvas + SerialMonitor) with simulation engines (avr8js, rp2040js)
  * running directly in the WebView's JavaScript context.
  *
@@ -13,7 +13,7 @@ import * as path from 'path';
 import type { ToWebviewMessage, FromWebviewMessage, BoardKind } from './types';
 
 export class SimulatorPanel {
-  public static readonly viewType = 'velxio.simulator';
+  public static readonly viewType = 'soundmind.simulator';
   private static instance: SimulatorPanel | undefined;
 
   private readonly panel: vscode.WebviewPanel;
@@ -44,7 +44,7 @@ export class SimulatorPanel {
 
     const panel = vscode.window.createWebviewPanel(
       SimulatorPanel.viewType,
-      'Velxio Simulator',
+      'SoundMind Simulator',
       column,
       {
         enableScripts: true,
@@ -137,7 +137,7 @@ export class SimulatorPanel {
         this._onSimulationState.fire(msg.running);
         break;
       case 'error':
-        vscode.window.showErrorMessage(`Velxio: ${msg.message}`);
+        vscode.window.showErrorMessage(`SoundMind: ${msg.message}`);
         break;
       case 'log':
         // Forward WebView logs to the output channel
@@ -169,7 +169,7 @@ export class SimulatorPanel {
     connect-src http://127.0.0.1:* ws://127.0.0.1:* https://micropython.org;
   ">
   <link rel="stylesheet" href="${styleUri}">
-  <title>Velxio Simulator</title>
+  <title>SoundMind Simulator</title>
 </head>
 <body>
   <div id="root"></div>

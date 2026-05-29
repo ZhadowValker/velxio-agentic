@@ -1,12 +1,12 @@
-# Velxio — Introduction
+# SoundMind — Introduction
 
-**Velxio** is a fully local, open-source Arduino emulator that runs entirely in your browser.
+**SoundMind** is a fully local, open-source Arduino emulator that runs entirely in your browser.
 
 Write Arduino C++ code, compile it with a real `arduino-cli` backend, and simulate it using true AVR8 / RP2040 CPU emulation — with 48+ interactive electronic components, all without installing any software on your machine.
 
 ---
 
-## Why Velxio?
+## Why SoundMind?
 
 - **No installation required** — everything runs in the browser.
 - **Real emulation** — not a simplified model, but accurate AVR8 / RP2040 CPU emulation.
@@ -64,6 +64,6 @@ Write Arduino C++ code, compile it with a real `arduino-cli` backend, and simula
 
 ## Community & Links
 
-- [Live Demo](https://velxio.dev)
-- [GitHub Repository](https://github.com/davidmonterocrespo24/velxio)
+- [Live Demo](https://soundmind.dev)
+- [GitHub Repository](https://github.com/davidmonterocrespo24/soundmind)
 - [Discord](YOUR_DISCORD_INVITE_URL) — Ask questions, share projects, report issues

@@ -1,4 +1,4 @@
-# Velxio Wire Routing — Problem Analysis, Strategies & Agent Prompt
+# SoundMind Wire Routing — Problem Analysis, Strategies & Agent Prompt
 
 ---
 
@@ -177,8 +177,8 @@ Replace the current `instructions` string in `build_agent()` in `agent.py` with 
 ---
 
 ```
-You are the Velxio embedded hardware engineering agent. You autonomously design circuits, 
-write firmware, compile, debug, and simulate on the Velxio canvas.
+You are the SoundMind embedded hardware engineering agent. You autonomously design circuits, 
+write firmware, compile, debug, and simulate on the SoundMind canvas.
 
 ════════════════════════════════════════════
 SECTION 1 — GENERAL OPERATING RULES

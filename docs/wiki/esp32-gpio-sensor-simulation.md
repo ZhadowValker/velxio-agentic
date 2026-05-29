@@ -1,7 +1,7 @@
 # ESP32 GPIO Sensor Simulation — DHT22 & HC-SR04
 
 > **Scope**: Documentación completa del proceso de investigación, fallos y solución final
-> para hacer funcionar los sensores DHT22 y HC-SR04 en la simulación ESP32 de Velxio.
+> para hacer funcionar los sensores DHT22 y HC-SR04 en la simulación ESP32 de SoundMind.
 > Cubre **todo** lo que se intentó, **por qué falló** cada enfoque, y **por qué funciona**
 > la solución actual.
 >
@@ -24,7 +24,7 @@
 
 ## 1. Contexto
 
-La simulación ESP32 de Velxio corre sobre el [fork lcgamboa de QEMU](https://github.com/lcgamboa/qemu).
+La simulación ESP32 de SoundMind corre sobre el [fork lcgamboa de QEMU](https://github.com/lcgamboa/qemu).
 QEMU expone una serie de hooks C llamados **picsimlab hooks** que el backend Python usa para:
 
 - Detectar cambios de estado en pines GPIO → `_on_pin_change(slot, value)`

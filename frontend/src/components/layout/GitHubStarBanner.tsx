@@ -1,14 +1,14 @@
 import React from 'react';
 import './GitHubStarBanner.css';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/velxio';
+const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
 
 interface Props {
   onClose: () => void;
 }
 
 export const GitHubStarBanner: React.FC<Props> = ({ onClose }) => (
-  <div className="gh-star-banner" role="dialog" aria-label="Star Velxio on GitHub">
+  <div className="gh-star-banner" role="dialog" aria-label="Star SoundMind on GitHub">
     <div className="gh-star-banner__icon">
       {/* GitHub logo */}
       <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -17,7 +17,7 @@ export const GitHubStarBanner: React.FC<Props> = ({ onClose }) => (
     </div>
 
     <div className="gh-star-banner__body">
-      <strong>Enjoying Velxio?</strong>
+      <strong>Enjoying SoundMind?</strong>
       <p>A ⭐ on GitHub helps more developers discover the project — it only takes 2 seconds!</p>
       <a
         href={GITHUB_URL}

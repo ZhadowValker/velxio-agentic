@@ -1,6 +1,6 @@
 # Components Reference
 
-Velxio ships with **48+ interactive electronic components** powered by [wokwi-elements](https://github.com/wokwi/wokwi-elements). All components can be placed on the simulation canvas, connected with wires, and interact with your Arduino sketch in real time.
+SoundMind ships with **48+ interactive electronic components** powered by [wokwi-elements](https://github.com/wokwi/wokwi-elements). All components can be placed on the simulation canvas, connected with wires, and interact with your Arduino sketch in real time.
 
 ---
 

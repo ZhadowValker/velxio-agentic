@@ -31,7 +31,7 @@
 
 ## 1. Overview
 
-The **Raspberry Pi 3B** is a full Linux single-board computer based on the **Broadcom BCM2837** SoC (4× ARM Cortex-A53, ARMv8 64-bit). Unlike the other boards in Velxio — which compile and run Arduino C++ code — the Raspberry Pi 3 emulation **boots a real Raspberry Pi OS** (Trixie) inside QEMU and lets you run Python scripts that interact with GPIO.
+The **Raspberry Pi 3B** is a full Linux single-board computer based on the **Broadcom BCM2837** SoC (4× ARM Cortex-A53, ARMv8 64-bit). Unlike the other boards in SoundMind — which compile and run Arduino C++ code — the Raspberry Pi 3 emulation **boots a real Raspberry Pi OS** (Trixie) inside QEMU and lets you run Python scripts that interact with GPIO.
 
 There is **no compilation step** for the Raspberry Pi: you write a Python script in the editor, the backend uploads it to the emulated filesystem, and the Pi OS executes it directly.
 
@@ -356,7 +356,7 @@ boardPinToNumber('raspberry-pi-3', 'GND')    // → null (not a GPIO)
 
 ## 10. Virtual File System (VFS)
 
-Each Raspberry Pi 3 board instance has its own **virtual filesystem tree** stored in the `useVfsStore` Zustand store. This lets you create and edit Python scripts directly in the Velxio editor before they are uploaded to the Pi.
+Each Raspberry Pi 3 board instance has its own **virtual filesystem tree** stored in the `useVfsStore` Zustand store. This lets you create and edit Python scripts directly in the SoundMind editor before they are uploaded to the Pi.
 
 ### Default VFS Tree
 

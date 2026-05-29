@@ -1,8 +1,8 @@
-# Plan: Simulación Eléctrica Completa con ngspice en Velxio
+# Plan: Simulación Eléctrica Completa con ngspice en SoundMind
 
 ## Contexto
 
-Actualmente los cables de Velxio son puramente visuales, los valores de resistores/capacitores nunca se usan en ningún cálculo, y los LEDs se encienden si `anode=HIGH && cathode=LOW` sin importar la resistencia en serie. La meta es añadir simulación eléctrica real mediante ngspice corriendo en WASM en el browser.
+Actualmente los cables de SoundMind son puramente visuales, los valores de resistores/capacitores nunca se usan en ningún cálculo, y los LEDs se encienden si `anode=HIGH && cathode=LOW` sin importar la resistencia en serie. La meta es añadir simulación eléctrica real mediante ngspice corriendo en WASM en el browser.
 
 ---
 
@@ -60,7 +60,7 @@ useSimulatorStore (wires[], components[])
 
 **Archivo nuevo:** `frontend/src/simulation/NetlistBuilder.ts`
 
-Algoritmo Union-Find sobre los wires de Velxio:
+Algoritmo Union-Find sobre los wires de SoundMind:
 
 ```typescript
 // Para wires como:
@@ -79,11 +79,11 @@ Reglas especiales:
 - Pin `VCC` / `5V` / `3.3V` → net de alimentación fija
 - Componentes pasivos (`resistor`, `resistor-us`) → dos terminales, la resistencia se aplica en SPICE
 
-### 1.2 Generar CircuitJSON desde el estado de Velxio
+### 1.2 Generar CircuitJSON desde el estado de SoundMind
 
 Mapeo de `metadataId` → tipo circuit-json:
 
-| metadataId Velxio | Tipo circuit-json | Propiedades |
+| metadataId SoundMind | Tipo circuit-json | Propiedades |
 |---|---|---|
 | `resistor` | `source_simple_resistor` | `resistance: parseFloat(props.resistance)` |
 | `led` | `source_simple_led` | `color: props.color` |
@@ -171,7 +171,7 @@ const netlist = `...
 result.data[nodeIndex].values  // array de voltajes en t=0, 1µs, 2µs...
 ```
 
-Usar un Web Worker para correr `.tran` sin bloquear la UI. Mostrar formas de onda en el Oscilloscope (ya existe en Velxio).
+Usar un Web Worker para correr `.tran` sin bloquear la UI. Mostrar formas de onda en el Oscilloscope (ya existe en SoundMind).
 
 ---
 

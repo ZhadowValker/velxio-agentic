@@ -16,7 +16,7 @@
    - ✅ OUTPUT STYLE
 
 ### Content Verification:
-- ✅ Opening statement matches: "You are Velxio's embedded-systems agent..."
+- ✅ Opening statement matches: "You are SoundMind's embedded-systems agent..."
 - ✅ Mandatory first step emphasizes calling `get_project_outline` first
 - ✅ Task planning protocol includes 4-step process
 - ✅ Component & catalog tools section includes examples

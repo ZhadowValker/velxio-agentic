@@ -82,7 +82,7 @@ class TestRealPathsSSD1306(unittest.TestCase):
 
     def setUp(self):
         self.comp     = make_compiler_with_real_paths()
-        self.tmp      = tempfile.mkdtemp(prefix='velxio_diag_')
+        self.tmp      = tempfile.mkdtemp(prefix='soundmind_diag_')
         self.user_libs = Path(self.tmp) / 'user_libs'
         self.user_libs.mkdir()
 

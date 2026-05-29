@@ -1,12 +1,12 @@
 /**
- * ProjectConfig — Reads velxio.toml and diagram.json from the workspace.
+ * ProjectConfig — Reads soundmind.toml and diagram.json from the workspace.
  */
 
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import TOML from '@iarna/toml';
-import type { VelxioConfig, DiagramJson, BoardKind } from './types';
+import type { SoundMindConfig, DiagramJson, BoardKind } from './types';
 
 export class ProjectConfig {
   private workspaceRoot: string;
@@ -15,17 +15,17 @@ export class ProjectConfig {
     this.workspaceRoot = workspaceRoot;
   }
 
-  /** Read and parse velxio.toml from the workspace root */
-  readVelxioToml(): VelxioConfig | null {
-    const tomlPath = path.join(this.workspaceRoot, 'velxio.toml');
+  /** Read and parse soundmind.toml from the workspace root */
+  readSoundMindToml(): SoundMindConfig | null {
+    const tomlPath = path.join(this.workspaceRoot, 'soundmind.toml');
     if (!fs.existsSync(tomlPath)) return null;
 
     try {
       const content = fs.readFileSync(tomlPath, 'utf-8');
-      const parsed = TOML.parse(content) as unknown as VelxioConfig;
+      const parsed = TOML.parse(content) as unknown as SoundMindConfig;
       return parsed;
     } catch (err) {
-      vscode.window.showWarningMessage(`Failed to parse velxio.toml: ${err}`);
+      vscode.window.showWarningMessage(`Failed to parse soundmind.toml: ${err}`);
       return null;
     }
   }
@@ -46,24 +46,24 @@ export class ProjectConfig {
 
   /** Resolve the board kind from config or settings */
   getBoard(): BoardKind {
-    const config = this.readVelxioToml();
-    if (config?.velxio?.board) {
-      return config.velxio.board as BoardKind;
+    const config = this.readSoundMindToml();
+    if (config?.soundmind?.board) {
+      return config.soundmind.board as BoardKind;
     }
-    return vscode.workspace.getConfiguration('velxio').get<BoardKind>('defaultBoard') ?? 'arduino-uno';
+    return vscode.workspace.getConfiguration('soundmind').get<BoardKind>('defaultBoard') ?? 'arduino-uno';
   }
 
   /** Get the language mode (arduino or micropython) */
   getLanguageMode(): 'arduino' | 'micropython' {
-    const config = this.readVelxioToml();
-    return config?.velxio?.language ?? 'arduino';
+    const config = this.readSoundMindToml();
+    return config?.soundmind?.language ?? 'arduino';
   }
 
   /** Get the pre-compiled firmware path (if specified) */
   getFirmwarePath(): string | null {
-    const config = this.readVelxioToml();
-    if (!config?.velxio?.firmware) return null;
-    return path.resolve(this.workspaceRoot, config.velxio.firmware);
+    const config = this.readSoundMindToml();
+    if (!config?.soundmind?.firmware) return null;
+    return path.resolve(this.workspaceRoot, config.soundmind.firmware);
   }
 
   /** Collect all sketch files (.ino, .h, .cpp, .py) from the workspace */
@@ -82,10 +82,10 @@ export class ProjectConfig {
     return files;
   }
 
-  /** Create a default velxio.toml in the workspace */
+  /** Create a default soundmind.toml in the workspace */
   async createDefaultConfig(board: BoardKind): Promise<void> {
-    const tomlPath = path.join(this.workspaceRoot, 'velxio.toml');
-    const content = `[velxio]\nversion = 1\nboard = "${board}"\n`;
+    const tomlPath = path.join(this.workspaceRoot, 'soundmind.toml');
+    const content = `[soundmind]\nversion = 1\nboard = "${board}"\n`;
     fs.writeFileSync(tomlPath, content, 'utf-8');
   }
 }

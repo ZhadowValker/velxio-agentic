@@ -35,7 +35,7 @@ El ESP32-C3 (RISC-V) comparte la misma infraestructura de emulación WiFi/BLE qu
 | FQBN | `esp32:esp32:esp32` | `esp32:esp32:esp32c3` |
 | WiFi API | Idéntica | Idéntica |
 | Red virtual | 192.168.4.0/24 | 192.168.4.0/24 |
-| SSID | Velxio-GUEST | Velxio-GUEST |
+| SSID | SoundMind-GUEST | SoundMind-GUEST |
 
 **Lo que es igual**: SSID, red, AP list, WiFi API (ESP-IDF), serial log format, IoT Gateway, status UI icons.
 
@@ -70,7 +70,7 @@ El ESP32-C3 (RISC-V) comparte la misma infraestructura de emulación WiFi/BLE qu
 │                                                          │
 │  esp32c3_wifi.c → DMA WiFi MAC layer (C3-specific regs) │
 │  esp32_wifi_ap.c → Shared AP list:                       │
-│    • Velxio-GUEST (ch 6, -20 dBm)                       │
+│    • SoundMind-GUEST (ch 6, -20 dBm)                       │
 │    • PICSimLabWifi, Espressif, MasseyWifi                │
 │                                                          │
 │  Slirp NAT: 192.168.4.0/24, ESP32-C3 = 192.168.4.15     │
@@ -94,7 +94,7 @@ Todos los variantes se mapean a `'esp32-c3'` internamente para QEMU.
 ## Cómo Usar
 
 1. **Selecciona un board ESP32-C3** en el selector de boards
-2. **Escribe tu sketch** usando `#include <WiFi.h>` con SSID `"Velxio-GUEST"`
+2. **Escribe tu sketch** usando `#include <WiFi.h>` con SSID `"SoundMind-GUEST"`
 3. **Presiona Run** — WiFi se activa automáticamente al detectar el include
 4. **Mira el Serial Monitor** — verás los logs ESP-IDF de conexión WiFi
 5. **Observa el ícono WiFi** en el canvas (verde cuando conectado)
@@ -107,7 +107,7 @@ La API WiFi de Arduino/ESP-IDF es **idéntica** entre ESP32 y ESP32-C3. El mismo
 
 ### 1. WiFi Scan
 
-Escanea redes WiFi disponibles. Verás "Velxio-GUEST" en los resultados.
+Escanea redes WiFi disponibles. Verás "SoundMind-GUEST" en los resultados.
 
 ```cpp
 #include <WiFi.h>
@@ -130,15 +130,15 @@ void loop() { delay(10000); setup(); }
 
 ### 2. WiFi Connect
 
-Conecta a Velxio-GUEST y muestra la IP asignada.
+Conecta a SoundMind-GUEST y muestra la IP asignada.
 
 ```cpp
 #include <WiFi.h>
 
 void setup() {
   Serial.begin(115200);
-  Serial.print("Connecting to Velxio-GUEST");
-  WiFi.begin("Velxio-GUEST", "", 6);
+  Serial.print("Connecting to SoundMind-GUEST");
+  WiFi.begin("SoundMind-GUEST", "", 6);
   while (WiFi.status() != WL_CONNECTED) { delay(500); Serial.print("."); }
   Serial.println(" Connected!");
   Serial.printf("IP: %s\n", WiFi.localIP().toString().c_str());
@@ -159,7 +159,7 @@ WebServer server(80);
 
 void setup() {
   Serial.begin(115200);
-  WiFi.begin("Velxio-GUEST", "", 6);
+  WiFi.begin("SoundMind-GUEST", "", 6);
   while (WiFi.status() != WL_CONNECTED) delay(100);
 
   server.on("/", []() {
@@ -184,7 +184,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println("ESP32-C3 supports BLE 5.0 only (no Classic BT)");
 
-  BLEDevice::init("Velxio-ESP32C3");
+  BLEDevice::init("SoundMind-ESP32C3");
   BLEServer *pServer = BLEDevice::createServer();
   BLEAdvertising *pAdv = BLEDevice::getAdvertising();
   pAdv->start();
@@ -204,7 +204,7 @@ Idéntica al ESP32 Xtensa:
 
 | Parámetro | Valor |
 |-----------|-------|
-| SSID | `Velxio-GUEST` |
+| SSID | `SoundMind-GUEST` |
 | Contraseña | *(vacía)* |
 | Canal | 6 |
 | Subred | `192.168.4.0/24` |
@@ -216,7 +216,7 @@ Idéntica al ESP32 Xtensa:
 ## Limitaciones
 
 ### WiFi (mismas que ESP32 Xtensa)
-- **SSID fijo**: solo `"Velxio-GUEST"` (sin contraseña)
+- **SSID fijo**: solo `"SoundMind-GUEST"` (sin contraseña)
 - **Sin ICMP (ping)**: limitación de slirp
 - **Sin modo AP**: solo Station (STA)
 - **Puerto HTTP 80**: hostfwd solo mapea al puerto 80
@@ -238,7 +238,7 @@ Idéntica al ESP32 Xtensa:
 ### QEMU (C3-specific)
 - `wokwi-libs/qemu-lcgamboa/hw/misc/esp32c3_wifi.c` — WiFi MAC layer C3 (DMA registers)
 - `wokwi-libs/qemu-lcgamboa/include/hw/misc/esp32c3_wifi.h` — C3 register offsets
-- `wokwi-libs/qemu-lcgamboa/hw/misc/esp32_wifi_ap.c` — AP list compartida (Velxio-GUEST)
+- `wokwi-libs/qemu-lcgamboa/hw/misc/esp32_wifi_ap.c` — AP list compartida (SoundMind-GUEST)
 - `wokwi-libs/qemu-lcgamboa/hw/riscv/esp32c3_picsimlab.c` — C3 machine definition
 
 ### Backend
@@ -285,7 +285,7 @@ python -m pytest tests/test_esp32c3_wifi.py -v
 
 ### WiFi no se activa
 - Verifica que tu sketch incluya `#include <WiFi.h>`
-- Usa SSID `"Velxio-GUEST"` sin contraseña
+- Usa SSID `"SoundMind-GUEST"` sin contraseña
 
 ### `BluetoothSerial.h` no compila
 El ESP32-C3 no soporta Classic Bluetooth. Usa `BLEDevice.h` en su lugar.

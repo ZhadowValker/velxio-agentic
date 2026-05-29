@@ -1,8 +1,8 @@
-# Fase 8 — Plan de Implementación en Velxio
+# Fase 8 — Plan de Implementación en SoundMind
 
-> **Destino**: el código Velxio (`frontend/`). El sandbox `test/test_circuit/` queda como referencia y banco de pruebas congelado.
+> **Destino**: el código SoundMind (`frontend/`). El sandbox `test/test_circuit/` queda como referencia y banco de pruebas congelado.
 > **Motor**: `eecircuit-engine` (ngspice-WASM real). **No** se inventa solver.
-> **Meta**: Velxio emula **circuitos digitales + analógicos conviviendo**, con sketches reales de Arduino/ESP32 interactuando con componentes discretos (resistencias, capacitores, transistores, op-amps, sensores, MOSFETs) y con instrumentos de medición (voltímetro, amperímetro, multímetro, osciloscopio analógico).
+> **Meta**: SoundMind emula **circuitos digitales + analógicos conviviendo**, con sketches reales de Arduino/ESP32 interactuando con componentes discretos (resistencias, capacitores, transistores, op-amps, sensores, MOSFETs) y con instrumentos de medición (voltímetro, amperímetro, multímetro, osciloscopio analógico).
 
 ---
 
@@ -30,7 +30,7 @@ Este plan **depende** de que el implementador haya leído:
 - [`test/test_circuit/autosearch/04_ngspice_findings.md`](../autosearch/04_ngspice_findings.md) — trampas de ngspice ya identificadas (`&` vs `u()`, matriz singular, histéresis para memoria, etc.).
 - [`docs/wiki/circuit-emulation-gotchas.md`](../../../docs/wiki/circuit-emulation-gotchas.md) — debugging log completo.
 - [`docs/wiki/circuit-emulation-avr-bridge.md`](../../../docs/wiki/circuit-emulation-avr-bridge.md) — mapeo pin → puerto → ngspice.
-- El informe de survey de Velxio (ver el mensaje previo del agente Explore): **componentes son metadata-driven** con `components-metadata.json` generado en build; los **cables son visuales** (sin nodos); la **API de pines** está en `PinManager.onPinChange / onPwmChange / onAnalogChange`.
+- El informe de survey de SoundMind (ver el mensaje previo del agente Explore): **componentes son metadata-driven** con `components-metadata.json` generado en build; los **cables son visuales** (sin nodos); la **API de pines** está en `PinManager.onPinChange / onPwmChange / onAnalogChange`.
 
 Si alguno de estos ha cambiado sustancialmente cuando se empiece la fase 1, parar y replantear.
 
@@ -42,7 +42,7 @@ Si alguno de estos ha cambiado sustancialmente cuando se empiece la fase 1, para
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                               Velxio UI                                     │
+│                               SoundMind UI                                     │
 │                                                                             │
 │  ComponentPicker  Canvas  Toolbar       PropertyDialog  Oscilloscope        │
 │       │             │        │               │              │               │
@@ -101,12 +101,12 @@ Si alguno de estos ha cambiado sustancialmente cuando se empiece la fase 1, para
 | D-2 | Lazy-load del paquete (~39 MB) detrás del toggle | No penalizar tiempo de carga inicial |
 | D-3 | Scheduler con debounce 50 ms | Evitar re-solver por cada frame; user-perception: instantáneo |
 | D-4 | Co-simulación cuasi-estática (slice 1–10 ms) | Cycle-accurate es imposible; el sandbox probó que 1 ms alcanza para ADC + PWM |
-| D-5 | Cables siguen siendo visuales; un **NetlistBuilder** hace Union-Find al vuelo | Reutiliza el modelo de datos actual de Velxio; zero-risk |
+| D-5 | Cables siguen siendo visuales; un **NetlistBuilder** hace Union-Find al vuelo | Reutiliza el modelo de datos actual de SoundMind; zero-risk |
 | D-6 | PWM se representa como fuente DC de `duty·Vcc` en modo `.op` | El sandbox mostró < 100 mV de error en filtros RC con esta simplificación |
 | D-7 | Componentes sin modelo eléctrico (LCD, NeoPixel, sensores I²C) se **omiten** del netlist | Siguen funcionando con su lógica actual |
-| D-8 | Instrumentos (voltímetro, amperímetro) son componentes Velxio normales con flag `isProbe=true` | NO se estampan en el netlist — son lectores de resultados |
+| D-8 | Instrumentos (voltímetro, amperímetro) son componentes SoundMind normales con flag `isProbe=true` | NO se estampan en el netlist — son lectores de resultados |
 | D-9 | Modo por defecto: `off`. Activar con toggle explícito | Usuarios que no necesitan analógico no ven diferencia |
-| D-10 | Cada board Velxio (Uno, Mega, ESP32, RP2040) expone sus pines como nets nombrados `boardid_pin<N>` | Evita colisiones entre múltiples boards |
+| D-10 | Cada board SoundMind (Uno, Mega, ESP32, RP2040) expone sus pines como nets nombrados `boardid_pin<N>` | Evita colisiones entre múltiples boards |
 
 ---
 
@@ -189,7 +189,7 @@ frontend/scripts/
 
 ### 4.1 Pasivos genéricos
 
-| Velxio `metadataId` | Tag web component | Propiedades | Netlist ngspice |
+| SoundMind `metadataId` | Tag web component | Propiedades | Netlist ngspice |
 |---|---|---|---|
 | `analog-resistor` | `<wokwi-resistor>` (existente) | `value` (Ω), `tolerance` (%) | `R{id} {net1} {net2} {value}` |
 | `analog-capacitor` | `<wokwi-capacitor>` o propio | `value` (F), `polarized` (bool), `voltage` (max V) | `C{id} {net+} {net-} {value} IC=0` |
@@ -254,7 +254,7 @@ Usar la misma sintaxis SPICE (`k`, `Meg`, `u`, `n`, `p`, `m`, `f`, `G`, `T`) par
 
 ### 4.4 Sensores y entradas
 
-Ya existen como componentes Velxio (`Potentiometer`, `NTCThermistor`, `Photoresistor`, `Pushbutton`). Se añade una **capa de emisión SPICE** sin cambiar el wokwi-element:
+Ya existen como componentes SoundMind (`Potentiometer`, `NTCThermistor`, `Photoresistor`, `Pushbutton`). Se añade una **capa de emisión SPICE** sin cambiar el wokwi-element:
 
 | Existente | Emisión SPICE |
 |---|---|
@@ -336,7 +336,7 @@ function buildNetlist(ctx: {
   const floatingNets = detectFloatingNets(ctx.components, netNames);
 
   // 5. Emit cards
-  const lines = [`Velxio circuit @ ${new Date().toISOString()}`];
+  const lines = [`SoundMind circuit @ ${new Date().toISOString()}`];
   const uses: Set<string> = new Set();  // which .model / .subckt we need
 
   for (const comp of ctx.components) {
@@ -393,7 +393,7 @@ Si `components` y `wires` no han cambiado desde la última invocación, reutiliz
 
 ### Fase 8.1 — Fundamentos (1 semana)
 
-**Goal**: `eecircuit-engine` funcionando en el proyecto de Velxio, sin UI. Tests pasan en `frontend/src/__tests__/`.
+**Goal**: `eecircuit-engine` funcionando en el proyecto de SoundMind, sin UI. Tests pasan en `frontend/src/__tests__/`.
 
 **Entregables**:
 - `npm install eecircuit-engine` + marca de lazy-load en Vite.
@@ -409,17 +409,17 @@ Si `components` y `wires` no han cambiado desde la última invocación, reutiliz
 
 ### Fase 8.2 — Netlist Builder + mapeo de componentes existentes (1 semana)
 
-**Goal**: NetlistBuilder puede tomar un escenario de Velxio (con R, LED, pot, NTC) y emitir un netlist válido. No hay UI todavía.
+**Goal**: NetlistBuilder puede tomar un escenario de SoundMind (con R, LED, pot, NTC) y emitir un netlist válido. No hay UI todavía.
 
 **Entregables**:
 - `NetlistBuilder.ts` con algoritmo de §5, UnionFind.
-- `componentToSpice.ts` — soporta los 4 pasivos de Velxio hoy: `resistor`, `led`, `capacitor`, `potentiometer`, + NTC, photoresistor, pushbutton.
+- `componentToSpice.ts` — soporta los 4 pasivos de SoundMind hoy: `resistor`, `led`, `capacitor`, `potentiometer`, + NTC, photoresistor, pushbutton.
 - Tests: `netlistBuilder.test.ts` con 10+ escenarios (divisor, RC charging, LED+R, pot+ADC).
 - Integración con `useSimulatorStore`: acción `runElectricalSolve` (no-op si `mode === 'off'`).
 
 **DoD**:
 - Creamos un escenario programáticamente (no por UI), llamamos `runElectricalSolve`, verificamos que `store.electrical.nodeVoltages` tiene los valores correctos.
-- Port de los tests end-to-end del sandbox: `e2e_pot_pwm_led` y `e2e_thermistor` funcionan dentro de Velxio.
+- Port de los tests end-to-end del sandbox: `e2e_pot_pwm_led` y `e2e_thermistor` funcionan dentro de SoundMind.
 
 ### Fase 8.3 — UI: toggle y overlay de voltajes (1 semana)
 
@@ -436,7 +436,7 @@ Si `components` y `wires` no han cambiado desde la última invocación, reutiliz
 **DoD**:
 - Activar toggle con un sketch "Blink" cargado → pin 13 alterna → LED se enciende con brillo calculado real.
 - Activar toggle con circuito NTC → `analogRead(A0)` refleja el voltaje real del divisor.
-- Probar con 5+ circuitos típicos del tutorial Velxio; todos convergen.
+- Probar con 5+ circuitos típicos del tutorial SoundMind; todos convergen.
 
 ### Fase 8.4 — Nuevos componentes analógicos (2 semanas)
 
@@ -504,7 +504,7 @@ Si `components` y `wires` no han cambiado desde la última invocación, reutiliz
 
 ## 7. Mapeo de boards (múltiples MCUs conviviendo)
 
-El survey reveló que Velxio tiene `boards[]`: múltiples Arduinos, RP2040, ESP32 en el mismo canvas. El NetlistBuilder debe manejar esto:
+El survey reveló que SoundMind tiene `boards[]`: múltiples Arduinos, RP2040, ESP32 en el mismo canvas. El NetlistBuilder debe manejar esto:
 
 - Cada board **declara sus propios nets** con prefijo `{boardId}_{pinName}`. Ej: `uno1_d13`, `esp32a_gpio5`.
 - El **VCC rail no se comparte automáticamente** entre boards (pueden alimentarse a 5 V y 3.3 V).
@@ -533,7 +533,7 @@ El survey reveló que Velxio tiene `boards[]`: múltiples Arduinos, RP2040, ESP3
 | **Bundle +39 MB** | Usuarios en red lenta se frustran | Lazy-load detrás de toggle. Chunk separado. Cache agresivo. Primer click del toggle: splash "Downloading simulator (39 MB)…" |
 | **ngspice cuelga 60 s por matriz singular** | Freeze de UI | Validación pre-solve: detectar nodos flotantes con BFS; añadir pull-down 100 MΩ automáticamente. Logs claros si ocurre. Timeout 3 s con abort. |
 | **Co-sim > 100 ms por slice con circuitos grandes** | Lag visible | 1) debounce 50 ms en scheduler, 2) mover a Web Worker si > 20 componentes, 3) modo "DC only" por defecto, 4) UI indicador "computing…" si > 200 ms |
-| **Conflicto entre Velxio pin simulado y SPICE** | Resultados incorrectos | SPICE es la fuente de verdad para tensiones analógicas. Las mutaciones manuales vía UI (click en LED) se convierten en modo "sim off". |
+| **Conflicto entre SoundMind pin simulado y SPICE** | Resultados incorrectos | SPICE es la fuente de verdad para tensiones analógicas. Las mutaciones manuales vía UI (click en LED) se convierten en modo "sim off". |
 | **Modelos SPICE de terceros con licencia unclear** | Bloqueo legal | Usar sólo modelos **publicados por fabricantes** (TI, ON, Microchip) y distribuir como strings en el source bajo cláusula de fair use educativa. Documentar origen por cada `.subckt` en un comentario. |
 | **PWM cuasi-estático incorrecto para circuitos sensibles a ripple** | Mala UX en audio / switching power | Detectar: si hay capacitor < 1 µF en el camino del PWM → escalar automáticamente a modo `.tran` con edges reales y aviso "switching detail enabled, may be slower" |
 | **Regresión del emulador digital** | Tests existentes fallan | Toggle off es zero-risk (nada cambia en el solver). Tests de regresión de `frontend/src/__tests__/` deben seguir pasando con `VITE_ELECTRICAL_SIM=false`. |
@@ -586,7 +586,7 @@ Se documentan aquí para que no se cuelen en esta fase por scope creep.
 Escenario: Arduino Uno con sketch que hace `analogWrite(9, 127)`, conectado a una red RC (10 kΩ + 1 µF) y un voltímetro en la salida.
 
 ```
-Velxio circuit @ 2026-04-15T12:00:00Z
+SoundMind circuit @ 2026-04-15T12:00:00Z
 * Board pin sources
 V_uno1_d9 uno1_d9 0 DC 2.5        ; duty=0.5 × 5V
 * Components
@@ -607,7 +607,7 @@ Tras `runSim`: `v(net0) ≈ 2.5 V`. El voltímetro (que conoce sus 2 terminales 
 Escenario: 2N2222 en common-emitter, señal de entrada 10 mV AC a 1 kHz desde un signal generator, R_C=4.7k, R_E=1k bypasseado con 100 µF, osciloscopio en colector.
 
 ```
-Velxio amplifier
+SoundMind amplifier
 V_VCC vcc_rail 0 DC 12
 V_sg1 sg1_out 0 SIN(0 0.01 1k)
 C_cin sg1_out net_base 1u
@@ -628,7 +628,7 @@ El osciloscopio samplea `v(scope_probe1)`; muestra la onda invertida y amplifica
 
 ### 11.3 Tabla de conversión wokwi-elements existentes → SPICE
 
-Extensión del mapeo del §4; fuente: survey de Velxio.
+Extensión del mapeo del §4; fuente: survey de SoundMind.
 
 | wokwi tagName | `metadataId` actual | Emite SPICE | Notas |
 |---|---|---|---|
@@ -664,7 +664,7 @@ Ejemplo: **LM358** (DIP-8 dual op-amp).
        +───────+
 ```
 
-En Velxio, el `<wokwi-lm358>` (nuevo) expondrá 8 pines con esos nombres. El `componentToSpice` para el metadataId `opamp-lm358` emite:
+En SoundMind, el `<wokwi-lm358>` (nuevo) expondrá 8 pines con esos nombres. El `componentToSpice` para el metadataId `opamp-lm358` emite:
 
 ```
 X_{id} {inp1} {inn1} {vcc} {out1} {gnd} {inp2} {inn2} {out2} LM358
@@ -695,4 +695,4 @@ Y el `.subckt LM358` (importado de la biblioteca) hace el macromodelo completo.
 - Plan inicial (baseline): [`plan1.md`](./plan1.md)
 - Findings del sandbox: [`../autosearch/`](../autosearch/)
 - Wiki docs: [`docs/wiki/circuit-emulation.md`](../../../docs/wiki/circuit-emulation.md)
-- Plan anterior de integración (superseded): [`docs/wiki/circuit-emulation-velxio-integration.md`](../../../docs/wiki/circuit-emulation-velxio-integration.md) → este documento lo reemplaza con más detalle de componentes e instrumentos.
+- Plan anterior de integración (superseded): [`docs/wiki/circuit-emulation-soundmind-integration.md`](../../../docs/wiki/circuit-emulation-soundmind-integration.md) → este documento lo reemplaza con más detalle de componentes e instrumentos.

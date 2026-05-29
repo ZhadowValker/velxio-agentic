@@ -111,9 +111,9 @@ jobs:
             // ──────────────────────────────────────────────────────────────────
             // FASE 1 — Generar entrada de CHANGELOG con DeepSeek
             // ──────────────────────────────────────────────────────────────────
-            const changelogPrompt = `You are generating a CHANGELOG entry for version ${version} of Velxio.
+            const changelogPrompt = `You are generating a CHANGELOG entry for version ${version} of SoundMind.
 
-            Velxio is a fully local, open-source Arduino/RP2040 emulator and circuit simulator.
+            SoundMind is a fully local, open-source Arduino/RP2040 emulator and circuit simulator.
 
             PR TITLE: ${prTitle}
             PR DESCRIPTION: ${prBody}
@@ -153,10 +153,10 @@ jobs:
 
             if (!fs.existsSync(changelogPath)) {
               changelogContent = '# Changelog\n\n'
-                + 'All notable changes to Velxio will be documented in this file.\n'
+                + 'All notable changes to SoundMind will be documented in this file.\n'
                 + 'The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).\n\n'
                 + changelogEntry + '\n\n'
-                + `[${version}]: https://github.com/davidmonterocrespo24/velxio/releases/tag/v${version}\n`;
+                + `[${version}]: https://github.com/davidmonterocrespo24/soundmind/releases/tag/v${version}\n`;
             } else {
               const existing = fs.readFileSync(changelogPath, 'utf8');
               const lines = existing.split('\n');
@@ -169,7 +169,7 @@ jobs:
 
               lines.splice(insertIdx, 0, changelogEntry, '');
 
-              const linkLine = `[${version}]: https://github.com/davidmonterocrespo24/velxio/releases/tag/v${version}`;
+              const linkLine = `[${version}]: https://github.com/davidmonterocrespo24/soundmind/releases/tag/v${version}`;
               if (!existing.includes(linkLine)) lines.push(linkLine);
 
               changelogContent = lines.join('\n');
@@ -194,11 +194,11 @@ jobs:
             // ──────────────────────────────────────────────────────────────────
             // FASE 2 — Generar anuncio Discord usando el CHANGELOG recien generado
             // ──────────────────────────────────────────────────────────────────
-            const announcementPrompt = `You are writing a Discord announcement for Velxio v${version}.
+            const announcementPrompt = `You are writing a Discord announcement for SoundMind v${version}.
 
-            Velxio is a fully local, open-source Arduino/RP2040 emulator and circuit simulator that runs in the browser.
-            Website: https://velxio.dev/
-            GitHub: https://github.com/davidmonterocrespo24/velxio
+            SoundMind is a fully local, open-source Arduino/RP2040 emulator and circuit simulator that runs in the browser.
+            Website: https://soundmind.dev/
+            GitHub: https://github.com/davidmonterocrespo24/soundmind
 
             CRITICAL: The announcement MUST be 1900 characters or less.
 
@@ -213,7 +213,7 @@ jobs:
             EXAMPLE 1:
             v2.0.0 @everyone
 
-            Velxio just got a major upgrade. Here is what is new.
+            SoundMind just got a major upgrade. Here is what is new.
 
             GROUND CHECK FOR LEDS
             LEDs now require a proper cathode connection to GND. No more phantom lights without a complete circuit.
@@ -224,8 +224,8 @@ jobs:
             SSD1306 SPI MODE
             The SSD1306 OLED display now supports both I2C and SPI. Switch protocols from the component property dialog.
 
-            Try it now: https://velxio.dev/
-            Full release details: https://github.com/davidmonterocrespo24/velxio/releases/tag/v2.0.0
+            Try it now: https://soundmind.dev/
+            Full release details: https://github.com/davidmonterocrespo24/soundmind/releases/tag/v2.0.0
 
             EXAMPLE 2:
             v2.0.1 @everyone
@@ -236,7 +236,7 @@ jobs:
             Fixed wire color not persisting on reload
             Fixed serial monitor scroll position resetting mid-output
 
-            Update your Docker image or open https://velxio.dev/
+            Update your Docker image or open https://soundmind.dev/
 
             STYLE RULES:
             - Start with version number and @everyone on the first line

@@ -20,11 +20,11 @@ class TestWifiLineParser(unittest.TestCase):
         self.assertEqual(result['status'], 'initializing')
 
     def test_wifi_connected(self):
-        line = 'I (1234) wifi:connected with Velxio-GUEST, aid = 1, channel 6'
+        line = 'I (1234) wifi:connected with SoundMind-GUEST, aid = 1, channel 6'
         result = parse_wifi_line(line)
         self.assertIsNotNone(result)
         self.assertEqual(result['status'], 'connected')
-        self.assertEqual(result['ssid'], 'Velxio-GUEST')
+        self.assertEqual(result['ssid'], 'SoundMind-GUEST')
 
     def test_wifi_got_ip(self):
         line = 'I (2345) esp_netif_handlers: sta ip: 192.168.4.2, mask: 255.255.255.0'
@@ -40,11 +40,11 @@ class TestWifiLineParser(unittest.TestCase):
         self.assertEqual(result['status'], 'disconnected')
 
     def test_wifi_new_ssid(self):
-        line = 'I (500) wifi:new:Velxio-GUEST, old: , ASSOC'
+        line = 'I (500) wifi:new:SoundMind-GUEST, old: , ASSOC'
         result = parse_wifi_line(line)
         self.assertIsNotNone(result)
         self.assertEqual(result['status'], 'connected')
-        self.assertIn('Velxio-GUEST', result.get('ssid', ''))
+        self.assertIn('SoundMind-GUEST', result.get('ssid', ''))
 
     def test_no_match(self):
         line = 'I (100) main: Hello World!'
@@ -85,8 +85,8 @@ class TestParseSerialText(unittest.TestCase):
 
     def test_mixed_output(self):
         text = """I (432) wifi:wifi sta start
-I (500) wifi:new:Velxio-GUEST, old:
-I (800) wifi:connected with Velxio-GUEST, aid = 1
+I (500) wifi:new:SoundMind-GUEST, old:
+I (800) wifi:connected with SoundMind-GUEST, aid = 1
 I (1200) esp_netif_handlers: sta ip: 192.168.4.2, mask: 255.255.255.0
 I (300) BT_INIT: BT controller compile version [abc]
 I (500) GATTS: advertising started

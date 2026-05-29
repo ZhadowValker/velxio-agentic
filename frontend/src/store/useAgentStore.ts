@@ -3,9 +3,9 @@ import type { AgentSession, AgentSessionEvent } from '../services/agentSessions'
 import { useTodoStore } from './useTodoStore';
 import type { AgentTodoItem, TodoStatus } from './useTodoStore';
 
-const AGENT_PANEL_OPEN_KEY = 'velxio.agent.panel.open';
-const AGENT_PANEL_WIDTH_KEY = 'velxio.agent.panel.width';
-const AGENT_PANEL_COMPACT_KEY = 'velxio.agent.panel.compact';
+const AGENT_PANEL_OPEN_KEY = 'soundmind.agent.panel.open';
+const AGENT_PANEL_WIDTH_KEY = 'soundmind.agent.panel.width';
+const AGENT_PANEL_COMPACT_KEY = 'soundmind.agent.panel.compact';
 
 const AGENT_PANEL_DEFAULT_WIDTH = 420;
 const AGENT_PANEL_MIN = 360; // Increased from 280 to prevent text truncation

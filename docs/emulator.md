@@ -1,6 +1,6 @@
 # Emulator Architecture
 
-Velxio uses **real CPU emulation** rather than a simplified model. This document describes how each layer of the simulation works.
+SoundMind uses **real CPU emulation** rather than a simplified model. This document describes how each layer of the simulation works.
 
 ---
 

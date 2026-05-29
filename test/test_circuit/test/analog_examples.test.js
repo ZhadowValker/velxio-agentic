@@ -5,7 +5,7 @@ import { runNetlist } from '../src/spice/SpiceEngine.js';
  * SPICE behavior tests, one per analog example shipped in
  * frontend/src/data/examples-analog.ts.
  *
- * Each test mirrors the Velxio circuit as a hand-written ngspice netlist using
+ * Each test mirrors the SoundMind circuit as a hand-written ngspice netlist using
  * the same component models the NetlistBuilder emits — so a passing test here
  * proves the topology converges with our model parameters and produces sane
  * voltages/currents. If a model in componentToSpice.ts changes (e.g. BJT Bf,
@@ -257,7 +257,7 @@ ${D1N4733}
 
 describe('an-diode-clipper', () => {
   it('symmetric clipper limits |v(out)| to near one Vf', { timeout: 60_000 }, async () => {
-    // Velxio wires both diodes with their non-shunt terminals tied to GND, so
+    // SoundMind wires both diodes with their non-shunt terminals tied to GND, so
     // the clipper symmetrically passes only ~±Vf around 0.
     const { vec } = await runNetlist(`Diode clipper
 V_src vsig 0 SIN(0 5 1000)

@@ -17,11 +17,11 @@ const META = getSeoMeta('/raspberry-pi-simulator')!;
 const FAQ_ITEMS = [
   {
     q: 'Can I simulate a Raspberry Pi 3 in my browser?',
-    a: 'Yes. Velxio emulates a full Raspberry Pi 3B using QEMU raspi3b — ARM Cortex-A53 quad-core at 1.2 GHz running Raspberry Pi OS (Linux). You get a real terminal to run Python, bash, and system commands.',
+    a: 'Yes. SoundMind emulates a full Raspberry Pi 3B using QEMU raspi3b — ARM Cortex-A53 quad-core at 1.2 GHz running Raspberry Pi OS (Linux). You get a real terminal to run Python, bash, and system commands.',
   },
   {
     q: 'Is this Raspberry Pi simulator free?',
-    a: 'Yes. Velxio is 100% free and open-source (GNU AGPLv3). No account, no subscription — simulate Raspberry Pi 3 code in your browser or self-host with Docker.',
+    a: 'Yes. SoundMind is 100% free and open-source (GNU AGPLv3). No account, no subscription — simulate Raspberry Pi 3 code in your browser or self-host with Docker.',
   },
   {
     q: 'Can I run Python scripts on the Raspberry Pi simulator?',
@@ -29,7 +29,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'What is the difference between Pi Pico and Pi 3 simulation?',
-    a: 'Raspberry Pi Pico (RP2040) is a microcontroller — runs Arduino C++ code, no OS. Raspberry Pi 3 is a full Linux computer — runs Python, bash, and system services. Velxio supports both.',
+    a: 'Raspberry Pi Pico (RP2040) is a microcontroller — runs Arduino C++ code, no OS. Raspberry Pi 3 is a full Linux computer — runs Python, bash, and system services. SoundMind supports both.',
   },
   {
     q: 'Does it support GPIO on Raspberry Pi 3?',
@@ -41,12 +41,12 @@ const JSON_LD: object[] = [
   {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Velxio — Free Raspberry Pi 3 Simulator',
+    name: 'SoundMind — Free Raspberry Pi 3 Simulator',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Any (browser-based)',
     description:
       'Free online Raspberry Pi 3 simulator with full ARM Cortex-A53 Linux emulation via QEMU. Run Python, bash, and RPi.GPIO in your browser — no Raspberry Pi hardware needed.',
-    url: 'https://velxio.dev/raspberry-pi-simulator',
+    url: 'https://soundmind.dev/raspberry-pi-simulator',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     author: { '@type': 'Person', name: 'David Montero Crespo' },
   },
@@ -63,12 +63,12 @@ const JSON_LD: object[] = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Velxio', item: 'https://velxio.dev/' },
+      { '@type': 'ListItem', position: 1, name: 'SoundMind', item: 'https://soundmind.dev/' },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Raspberry Pi Simulator',
-        item: 'https://velxio.dev/raspberry-pi-simulator',
+        item: 'https://soundmind.dev/raspberry-pi-simulator',
       },
     ],
   },
@@ -115,7 +115,7 @@ export const RaspberryPiSimulatorPage: React.FC = () => {
         <section className="seo-section">
           <h2>What can you do with the Pi 3 simulator?</h2>
           <p className="lead">
-            Velxio emulates a complete Raspberry Pi 3B — not just GPIO pins, but the entire Linux
+            SoundMind emulates a complete Raspberry Pi 3B — not just GPIO pins, but the entire Linux
             operating system. It's a full computer in your browser.
           </p>
           <div className="seo-grid">

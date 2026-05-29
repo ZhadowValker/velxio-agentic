@@ -1,10 +1,10 @@
-# Velxio — Commercial License
+# SoundMind — Commercial License
 
 **Copyright (C) 2025 David Montero Crespo**
 
 ## What is the Commercial License?
 
-Velxio is dual-licensed:
+SoundMind is dual-licensed:
 
 - **AGPLv3** (see [LICENSE](LICENSE)) — free for everyone, including commercial use,
   as long as you comply with the AGPLv3 copyleft terms (i.e., any modifications or
@@ -12,7 +12,7 @@ Velxio is dual-licensed:
   under AGPLv3).
 
 - **Commercial License** (this document) — grants you the right to use, modify, and
-  integrate Velxio into a proprietary / closed-source product or service **without**
+  integrate SoundMind into a proprietary / closed-source product or service **without**
   the AGPLv3 source-disclosure obligation. You pay once (or on a subscription basis)
   and keep your code private.
 
@@ -25,13 +25,13 @@ You need a Commercial License if **any** of the following apply:
 | Personal projects, learning, research | ❌ AGPLv3 is free |
 | Open-source projects released under AGPLv3 | ❌ AGPLv3 is free |
 | SaaS / web app where you keep your source private | ✅ Yes |
-| Embedding Velxio in a commercial closed-source desktop app | ✅ Yes |
+| Embedding SoundMind in a commercial closed-source desktop app | ✅ Yes |
 | Internal corporate tool where source is not shared with users | ✅ Yes |
-| White-labeling or rebranding Velxio for clients | ✅ Yes |
+| White-labeling or rebranding SoundMind for clients | ✅ Yes |
 
 ## What the Commercial License grants you
 
-- The right to use, modify, and distribute Velxio as part of a proprietary product.
+- The right to use, modify, and distribute SoundMind as part of a proprietary product.
 - Exemption from the AGPLv3 network-copyleft clause — you do **not** need to
   release your product's source code.
 - Permission to keep modifications private.

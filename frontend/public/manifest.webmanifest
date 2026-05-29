@@ -1,6 +1,6 @@
 {
-  "name": "Velxio — Arduino Emulator",
-  "short_name": "Velxio",
+  "name": "SoundMind — Arduino Emulator",
+  "short_name": "SoundMind",
   "description": "Free local Arduino emulator with real AVR8 CPU emulation, 48+ electronic components, Monaco Editor, and Serial Monitor. No cloud, no latency.",
   "start_url": "/editor",
   "scope": "/",
@@ -45,7 +45,7 @@
       "src": "/og-image.svg",
       "sizes": "1200x630",
       "type": "image/svg+xml",
-      "label": "Velxio Arduino Emulator"
+      "label": "SoundMind Arduino Emulator"
     }
   ]
 }

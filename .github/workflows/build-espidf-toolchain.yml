@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/velxio-espidf-toolchain
+  IMAGE_NAME: ${{ github.repository_owner }}/soundmind-espidf-toolchain
 
 permissions:
   contents: read

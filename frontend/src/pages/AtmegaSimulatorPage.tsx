@@ -20,7 +20,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Can I simulate ATmega328P register-level code?',
-    a: "Yes. Velxio's AVR8 emulation faithfully executes all ATmega328P registers: DDRB/C/D, PORTB/C/D, PINB/C/D, TCCR0/1/2, OCR0/1/2, UBRR, UDR, ADCL/ADCH, and all interrupt vectors — including direct register manipulation without the Arduino abstraction layer.",
+    a: "Yes. SoundMind's AVR8 emulation faithfully executes all ATmega328P registers: DDRB/C/D, PORTB/C/D, PINB/C/D, TCCR0/1/2, OCR0/1/2, UBRR, UDR, ADCL/ADCH, and all interrupt vectors — including direct register manipulation without the Arduino abstraction layer.",
   },
   {
     q: 'Does it emulate ATmega328P timers correctly?',
@@ -40,12 +40,12 @@ const JSON_LD: object[] = [
   {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'ATmega328P Simulator — Velxio',
+    name: 'ATmega328P Simulator — SoundMind',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Any (browser-based)',
     description:
       'Free browser-based ATmega328P simulator. Full AVR8 emulation at 16 MHz — PORTB, PORTC, PORTD, Timer0/1/2, ADC, USART, PWM — with 48+ interactive components. No install required.',
-    url: 'https://velxio.dev/atmega328p-simulator',
+    url: 'https://soundmind.dev/atmega328p-simulator',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     author: { '@type': 'Person', name: 'David Montero Crespo' },
     license: 'https://www.gnu.org/licenses/agpl-3.0.html',
@@ -63,12 +63,12 @@ const JSON_LD: object[] = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Velxio', item: 'https://velxio.dev/' },
+      { '@type': 'ListItem', position: 1, name: 'SoundMind', item: 'https://soundmind.dev/' },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'ATmega328P Simulator',
-        item: 'https://velxio.dev/atmega328p-simulator',
+        item: 'https://soundmind.dev/atmega328p-simulator',
       },
     ],
   },
@@ -166,9 +166,9 @@ export const AtmegaSimulatorPage: React.FC = () => {
 
         {/* Compatible boards */}
         <section className="seo-section">
-          <h2>ATmega328P boards in Velxio</h2>
+          <h2>ATmega328P boards in SoundMind</h2>
           <p className="lead">
-            The ATmega328P powers several popular Arduino boards — all selectable in Velxio. The
+            The ATmega328P powers several popular Arduino boards — all selectable in SoundMind. The
             broader AVR8 family also includes ATmega2560 (Mega) and ATtiny85.
           </p>
           <div className="seo-grid">

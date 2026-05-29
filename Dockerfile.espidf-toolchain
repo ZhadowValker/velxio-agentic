@@ -1,6 +1,6 @@
 # ESP-IDF toolchain image — built once, pulled many times.
 # Published to GHCR by build-espidf-toolchain.yml Action.
-# Usage: docker build -f Dockerfile.espidf-toolchain -t velxio-espidf-toolchain .
+# Usage: docker build -f Dockerfile.espidf-toolchain -t soundmind-espidf-toolchain .
 FROM ubuntu:22.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

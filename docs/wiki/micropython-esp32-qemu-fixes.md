@@ -1,7 +1,7 @@
 # MicroPython on ESP32 (QEMU) — Root Causes & Fixes
 
 > **Scope**: This document covers every bug encountered when adding MicroPython simulation
-> support for ESP32 boards in Velxio's QEMU-based emulation layer, the root cause of each
+> support for ESP32 boards in SoundMind's QEMU-based emulation layer, the root cause of each
 > bug, and exactly how it was fixed.  
 > **Target audience**: future maintainers who need to understand *why* the injection pipeline
 > is built the way it is.
@@ -406,7 +406,7 @@ node test/backend/e2e/test_micropython_esp32.mjs --timeout=60
 | `"MicroPython v1.20.0"` banner appears | QEMU boots cleanly |
 | `">>>"` prompt received | Bug #4 fix (UART flush) |
 | `"raw REPL; CTRL-B to exit"` received | Bug #5 fix (raw REPL confirmed) |
-| `"velxio_micropython_ok"` in output | Injection works end-to-end |
+| `"soundmind_micropython_ok"` in output | Injection works end-to-end |
 | `"math_check:42"` in output (`6*7=42`) | Code runs without truncation (Bug #6 fix) |
 
 Expected output on success:
@@ -416,7 +416,7 @@ Expected output on success:
 [OK] MicroPython booted: MicroPython v1.20.0 on 2023-04-26; ESP32 module with ESP32
 [OK] Stage 2: >>> seen → sending Ctrl+A
 [OK] Stage 3: raw REPL confirmed → sending code in 64-byte chunks
-[OK] Output marker "velxio_micropython_ok" received ✓
+[OK] Output marker "soundmind_micropython_ok" received ✓
 [OK] Math check "6*7=42" confirmed ✓
 [OK] ALL CHECKS PASSED ✓
 ```

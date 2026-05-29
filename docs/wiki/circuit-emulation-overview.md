@@ -4,9 +4,9 @@
 
 ## Purpose
 
-Velxio emulates the **digital side** of Arduino boards (ATmega328P, ATmega2560, ATtiny85, RP2040, ESP32) perfectly — every opcode of every timer and peripheral is executed by `avr8js` / `rp2040js` / qemu. But the **analog side** is purely decorative: wires conduct nothing, resistor values are ignored, LEDs are boolean, potentiometers do not affect `analogRead`.
+SoundMind emulates the **digital side** of Arduino boards (ATmega328P, ATmega2560, ATtiny85, RP2040, ESP32) perfectly — every opcode of every timer and peripheral is executed by `avr8js` / `rp2040js` / qemu. But the **analog side** is purely decorative: wires conduct nothing, resistor values are ignored, LEDs are boolean, potentiometers do not affect `analogRead`.
 
-The circuit emulation experiment aims to close that gap: make Velxio simulate **real electrical behaviour** so that an Arduino sketch reads the true voltage produced by an actual NTC divider, a PWM pin drives an RC filter to a real DC level, a 555 oscillator produces a real square wave, and an op-amp Schmitt trigger cleans a noisy sine.
+The circuit emulation experiment aims to close that gap: make SoundMind simulate **real electrical behaviour** so that an Arduino sketch reads the true voltage produced by an actual NTC divider, a PWM pin drives an RC filter to a real DC level, a 555 oscillator produces a real square wave, and an op-amp Schmitt trigger cleans a noisy sine.
 
 ## Outcome
 
@@ -29,11 +29,11 @@ Both stacks coexist in the sandbox. The hand-rolled solver serves as a transpare
 | [circuit-emulation-mna-solver.md](circuit-emulation-mna-solver.md) | Hand-rolled MNA solver: algorithm, stamps, Newton-Raphson, `pnjlim`, transient integration. |
 | [circuit-emulation-ngspice.md](circuit-emulation-ngspice.md) | `eecircuit-engine` integration: boot, netlist syntax, result parsing, B-sources, switch-memory tricks. |
 | [circuit-emulation-components.md](circuit-emulation-components.md) | Component catalog: R, L, C, D, LED (5 colors), BJT, MOSFET, NTC, op-amp macros, switch, pot — parameters and stamps. |
-| [circuit-emulation-avr-bridge.md](circuit-emulation-avr-bridge.md) | How `avr8js` is wrapped like Velxio does it, and how the bridge co-simulates MCU+circuit quasi-statically. |
+| [circuit-emulation-avr-bridge.md](circuit-emulation-avr-bridge.md) | How `avr8js` is wrapped like SoundMind does it, and how the bridge co-simulates MCU+circuit quasi-statically. |
 | [circuit-emulation-tests.md](circuit-emulation-tests.md) | Every test case (47 of them), the physics being validated, and the expected numerical result. |
 | [circuit-emulation-gotchas.md](circuit-emulation-gotchas.md) | What broke and how we fixed it — diode overshoot, transient initial state, ADC ADLAR, B-source operators, singular-matrix hangs, more. |
 | [circuit-emulation-performance.md](circuit-emulation-performance.md) | Timings per analysis type, memory footprint, comparison between solvers. |
-| [circuit-emulation-velxio-integration.md](circuit-emulation-velxio-integration.md) | Proposed integration into the Velxio main app: files to create, data-flow diagram, lazy-load strategy, `metadataId` → SPICE primitive table. |
+| [circuit-emulation-soundmind-integration.md](circuit-emulation-soundmind-integration.md) | Proposed integration into the SoundMind main app: files to create, data-flow diagram, lazy-load strategy, `metadataId` → SPICE primitive table. |
 | [circuit-emulation-api.md](circuit-emulation-api.md) | API reference for every exported function / class in the sandbox. |
 | [circuit-emulation-appendix.md](circuit-emulation-appendix.md) | Netlists, AVR opcode cheatsheet, model parameters, glossary. |
 

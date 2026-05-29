@@ -1,12 +1,12 @@
 """
-Velxio MCP Server
+SoundMind MCP Server
 
 Exposes the following tools to MCP-compatible agents (e.g. Claude):
 
   - compile_project       Compile Arduino sketch files → hex / binary
   - run_project           Compile and return simulation-ready artifacts
-  - import_wokwi_json     Parse a Wokwi diagram.json → Velxio circuit
-  - export_wokwi_json     Serialise a Velxio circuit → Wokwi diagram.json
+  - import_wokwi_json     Parse a Wokwi diagram.json → SoundMind circuit
+  - export_wokwi_json     Serialise a SoundMind circuit → Wokwi diagram.json
   - create_circuit        Create a new circuit definition
   - update_circuit        Merge changes into an existing circuit definition
   - generate_code_files   Generate starter Arduino code from a circuit
@@ -36,9 +36,9 @@ from app.services.arduino_cli import ArduinoCLIService
 # ---------------------------------------------------------------------------
 
 mcp = FastMCP(
-    name="velxio",
+    name="soundmind",
     instructions=(
-        "Velxio MCP server — create circuits, import/export Wokwi JSON, "
+        "SoundMind MCP server — create circuits, import/export Wokwi JSON, "
         "generate Arduino code, and compile projects."
     ),
 )
@@ -112,7 +112,7 @@ async def run_project(
     """
     Compile the project and return simulation-ready artifacts.
 
-    The Velxio frontend can load the returned hex_content / binary_content
+    The SoundMind frontend can load the returned hex_content / binary_content
     directly into its AVR / RP2040 emulator.  Actual execution happens
     client-side in the browser.
 
@@ -137,10 +137,10 @@ async def import_wokwi_json(
     ],
 ) -> dict[str, Any]:
     """
-    Parse a Wokwi diagram.json payload and return a Velxio circuit object.
+    Parse a Wokwi diagram.json payload and return a SoundMind circuit object.
 
     The returned circuit can be passed directly to export_wokwi_json,
-    generate_code_files, compile_project, or saved as a Velxio project.
+    generate_code_files, compile_project, or saved as a SoundMind project.
 
     Returns:
       - board_fqbn (str)         Detected Arduino board FQBN
@@ -168,15 +168,15 @@ async def import_wokwi_json(
 async def export_wokwi_json(
     circuit: Annotated[
         dict[str, Any],
-        "Velxio circuit object with 'components', 'connections', and 'board_fqbn'.",
+        "SoundMind circuit object with 'components', 'connections', and 'board_fqbn'.",
     ],
-    author: Annotated[str, "Author name to embed in the diagram (default: 'velxio')."] = "velxio",
+    author: Annotated[str, "Author name to embed in the diagram (default: 'soundmind')."] = "soundmind",
 ) -> dict[str, Any]:
     """
-    Convert a Velxio circuit object into a Wokwi diagram.json payload.
+    Convert a SoundMind circuit object into a Wokwi diagram.json payload.
 
     The returned payload is compatible with the Wokwi simulator and can be
-    imported using the Wokwi zip import feature in Velxio.
+    imported using the Wokwi zip import feature in SoundMind.
 
     Returns the Wokwi diagram dict (version, author, editor, parts, connections).
     """
@@ -210,7 +210,7 @@ async def create_circuit(
     ] = None,
 ) -> dict[str, Any]:
     """
-    Create a new Velxio circuit definition.
+    Create a new SoundMind circuit definition.
 
     Example component types: wokwi-led, wokwi-pushbutton, wokwi-resistor,
     wokwi-buzzer, wokwi-servo, wokwi-lcd1602.
@@ -268,7 +268,7 @@ async def create_circuit(
 async def update_circuit(
     circuit: Annotated[
         dict[str, Any],
-        "Existing Velxio circuit object to update.",
+        "Existing SoundMind circuit object to update.",
     ],
     add_components: Annotated[
         list[dict[str, Any]] | None,
@@ -292,7 +292,7 @@ async def update_circuit(
     ] = None,
 ) -> dict[str, Any]:
     """
-    Merge changes into an existing Velxio circuit definition.
+    Merge changes into an existing SoundMind circuit definition.
 
     Supports adding/removing components and connections, and changing the board.
 
@@ -371,7 +371,7 @@ async def update_circuit(
 async def generate_code_files(
     circuit: Annotated[
         dict[str, Any],
-        "Velxio circuit object (from create_circuit or import_wokwi_json).",
+        "SoundMind circuit object (from create_circuit or import_wokwi_json).",
     ],
     sketch_name: Annotated[
         str,

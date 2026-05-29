@@ -37,7 +37,7 @@ else
 fi
 
 # Start FastAPI backend in the background on port 8001
-echo "🚀 Starting Velxio Backend..."
+echo "🚀 Starting SoundMind Backend..."
 uvicorn app.main:app --host 127.0.0.1 --port 8001 &
 UVICORN_PID=$!
 

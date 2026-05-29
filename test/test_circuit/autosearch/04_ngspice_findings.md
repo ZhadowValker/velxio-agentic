@@ -25,7 +25,7 @@
 ### Tamaño
 
 - `node_modules/eecircuit-engine/` = 39 MB
-- En Velxio (browser) esto es muchísimo — debe cargarse **lazy** y **solo cuando el usuario activa "simulación eléctrica"**.
+- En SoundMind (browser) esto es muchísimo — debe cargarse **lazy** y **solo cuando el usuario activa "simulación eléctrica"**.
 - El módulo incluye WASM + glue JS. Puede servirse con CDN / caché de navegador para primer load < 5s en banda ancha.
 
 ### B-sources (behavioral) son la clave para mixed-signal
@@ -44,7 +44,7 @@ En B-source de ngspice:
 
 ### Trampa: matriz singular
 
-Si dejas un nodo sin camino DC (ej. capacitor en serie con un resistor → nodo interior flota en `.op`), ngspice entra en un **loop de recovery** (gmin stepping → source stepping → retry) que puede tomar > 60 s antes de fallar. **Fix**: añadir un resistor de alta impedancia (10 MΩ) al nodo. En Velxio, el parser debería detectar esta topología y añadir el pull-down automáticamente.
+Si dejas un nodo sin camino DC (ej. capacitor en serie con un resistor → nodo interior flota en `.op`), ngspice entra en un **loop de recovery** (gmin stepping → source stepping → retry) que puede tomar > 60 s antes de fallar. **Fix**: añadir un resistor de alta impedancia (10 MΩ) al nodo. En SoundMind, el parser debería detectar esta topología y añadir el pull-down automáticamente.
 
 ### Trampa: switch con histéresis
 
@@ -63,7 +63,7 @@ Si dejas un nodo sin camino DC (ej. capacitor en serie con un resistor → nodo 
 
 Boot inicial: 400 ms (una sola vez por proceso).
 
-## Propuesta de integración en Velxio
+## Propuesta de integración en SoundMind
 
 ### Cambios mínimos
 
@@ -80,7 +80,7 @@ Boot inicial: 400 ms (una sola vez por proceso).
 
 ### Tabla de mapeo
 
-| `metadataId` Velxio | Elemento ngspice | Nota |
+| `metadataId` SoundMind | Elemento ngspice | Nota |
 |---|---|---|
 | `resistor` | `R<id> n1 n2 <value>` | |
 | `resistor-us` | idem | |
@@ -101,8 +101,8 @@ Componentes que NO tienen modelo eléctrico (LCD, NeoPixel, motor, servomotor) s
 
 ## Pendientes / futuro
 
-- Probar que el mismo flujo funciona en **browser** (no solo Node). Requiere bundler que soporte el `.wasm` de eecircuit-engine (Vite debería funcionar, ya lo usa Velxio).
-- Medir el peso del bundle + WASM en producción de Velxio.
+- Probar que el mismo flujo funciona en **browser** (no solo Node). Requiere bundler que soporte el `.wasm` de eecircuit-engine (Vite debería funcionar, ya lo usa SoundMind).
+- Medir el peso del bundle + WASM en producción de SoundMind.
 - Implementar warnings automáticos (LED quemado, corto, nodo flotante) desde los resultados de ngspice.
 - Componentes XSPICE (compuertas, FFs) — chequear si `eecircuit-engine` los incluye compilados; si no, contribuir aguas arriba.
 - Subcircuits `.subckt` para encapsular op-amps, transistor packs, etc.

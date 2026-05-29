@@ -1,5 +1,5 @@
 /**
- * /v2 — Velxio 2.0 Release Landing Page
+ * /v2 — SoundMind 2.0 Release Landing Page
  * Showcases all new features, supported boards, and community CTAs
  */
 
@@ -11,9 +11,9 @@ import { getSeoMeta } from '../seoRoutes';
 import { trackClickCTA } from '../utils/analytics';
 import raspberryPi3Svg from '../assets/Raspberry_Pi_3_illustration.svg';
 import './SEOPage.css';
-import './Velxio2Page.css';
+import './SoundMind2Page.css';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/velxio';
+const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
 const DISCORD_URL = 'https://discord.gg/3mARjJrh4E';
 
 /* ── SVG Icons (no emojis) ─────────────────────────────── */
@@ -233,13 +233,13 @@ const JSON_LD: object[] = [
   {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Velxio 2.0 — Multi-Board Embedded Systems Simulator',
+    name: 'SoundMind 2.0 — Multi-Board Embedded Systems Simulator',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Any (browser-based)',
     softwareVersion: '2.0.0',
     description:
-      'Velxio 2.0 — simulate Arduino, ESP32, Raspberry Pi Pico, and Raspberry Pi 3 in your browser. 19 boards, 68+ examples, realistic sensor simulation. Free and open-source.',
-    url: 'https://velxio.dev/v2',
+      'SoundMind 2.0 — simulate Arduino, ESP32, Raspberry Pi Pico, and Raspberry Pi 3 in your browser. 19 boards, 68+ examples, realistic sensor simulation. Free and open-source.',
+    url: 'https://soundmind.dev/v2',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     author: { '@type': 'Person', name: 'David Montero Crespo' },
     license: 'https://www.gnu.org/licenses/agpl-3.0.html',
@@ -248,8 +248,8 @@ const JSON_LD: object[] = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Velxio', item: 'https://velxio.dev/' },
-      { '@type': 'ListItem', position: 2, name: 'Velxio 2.0', item: 'https://velxio.dev/v2' },
+      { '@type': 'ListItem', position: 1, name: 'SoundMind', item: 'https://soundmind.dev/' },
+      { '@type': 'ListItem', position: 2, name: 'SoundMind 2.0', item: 'https://soundmind.dev/v2' },
     ],
   },
 ];
@@ -352,7 +352,7 @@ const CHANGE_SECTIONS = [
   },
 ];
 
-export const Velxio2Page: React.FC = () => {
+export const SoundMind2Page: React.FC = () => {
   useSEO({ ...getSeoMeta('/v2')!, jsonLd: JSON_LD });
 
   return (
@@ -365,7 +365,7 @@ export const Velxio2Page: React.FC = () => {
             <IcoRocket /> Version 2.0
           </div>
           <h1>
-            Velxio 2.0
+            SoundMind 2.0
             <br />
             <span className="accent">Multi-Platform Embedded Simulator</span>
           </h1>
@@ -378,7 +378,7 @@ export const Velxio2Page: React.FC = () => {
             <Link
               to="/editor"
               className="seo-btn-primary"
-              onClick={() => trackClickCTA('velxio-v2', '/editor')}
+              onClick={() => trackClickCTA('soundmind-v2', '/editor')}
             >
               <svg
                 width="16"
@@ -392,7 +392,7 @@ export const Velxio2Page: React.FC = () => {
               >
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
               </svg>
-              Try Velxio 2.0
+              Try SoundMind 2.0
             </Link>
             <a
               href={GITHUB_URL}
@@ -431,7 +431,7 @@ export const Velxio2Page: React.FC = () => {
         <section className="seo-section">
           <h2>19 boards. 5 architectures. One tool.</h2>
           <p className="lead">
-            From 8-bit AVR to quad-core ARM Linux — Velxio 2.0 emulates every major embedded
+            From 8-bit AVR to quad-core ARM Linux — SoundMind 2.0 emulates every major embedded
             platform in a single browser tab.
           </p>
 
@@ -546,7 +546,7 @@ export const Velxio2Page: React.FC = () => {
         <section className="seo-section">
           <h2>Multiple boards in one circuit</h2>
           <p className="lead">
-            Most simulators limit you to one board at a time. Velxio lets you place multiple boards
+            Most simulators limit you to one board at a time. SoundMind lets you place multiple boards
             on the same canvas and wire them together — just like a real workbench.
           </p>
           <div className="v2-multiboard">
@@ -604,7 +604,7 @@ export const Velxio2Page: React.FC = () => {
               <div className="seo-card">
                 <h3>No other simulator does this</h3>
                 <p>
-                  Traditional simulators emulate one board in isolation. Velxio simulates entire
+                  Traditional simulators emulate one board in isolation. SoundMind simulates entire
                   systems with multiple boards running simultaneously.
                 </p>
               </div>
@@ -690,7 +690,7 @@ export const Velxio2Page: React.FC = () => {
         <section className="seo-section">
           <h2>The outcome</h2>
           <p className="lead">
-            Velxio 2.0 transforms the project into a complete, scalable multi-platform embedded
+            SoundMind 2.0 transforms the project into a complete, scalable multi-platform embedded
             systems simulator.
           </p>
           <div className="seo-grid">
@@ -722,7 +722,7 @@ export const Velxio2Page: React.FC = () => {
         <section className="seo-section">
           <h2>Built on open-source</h2>
           <p className="lead">
-            Velxio is powered by these open-source projects. Without them, none of this would be
+            SoundMind is powered by these open-source projects. Without them, none of this would be
             possible.
           </p>
           <div className="v2-repos">
@@ -820,7 +820,7 @@ export const Velxio2Page: React.FC = () => {
             >
               <IcoGitHub />
               <div>
-                <h3>Velxio</h3>
+                <h3>SoundMind</h3>
                 <p>This project — free, open-source multi-board embedded simulator</p>
               </div>
             </a>
@@ -829,12 +829,12 @@ export const Velxio2Page: React.FC = () => {
 
         {/* ── Bottom CTA ── */}
         <div className="seo-bottom">
-          <h2>Try Velxio 2.0 now</h2>
+          <h2>Try SoundMind 2.0 now</h2>
           <p>Open the editor and start simulating — 19 boards, 68+ examples, zero setup.</p>
           <Link
             to="/editor"
             className="seo-btn-primary"
-            onClick={() => trackClickCTA('velxio-v2', '/editor')}
+            onClick={() => trackClickCTA('soundmind-v2', '/editor')}
           >
             Launch Simulator
           </Link>

@@ -4,8 +4,8 @@ import { AppHeader } from '../components/layout/AppHeader';
 import { CodeBlock } from '../components/layout/CodeBlock';
 import './DocsPage.css';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/velxio';
-const BASE_URL = 'https://velxio.dev';
+const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
+const BASE_URL = 'https://soundmind.dev';
 const AUTHOR = {
   '@type': 'Person',
   name: 'David Montero Crespo',
@@ -79,69 +79,69 @@ interface SectionMeta {
 }
 const SECTION_META: Record<SectionId, SectionMeta> = {
   intro: {
-    title: 'Introduction | Velxio Documentation',
+    title: 'Introduction | SoundMind Documentation',
     description:
-      'Learn about Velxio, the free open-source Arduino emulator with real AVR8 and RP2040 CPU emulation and 48+ interactive electronic components.',
+      'Learn about SoundMind, the free open-source Arduino emulator with real AVR8 and RP2040 CPU emulation and 48+ interactive electronic components.',
   },
   'getting-started': {
-    title: 'Getting Started | Velxio Documentation',
+    title: 'Getting Started | SoundMind Documentation',
     description:
-      'Get started with Velxio: use the hosted editor, self-host with Docker, or set up a local development environment. Simulate your first Arduino sketch in minutes.',
+      'Get started with SoundMind: use the hosted editor, self-host with Docker, or set up a local development environment. Simulate your first Arduino sketch in minutes.',
   },
   emulator: {
-    title: 'Emulator Architecture | Velxio Documentation',
+    title: 'Emulator Architecture | SoundMind Documentation',
     description:
-      'How Velxio emulates AVR8 (ATmega328p), RP2040, and RISC-V (ESP32-C3) CPUs. Covers execution loops, peripherals, and pin mapping for all supported boards.',
+      'How SoundMind emulates AVR8 (ATmega328p), RP2040, and RISC-V (ESP32-C3) CPUs. Covers execution loops, peripherals, and pin mapping for all supported boards.',
   },
   'riscv-emulation': {
-    title: 'RISC-V Emulation (ESP32-C3) | Velxio Documentation',
+    title: 'RISC-V Emulation (ESP32-C3) | SoundMind Documentation',
     description:
       'Browser-side RV32IMC emulator for ESP32-C3, XIAO ESP32-C3, and C3 SuperMini. Covers memory map, GPIO, UART0, the ESP32 image parser, RV32IMC ISA, and test suite.',
   },
   'esp32-emulation': {
-    title: 'ESP32 Emulation (Xtensa) | Velxio Documentation',
+    title: 'ESP32 Emulation (Xtensa) | SoundMind Documentation',
     description:
       'QEMU-based emulation for ESP32 and ESP32-S3 (Xtensa LX6/LX7). Covers the lcgamboa fork, libqemu-xtensa, GPIO, WiFi, I2C, SPI, RMT/NeoPixel, and LEDC/PWM.',
   },
   components: {
-    title: 'Components Reference | Velxio Documentation',
+    title: 'Components Reference | SoundMind Documentation',
     description:
-      'Full reference for all 48+ interactive electronic components in Velxio: LEDs, displays, sensors, buttons, potentiometers, and more. Includes wiring and property details.',
+      'Full reference for all 48+ interactive electronic components in SoundMind: LEDs, displays, sensors, buttons, potentiometers, and more. Includes wiring and property details.',
   },
   roadmap: {
-    title: 'Roadmap | Velxio Documentation',
+    title: 'Roadmap | SoundMind Documentation',
     description:
-      "Velxio's feature roadmap: what's implemented, what's in progress, and what's planned for future releases.",
+      "SoundMind's feature roadmap: what's implemented, what's in progress, and what's planned for future releases.",
   },
   architecture: {
-    title: 'Project Architecture | Velxio Documentation',
+    title: 'Project Architecture | SoundMind Documentation',
     description:
-      'Detailed overview of the Velxio system architecture: frontend, backend, AVR8 emulation pipeline, data flows, Zustand stores, and wire system.',
+      'Detailed overview of the SoundMind system architecture: frontend, backend, AVR8 emulation pipeline, data flows, Zustand stores, and wire system.',
   },
   'wokwi-libs': {
-    title: 'Wokwi Libraries | Velxio Documentation',
+    title: 'Wokwi Libraries | SoundMind Documentation',
     description:
-      'How Velxio integrates the official Wokwi open-source libraries: avr8js, wokwi-elements, and rp2040js. Covers configuration, updates, and the 48 available components.',
+      'How SoundMind integrates the official Wokwi open-source libraries: avr8js, wokwi-elements, and rp2040js. Covers configuration, updates, and the 48 available components.',
   },
   mcp: {
-    title: 'MCP Server | Velxio Documentation',
+    title: 'MCP Server | SoundMind Documentation',
     description:
-      'Velxio MCP Server reference: integrate AI agents (Claude, Cursor) with Velxio via Model Context Protocol. Covers tools, transports, circuit format, and example walkthroughs.',
+      'SoundMind MCP Server reference: integrate AI agents (Claude, Cursor) with SoundMind via Model Context Protocol. Covers tools, transports, circuit format, and example walkthroughs.',
   },
   setup: {
-    title: 'Project Status | Velxio Documentation',
+    title: 'Project Status | SoundMind Documentation',
     description:
-      'Complete status of all implemented Velxio features: AVR emulation, component system, wire system, code editor, example projects, and next steps.',
+      'Complete status of all implemented SoundMind features: AVR emulation, component system, wire system, code editor, example projects, and next steps.',
   },
   'rp2040-emulation': {
-    title: 'RP2040 Emulation (Raspberry Pi Pico) | Velxio Documentation',
+    title: 'RP2040 Emulation (Raspberry Pi Pico) | SoundMind Documentation',
     description:
-      'How Velxio emulates the Raspberry Pi Pico and Pico W using rp2040js: ARM Cortex-M0+ at 133 MHz, GPIO, UART, ADC, I2C, SPI, PWM and WFI optimization.',
+      'How SoundMind emulates the Raspberry Pi Pico and Pico W using rp2040js: ARM Cortex-M0+ at 133 MHz, GPIO, UART, ADC, I2C, SPI, PWM and WFI optimization.',
   },
   'raspberry-pi3-emulation': {
-    title: 'Raspberry Pi 3 Emulation (QEMU) | Velxio Documentation',
+    title: 'Raspberry Pi 3 Emulation (QEMU) | SoundMind Documentation',
     description:
-      'How Velxio emulates a full Raspberry Pi 3B using QEMU raspi3b: real Raspberry Pi OS, Python + RPi.GPIO shim, dual-channel UART, VFS, and multi-board serial bridge.',
+      'How SoundMind emulates a full Raspberry Pi 3B using QEMU raspi3b: real Raspberry Pi OS, Python + RPi.GPIO shim, dual-channel UART, VFS, and multi-board serial bridge.',
   },
 };
 
@@ -151,13 +151,13 @@ const IntroSection: React.FC = () => (
     <span className="docs-label">// overview</span>
     <h1>Introduction</h1>
     <p>
-      <strong>Velxio</strong> is a fully local, open-source Arduino emulator that runs entirely in
+      <strong>SoundMind</strong> is a fully local, open-source Arduino emulator that runs entirely in
       your browser. Write Arduino C++ code, compile it with a real <code>arduino-cli</code> backend,
       and simulate it using true AVR8 / RP2040 CPU emulation, with 48+ interactive electronic
       components, all without installing any software on your machine.
     </p>
 
-    <h2>Why Velxio?</h2>
+    <h2>Why SoundMind?</h2>
     <ul>
       <li>
         <strong>No installation required</strong>: everything runs in the browser.
@@ -220,8 +220,8 @@ const IntroSection: React.FC = () => (
 
     <div className="docs-callout">
       <strong>Live Demo:</strong>{' '}
-      <a href="https://velxio.dev" target="_blank" rel="noopener noreferrer">
-        velxio.dev
+      <a href="https://soundmind.dev" target="_blank" rel="noopener noreferrer">
+        soundmind.dev
       </a>{' '}
       , no installation needed, open the editor and start simulating immediately.
     </div>
@@ -237,8 +237,8 @@ const GettingStartedSection: React.FC = () => (
     <h2>Option 1: Use the Hosted Version</h2>
     <p>
       No installation needed, go to{' '}
-      <a href="https://velxio.dev" target="_blank" rel="noopener noreferrer">
-        https://velxio.dev
+      <a href="https://soundmind.dev" target="_blank" rel="noopener noreferrer">
+        https://soundmind.dev
       </a>{' '}
       and start coding immediately.
     </p>
@@ -246,10 +246,10 @@ const GettingStartedSection: React.FC = () => (
     <h2>Option 2: Self-Host with Docker</h2>
     <p>Run a single Docker command to start a fully local instance:</p>
     <CodeBlock language="bash">{`docker run -d \\
-  --name velxio \\
+  --name soundmind \\
   -p 3080:80 \\
   -v $(pwd)/data:/app/data \\
-  ghcr.io/davidmonterocrespo24/velxio:master`}</CodeBlock>
+  ghcr.io/davidmonterocrespo24/soundmind:master`}</CodeBlock>
     <p>
       Then open <strong>http://localhost:3080</strong> in your browser.
     </p>
@@ -260,8 +260,8 @@ const GettingStartedSection: React.FC = () => (
     </p>
 
     <h3>1. Clone the repository</h3>
-    <CodeBlock language="bash">{`git clone https://github.com/davidmonterocrespo24/velxio.git
-cd velxio`}</CodeBlock>
+    <CodeBlock language="bash">{`git clone https://github.com/davidmonterocrespo24/soundmind.git
+cd soundmind`}</CodeBlock>
 
     <h3>2. Start the backend</h3>
     <CodeBlock language="bash">{`cd backend
@@ -290,8 +290,8 @@ arduino-cli core install rp2040:rp2040`}</CodeBlock>
     <ol>
       <li>
         <strong>Open the editor</strong> at{' '}
-        <a href="https://velxio.dev/editor" target="_blank" rel="noopener noreferrer">
-          velxio.dev/editor
+        <a href="https://soundmind.dev/editor" target="_blank" rel="noopener noreferrer">
+          soundmind.dev/editor
         </a>
         .
       </li>
@@ -377,7 +377,7 @@ const EmulatorSection: React.FC = () => (
     <span className="docs-label">// internals</span>
     <h1>Emulator Architecture</h1>
     <p>
-      Velxio uses <strong>real CPU emulation</strong> rather than a simplified model. This document
+      SoundMind uses <strong>real CPU emulation</strong> rather than a simplified model. This document
       describes how each layer of the simulation works.
     </p>
 
@@ -570,7 +570,7 @@ const ComponentsSection: React.FC = () => (
     <span className="docs-label">// reference</span>
     <h1>Components Reference</h1>
     <p>
-      Velxio ships with <strong>48+ interactive electronic components</strong> powered by{' '}
+      SoundMind ships with <strong>48+ interactive electronic components</strong> powered by{' '}
       <a href="https://github.com/wokwi/wokwi-elements" target="_blank" rel="noopener noreferrer">
         wokwi-elements
       </a>
@@ -842,7 +842,7 @@ const RoadmapSection: React.FC = () => (
   <div className="docs-section">
     <span className="docs-label">// future</span>
     <h1>Roadmap</h1>
-    <p>Features that are implemented, in progress, and planned for future releases of Velxio.</p>
+    <p>Features that are implemented, in progress, and planned for future releases of SoundMind.</p>
 
     <h2>✅ Implemented</h2>
     <ul>
@@ -903,7 +903,7 @@ const RoadmapSection: React.FC = () => (
       <strong>Want to contribute?</strong> Feature requests, bug reports, and pull requests are
       welcome at{' '}
       <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-        github.com/davidmonterocrespo24/velxio
+        github.com/davidmonterocrespo24/soundmind
       </a>
       .
     </div>
@@ -916,7 +916,7 @@ const ArchitectureSection: React.FC = () => (
     <span className="docs-label">// system design</span>
     <h1>Project Architecture</h1>
     <p>
-      Velxio is a fully local Arduino emulator using official Wokwi repositories for maximum
+      SoundMind is a fully local Arduino emulator using official Wokwi repositories for maximum
       compatibility. It features real AVR8 CPU emulation, 48+ interactive electronic components, a
       comprehensive wire system, and a build-time component discovery pipeline.
     </p>
@@ -1090,7 +1090,7 @@ const WokwiLibsSection: React.FC = () => (
     <span className="docs-label">// open-source libs</span>
     <h1>Wokwi Libraries</h1>
     <p>
-      Velxio uses official Wokwi open-source repositories cloned locally in <code>wokwi-libs/</code>
+      SoundMind uses official Wokwi open-source repositories cloned locally in <code>wokwi-libs/</code>
       . This gives you up-to-date, compatible emulation engines and visual components without npm
       registry dependencies.
     </p>
@@ -1260,7 +1260,7 @@ const McpSection: React.FC = () => (
     <span className="docs-label">// AI integration</span>
     <h1>MCP Server</h1>
     <p>
-      Velxio exposes a{' '}
+      SoundMind exposes a{' '}
       <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener noreferrer">
         Model Context Protocol
       </a>{' '}
@@ -1294,7 +1294,7 @@ const McpSection: React.FC = () => (
             <code>import_wokwi_json</code>
           </td>
           <td>
-            Parse a Wokwi <code>diagram.json</code> → Velxio circuit
+            Parse a Wokwi <code>diagram.json</code> → SoundMind circuit
           </td>
         </tr>
         <tr>
@@ -1302,7 +1302,7 @@ const McpSection: React.FC = () => (
             <code>export_wokwi_json</code>
           </td>
           <td>
-            Serialise a Velxio circuit → Wokwi <code>diagram.json</code>
+            Serialise a SoundMind circuit → Wokwi <code>diagram.json</code>
           </td>
         </tr>
         <tr>
@@ -1338,9 +1338,9 @@ python mcp_server.py`}</CodeBlock>
     </p>
     <CodeBlock language="json">{`{
   "mcpServers": {
-    "velxio": {
+    "soundmind": {
       "command": "python",
-      "args": ["/absolute/path/to/velxio/backend/mcp_server.py"]
+      "args": ["/absolute/path/to/soundmind/backend/mcp_server.py"]
     }
   }
 }`}</CodeBlock>
@@ -1351,12 +1351,12 @@ python mcp_sse_server.py --port 8002`}</CodeBlock>
     <p>MCP client config:</p>
     <CodeBlock language="json">{`{
   "mcpServers": {
-    "velxio": { "url": "http://localhost:8002/sse" }
+    "soundmind": { "url": "http://localhost:8002/sse" }
   }
 }`}</CodeBlock>
 
     <h2>Circuit Data Format</h2>
-    <p>Velxio circuits are plain JSON objects:</p>
+    <p>SoundMind circuits are plain JSON objects:</p>
     <CodeBlock language="json">{`{
   "board_fqbn": "arduino:avr:uno",
   "version": 1,
@@ -1480,7 +1480,7 @@ const SetupSection: React.FC = () => (
   <div className="docs-section">
     <span className="docs-label">// project status</span>
     <h1>Project Status</h1>
-    <p>A comprehensive overview of all features currently implemented in Velxio.</p>
+    <p>A comprehensive overview of all features currently implemented in SoundMind.</p>
 
     <h2>AVR Emulation (avr8js)</h2>
     <table>
@@ -1830,7 +1830,7 @@ const RiscVEmulationSection: React.FC = () => (
     <h1>RISC-V Emulation (ESP32-C3)</h1>
     <p>
       ESP32-C3, XIAO ESP32-C3, and C3 SuperMini boards use a <strong>RISC-V RV32IMC</strong> core
-      running at 160 MHz. Velxio emulates them entirely in the browser, no backend, no QEMU, no
+      running at 160 MHz. SoundMind emulates them entirely in the browser, no backend, no QEMU, no
       WebAssembly pipeline. The emulator is written in pure TypeScript and runs at real-time speeds.
     </p>
 
@@ -2099,7 +2099,7 @@ const Esp32EmulationSection: React.FC = () => (
     <h1>ESP32 Emulation (Xtensa)</h1>
     <p>
       ESP32 and ESP32-S3 boards use an <strong>Xtensa LX6 / LX7</strong> architecture. Because no
-      production-quality Xtensa emulator is available as pure JavaScript, Velxio uses a
+      production-quality Xtensa emulator is available as pure JavaScript, SoundMind uses a
       <strong> QEMU-based backend</strong> for these boards, the lcgamboa fork with libqemu-xtensa,
       compiled to a native binary and served by the FastAPI backend.
     </p>
@@ -2194,10 +2194,10 @@ const Esp32EmulationSection: React.FC = () => (
 
     <h2>Requirements</h2>
     <p>
-      QEMU-based emulation requires the Velxio backend to be running. This means it works with the{' '}
+      QEMU-based emulation requires the SoundMind backend to be running. This means it works with the{' '}
       <strong>hosted version</strong> at{' '}
-      <a href="https://velxio.dev" target="_blank" rel="noopener noreferrer">
-        velxio.dev
+      <a href="https://soundmind.dev" target="_blank" rel="noopener noreferrer">
+        soundmind.dev
       </a>{' '}
       and with <strong>Docker self-hosting</strong>, but not in a pure static frontend deployment.
     </p>
@@ -2359,7 +2359,7 @@ const Rp2040EmulationSection: React.FC = () => (
     <p>
       See the complete technical reference:{' '}
       <a
-        href="https://github.com/davidmonterocrespo24/velxio/blob/master/docs/RP2040_EMULATION.md"
+        href="https://github.com/davidmonterocrespo24/soundmind/blob/master/docs/RP2040_EMULATION.md"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -2376,7 +2376,7 @@ const RaspberryPi3EmulationSection: React.FC = () => (
     <h1>Raspberry Pi 3 Emulation (QEMU)</h1>
     <p>
       The Raspberry Pi 3B is emulated using <strong>QEMU 8.1.3</strong> with <code>-M raspi3b</code>
-      . This is the only board in Velxio that runs a full operating system, a real{' '}
+      . This is the only board in SoundMind that runs a full operating system, a real{' '}
       <strong>Raspberry Pi OS (Trixie)</strong> image booted inside the emulator. Users write Python
       scripts (not C++), which are executed by the real Python 3 interpreter inside the VM.
     </p>
@@ -2465,7 +2465,7 @@ const RaspberryPi3EmulationSection: React.FC = () => (
     <p>
       See the complete technical reference:{' '}
       <a
-        href="https://github.com/davidmonterocrespo24/velxio/blob/master/docs/RASPBERRYPI3_EMULATION.md"
+        href="https://github.com/davidmonterocrespo24/soundmind/blob/master/docs/RASPBERRYPI3_EMULATION.md"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -2597,7 +2597,7 @@ export const DocsPage: React.FC = () => {
           headline: meta.title,
           description: meta.description,
           url: pageUrl,
-          isPartOf: { '@type': 'WebSite', url: `${BASE_URL}/`, name: 'Velxio' },
+          isPartOf: { '@type': 'WebSite', url: `${BASE_URL}/`, name: 'SoundMind' },
           inLanguage: 'en-US',
           author: AUTHOR,
         },

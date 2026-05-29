@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certifi
     && rm -rf /var/lib/apt/lists/*
 
 ARG TARGETARCH
-ARG QEMU_RELEASE_URL=https://github.com/davidmonterocrespo24/velxio/releases/download/qemu-prebuilt
+ARG QEMU_RELEASE_URL=https://github.com/davidmonterocrespo24/soundmind/releases/download/qemu-prebuilt
 
 # Copy the prebuilt directory (may contain .so+ROM files or just the .gitkeep)
 RUN mkdir -p /qemu

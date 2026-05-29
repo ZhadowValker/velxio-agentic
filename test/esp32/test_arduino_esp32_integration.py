@@ -12,7 +12,7 @@ Architecture
   PING commands via bridge.uart_send(), exactly as a real Arduino Uno would
   send bytes over its TX line.
 
-  In Velxio (browser), the same protocol works with the AVR emulator (avr8js):
+  In SoundMind (browser), the same protocol works with the AVR emulator (avr8js):
     - Wire Arduino TX pin → ESP32 GPIO1 (UART0 RX)
     - Wire Arduino RX pin ← ESP32 GPIO3 (UART0 TX)
     - The store routes bytes between the two bridges via WebSocket
@@ -225,7 +225,7 @@ class TestArduinoEsp32Serial(unittest.TestCase):
         Simulate Arduino sending a command string over its TX line.
 
         Equivalent to:  esp32Link.println(cmd);  // in arduino_serial_controller.ino
-        Routes via bridge.uart_send() — same path used in Velxio when
+        Routes via bridge.uart_send() — same path used in SoundMind when
         the AVR simulator's serial bytes are forwarded to the ESP32 UART input.
         """
         self.bridge.uart_send(uart_id=0, data=(cmd + "\n").encode())

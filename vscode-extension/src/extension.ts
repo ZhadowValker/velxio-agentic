@@ -1,5 +1,5 @@
 /**
- * Velxio VS Code Extension — Entry point
+ * SoundMind VS Code Extension — Entry point
  *
  * Provides commands to compile, simulate, and interact with Arduino/ESP32
  * sketches directly within VS Code. Simulation runs locally using avr8js,
@@ -21,31 +21,31 @@ let outputChannel: vscode.OutputChannel;
 let statusBarItem: vscode.StatusBarItem;
 
 export function activate(context: vscode.ExtensionContext) {
-  outputChannel = vscode.window.createOutputChannel('Velxio');
+  outputChannel = vscode.window.createOutputChannel('SoundMind');
   backend = new BackendManager(outputChannel);
   serialTerminal = new SerialTerminal();
   fileWatcher = new FileWatcher();
 
   // Status bar item showing current board
   statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 50);
-  statusBarItem.command = 'velxio.selectBoard';
+  statusBarItem.command = 'soundmind.selectBoard';
   statusBarItem.tooltip = 'Click to change board';
   updateStatusBar('arduino-uno');
 
   // ── Commands ──────────────────────────────────────────────────────────────
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('velxio.openSimulator', () => {
+    vscode.commands.registerCommand('soundmind.openSimulator', () => {
       const panel = SimulatorPanel.createOrShow(context.extensionUri);
       setupPanelListeners(panel, context);
       statusBarItem.show();
     }),
 
-    vscode.commands.registerCommand('velxio.compile', async () => {
+    vscode.commands.registerCommand('soundmind.compile', async () => {
       await compileAndLoad(context);
     }),
 
-    vscode.commands.registerCommand('velxio.run', async () => {
+    vscode.commands.registerCommand('soundmind.run', async () => {
       const panel = SimulatorPanel.createOrShow(context.extensionUri);
       setupPanelListeners(panel, context);
 
@@ -60,12 +60,12 @@ export function activate(context: vscode.ExtensionContext) {
       panel.start();
     }),
 
-    vscode.commands.registerCommand('velxio.stop', () => {
+    vscode.commands.registerCommand('soundmind.stop', () => {
       const panel = SimulatorPanel.createOrShow(context.extensionUri);
       panel.stop();
     }),
 
-    vscode.commands.registerCommand('velxio.selectBoard', async () => {
+    vscode.commands.registerCommand('soundmind.selectBoard', async () => {
       const boards = Object.entries(BOARD_LABELS) as [BoardKind, string][];
       const items = boards.map(([kind, label]) => ({
         label,
@@ -75,18 +75,18 @@ export function activate(context: vscode.ExtensionContext) {
 
       const selected = await vscode.window.showQuickPick(items, {
         placeHolder: 'Select a board',
-        title: 'Velxio: Select Board',
+        title: 'SoundMind: Select Board',
       });
 
       if (selected) {
         const boardKind = selected.description as BoardKind;
         updateStatusBar(boardKind);
 
-        // Update velxio.toml if it exists
+        // Update soundmind.toml if it exists
         const workspaceRoot = getWorkspaceRoot();
         if (workspaceRoot) {
           const config = new ProjectConfig(workspaceRoot);
-          const existingConfig = config.readVelxioToml();
+          const existingConfig = config.readSoundMindToml();
           if (existingConfig) {
             await config.createDefaultConfig(boardKind);
           }
@@ -105,12 +105,12 @@ export function activate(context: vscode.ExtensionContext) {
 
   // ── Auto-activation ───────────────────────────────────────────────────────
 
-  // If velxio.toml or diagram.json exists, show the status bar
+  // If soundmind.toml or diagram.json exists, show the status bar
   const workspaceRoot = getWorkspaceRoot();
   if (workspaceRoot) {
     const config = new ProjectConfig(workspaceRoot);
-    const velxioConfig = config.readVelxioToml();
-    if (velxioConfig) {
+    const soundmindConfig = config.readSoundMindToml();
+    if (soundmindConfig) {
       updateStatusBar(config.getBoard());
       statusBarItem.show();
     }
@@ -126,7 +126,7 @@ export function activate(context: vscode.ExtensionContext) {
     { dispose: () => { backend.stop(); } },
   );
 
-  outputChannel.appendLine('Velxio extension activated');
+  outputChannel.appendLine('SoundMind extension activated');
 }
 
 export function deactivate() {
@@ -239,7 +239,7 @@ async function compileAndLoad(context: vscode.ExtensionContext): Promise<void> {
     outputChannel.appendLine(`[Compile] Compiling ${files.length} files for ${board}...`);
 
     await vscode.window.withProgress(
-      { location: vscode.ProgressLocation.Notification, title: 'Velxio: Compiling...' },
+      { location: vscode.ProgressLocation.Notification, title: 'SoundMind: Compiling...' },
       async () => {
         const response = await fetch(`${backend.apiBase}/compile`, {
           method: 'POST',

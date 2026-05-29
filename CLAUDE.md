@@ -4,8 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Velxio** — a fully local, open-source Arduino emulator 
-- GitHub: https://github.com/davidmonterocrespo24/velxio
+**SoundMind** — a fully local, open-source Arduino emulator 
+- GitHub: https://github.com/davidmonterocrespo24/soundmind
 - Frontend: React + Vite + TypeScript with Monaco Editor and visual simulation canvas
 - Backend: FastAPI + Python for Arduino code compilation via arduino-cli
 - Simulation: Real AVR8 emulation using avr8js with full GPIO/timer/USART support
@@ -205,7 +205,7 @@ Wire positions auto-update when components move via `updateWirePositions()`.
 - [backend/app/api/routes/auth.py](backend/app/api/routes/auth.py) - /api/auth/* endpoints
 - [backend/app/api/routes/projects.py](backend/app/api/routes/projects.py) - /api/projects/* + /api/user/*
 - [backend/app/services/arduino_cli.py](backend/app/services/arduino_cli.py) - arduino-cli wrapper
-- [backend/app/core/config.py](backend/app/core/config.py) - Settings (SECRET_KEY, DATABASE_URL `velxio.db`, GOOGLE_*)
+- [backend/app/core/config.py](backend/app/core/config.py) - Settings (SECRET_KEY, DATABASE_URL `soundmind.db`, GOOGLE_*)
 - [backend/app/core/security.py](backend/app/core/security.py) - JWT, password hashing
 - [backend/app/core/dependencies.py](backend/app/core/dependencies.py) - get_current_user, require_auth
 - [backend/app/database/session.py](backend/app/database/session.py) - async SQLAlchemy engine
@@ -244,7 +244,7 @@ Wire positions auto-update when components move via `updateWirePositions()`.
 - [frontend/src/pages/ProjectPage.tsx](frontend/src/pages/ProjectPage.tsx) - Loads project into editor
 
 ### Frontend - SEO & Public Files
-- `frontend/index.html` — Full SEO meta tags, OG, Twitter Card, JSON-LD. **Domain is `https://velxio.dev`** — update if domain changes.
+- `frontend/index.html` — Full SEO meta tags, OG, Twitter Card, JSON-LD. **Domain is `https://soundmind.dev`** — update if domain changes.
 - `frontend/public/favicon.svg` — SVG chip favicon (scales to all sizes)
 - `frontend/public/og-image.svg` — 1200×630 social preview image (OG/Twitter). Export as PNG for max compatibility.
 - `frontend/public/robots.txt` — Allow all crawlers, points to sitemap

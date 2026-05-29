@@ -325,7 +325,7 @@ arduino-cli compile \
 #   → merged: sketch.ino.merged.bin (4 MB)
 ```
 
-The Velxio backend produces this image automatically and sends it to the frontend as base64.
+The SoundMind backend produces this image automatically and sends it to the frontend as base64.
 
 ### 7.2 Minimal Sketch for ESP32-C3
 

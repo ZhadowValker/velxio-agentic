@@ -2,7 +2,7 @@
 //
 // Each ESP32's USB Serial talks to the host Python; Serial2 (UART2 on
 // GPIO16=RX / GPIO17=TX) talks to the OTHER ESP32 via the wire that
-// the Velxio Interconnect routes through the WebSocket bridge.
+// the SoundMind Interconnect routes through the WebSocket bridge.
 //
 // Usage in the dual-ESP32 integration test:
 //   - Host writes "PING-A" to ESP32-A's USB Serial

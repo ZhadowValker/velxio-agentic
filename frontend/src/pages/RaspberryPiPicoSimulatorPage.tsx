@@ -17,11 +17,11 @@ const META = getSeoMeta('/raspberry-pi-pico-simulator')!;
 const FAQ_ITEMS = [
   {
     q: 'Is this Raspberry Pi Pico simulator free?',
-    a: 'Yes. Velxio is completely free and open-source (GNU AGPLv3). Simulate RP2040 code in your browser — no Raspberry Pi hardware needed, no account, no payment.',
+    a: 'Yes. SoundMind is completely free and open-source (GNU AGPLv3). Simulate RP2040 code in your browser — no Raspberry Pi hardware needed, no account, no payment.',
   },
   {
     q: 'How does the RP2040 emulation work?',
-    a: 'Velxio uses rp2040js — the open-source RP2040 emulator — to simulate the ARM Cortex-M0+ CPU at 133 MHz. Your code is compiled with the official Arduino-Pico core by Earle Philhower.',
+    a: 'SoundMind uses rp2040js — the open-source RP2040 emulator — to simulate the ARM Cortex-M0+ CPU at 133 MHz. Your code is compiled with the official Arduino-Pico core by Earle Philhower.',
   },
   {
     q: 'Does it support Raspberry Pi Pico W?',
@@ -29,7 +29,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Can I use Arduino code with Raspberry Pi Pico?',
-    a: 'Yes. Velxio compiles your .ino sketch using the arduino-pico core (by Earle Philhower). Standard Arduino functions like Serial, digitalWrite, analogRead, and I2C/SPI work out of the box.',
+    a: 'Yes. SoundMind compiles your .ino sketch using the arduino-pico core (by Earle Philhower). Standard Arduino functions like Serial, digitalWrite, analogRead, and I2C/SPI work out of the box.',
   },
   {
     q: 'What components work with Pico simulation?',
@@ -62,7 +62,7 @@ const JSON_LD: object[] = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Velxio', item: 'https://velxio.dev/' },
+      { '@type': 'ListItem', position: 1, name: 'SoundMind', item: 'https://soundmind.dev/' },
       { '@type': 'ListItem', position: 2, name: 'Raspberry Pi Pico Simulator', item: META.url },
     ],
   },

@@ -41,7 +41,7 @@ const FLASH_SIZE    = 4 * 1024 * 1024; // 4 MB — matches firmware's built-in f
 // Python code injected once ">>>" is seen
 const INJECT_CODE = [
   'import sys',
-  'print("velxio_micropython_ok")',
+  'print("soundmind_micropython_ok")',
   'print("py_version:" + sys.version.split(" ")[0])',
   'print("math_check:" + str(6 * 7))',
 ].join('\n');
@@ -123,7 +123,7 @@ function runSimulation(firmware_b64) {
     let   replState    = 'idle';    // idle → banner_seen → prompt_seen → raw_repl_entered
     let   replReady    = false;     // true once ">>>" confirmed (for result reporting)
     let   codeInjected = false;     // true once code bytes sent
-    let   outputOk     = false;     // "velxio_micropython_ok" received
+    let   outputOk     = false;     // "soundmind_micropython_ok" received
     let   mathCheck    = false;     // "math_check:42" received
     let   flashError   = false;     // flash-size warning seen
     let   bootError    = false;     // OSError/_boot.py error seen
@@ -238,9 +238,9 @@ function runSimulation(firmware_b64) {
           if (line.startsWith('MicroPython ')) {
             ok(`MicroPython booted: ${line}`);
           }
-          if (line.includes('velxio_micropython_ok')) {
+          if (line.includes('soundmind_micropython_ok')) {
             outputOk = true;
-            ok('Output marker "velxio_micropython_ok" received ✓');
+            ok('Output marker "soundmind_micropython_ok" received ✓');
           }
           if (line.includes('math_check:42')) {
             mathCheck = true;
@@ -325,7 +325,7 @@ async function main() {
     if (result.flashError)  FAIL('Flash size mismatch — padToFlashSize must produce a 4 MB image for ESP32');
     if (result.bootError)   FAIL('_boot.py OSError — flash not initialised (likely flash size mismatch)');
     if (!result.replReady)  FAIL('MicroPython REPL prompt ">>>" never appeared');
-    if (!result.outputOk)   FAIL('"velxio_micropython_ok" not found in serial output (code injection failed?)');
+    if (!result.outputOk)   FAIL('"soundmind_micropython_ok" not found in serial output (code injection failed?)');
     if (!result.mathCheck)  FAIL('"math_check:42" not found (6*7 computation did not execute)');
 
     if (exitCode === 0) {

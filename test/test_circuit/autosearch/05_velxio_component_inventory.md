@@ -1,11 +1,11 @@
-# Inventario de componentes lógicos y analógicos en Velxio
+# Inventario de componentes lógicos y analógicos en SoundMind
 
 > Auditoría realizada el 2026-04-15 sobre la rama `feature/electrical-simulation-ngspice` (commit `ed9911d`).
 > Objetivo: saber qué compuertas lógicas y componentes analógicos genéricos ya existen, en qué capa, y qué falta.
 
 ## Metodología
 
-Velxio tiene **tres capas independientes** que deben estar alineadas para que un componente sea "completo":
+SoundMind tiene **tres capas independientes** que deben estar alineadas para que un componente sea "completo":
 
 | Capa | Archivo de referencia | Rol |
 |---|---|---|
@@ -123,7 +123,7 @@ Faltan:
 
    **Opciones para arreglar esto** (cualquiera en fase 9):
    - **A.** Extender `component-overrides.json` con una sección nueva `"_customComponents": [ {...metadata...} ]` y modificar `applyOverrides()` para hacer `components.push(...)` al inicio con esas entradas. Así sobrevive a la regeneración.
-   - **B.** Nuevo archivo `scripts/custom-components.json` cargado por el generador en un paso adicional (separa claramente "patches a wokwi-elements" de "componentes propios de Velxio").
+   - **B.** Nuevo archivo `scripts/custom-components.json` cargado por el generador en un paso adicional (separa claramente "patches a wokwi-elements" de "componentes propios de SoundMind").
    - **C.** El generador también escanea `frontend/src/components/components-wokwi/*.ts` y reconoce un patrón (p.ej. export const VELXIO_METADATA = {...}). Más invasivo, pero elimina la duplicación.
 
    **Recomendación:** opción A — mínimo cambio en el generador (~15 líneas), un solo archivo de override, y permite regenerar todo sin miedo a perder entradas custom.

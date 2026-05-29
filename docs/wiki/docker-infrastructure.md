@@ -1,6 +1,6 @@
-# Velxio Docker Infrastructure
+# SoundMind Docker Infrastructure
 
-Complete documentation of the Docker build system, CI/CD pipelines, multi-architecture support, and deployment configuration for the Velxio project.
+Complete documentation of the Docker build system, CI/CD pipelines, multi-architecture support, and deployment configuration for the SoundMind project.
 
 ---
 
@@ -54,7 +54,7 @@ Complete documentation of the Docker build system, CI/CD pipelines, multi-archit
 
 ## Overview
 
-Velxio uses a **multi-stage Docker build** (`Dockerfile.standalone`) that produces a single, self-contained image capable of:
+SoundMind uses a **multi-stage Docker build** (`Dockerfile.standalone`) that produces a single, self-contained image capable of:
 
 - Serving the React frontend via Nginx
 - Running the FastAPI backend via Uvicorn
@@ -64,8 +64,8 @@ Velxio uses a **multi-stage Docker build** (`Dockerfile.standalone`) that produc
 - Running on both **x86_64 (amd64)** and **Apple Silicon / ARM64** hosts
 
 The image is published to two registries:
-- **GitHub Container Registry (GHCR):** `ghcr.io/davidmonterocrespo24/velxio`
-- **Docker Hub:** `docker.io/<username>/velxio`
+- **GitHub Container Registry (GHCR):** `ghcr.io/davidmonterocrespo24/soundmind`
+- **Docker Hub:** `docker.io/<username>/soundmind`
 
 ---
 
@@ -117,7 +117,7 @@ The Dockerfile uses **4 stages** to minimize final image size while building all
 FROM ubuntu:22.04 AS qemu-provider
 
 ARG TARGETARCH
-ARG QEMU_RELEASE_URL=https://github.com/davidmonterocrespo24/velxio/releases/download/qemu-prebuilt
+ARG QEMU_RELEASE_URL=https://github.com/davidmonterocrespo24/soundmind/releases/download/qemu-prebuilt
 ```
 
 **Key details:**
@@ -197,7 +197,7 @@ The git submodule pointers in this repo for `rp2040js` and `wokwi-elements` are 
 
 **Base image:** `python:3.12-slim`
 
-**Purpose:** The final, deployable image that contains everything needed to run Velxio.
+**Purpose:** The final, deployable image that contains everything needed to run SoundMind.
 
 **System packages installed:**
 - `curl`, `ca-certificates` — HTTP requests, SSL
@@ -299,7 +299,7 @@ The GitHub Actions cache (`cache-from: type=gha, cache-to: type=gha,mode=max`) e
 - Push to the `picsimlab-esp32` branch
 - Manual dispatch (`workflow_dispatch`)
 
-This workflow compiles the QEMU shared libraries from the lcgamboa fork (a modified QEMU with ESP32/ESP32-C3 machine emulation) and uploads them as GitHub Release assets to the main Velxio repository.
+This workflow compiles the QEMU shared libraries from the lcgamboa fork (a modified QEMU with ESP32/ESP32-C3 machine emulation) and uploads them as GitHub Release assets to the main SoundMind repository.
 
 ### Matrix Strategy
 
@@ -351,11 +351,11 @@ The workflow has two jobs:
 
 2. **`upload-release`** (runs after both build jobs complete):
    - Downloads both artifact archives
-   - Uploads all files to the `qemu-prebuilt` tag on the `davidmonterocrespo24/velxio` repository
+   - Uploads all files to the `qemu-prebuilt` tag on the `davidmonterocrespo24/soundmind` repository
    - Uses `--clobber` to overwrite existing files if the release already exists
-   - Requires the `VELXIO_RELEASE_TOKEN` secret (a PAT with `contents:write` on the velxio repo)
+   - Requires the `VELXIO_RELEASE_TOKEN` secret (a PAT with `contents:write` on the soundmind repo)
 
-**Release structure at `github.com/davidmonterocrespo24/velxio/releases/tag/qemu-prebuilt`:**
+**Release structure at `github.com/davidmonterocrespo24/soundmind/releases/tag/qemu-prebuilt`:**
 ```
 libqemu-xtensa-amd64.so
 libqemu-xtensa-arm64.so
@@ -399,7 +399,7 @@ The workflow sets up Docker Buildx with QEMU support for cross-platform building
     tags: ${{ steps.meta.outputs.tags }}
     labels: ${{ steps.meta.outputs.labels }}
     build-args: |
-      ESPIDF_IMAGE=ghcr.io/davidmonterocrespo24/velxio-espidf-toolchain:latest
+      ESPIDF_IMAGE=ghcr.io/davidmonterocrespo24/soundmind-espidf-toolchain:latest
     cache-from: type=gha
     cache-to: type=gha,mode=max
 ```
@@ -412,7 +412,7 @@ The workflow sets up Docker Buildx with QEMU support for cross-platform building
 4. Each stage in the Dockerfile is built separately for each architecture
 5. The resulting images are combined into a **multi-arch manifest** and pushed as a single tag
 
-When a user runs `docker pull ghcr.io/davidmonterocrespo24/velxio:master`, Docker automatically selects the correct architecture variant.
+When a user runs `docker pull ghcr.io/davidmonterocrespo24/soundmind:master`, Docker automatically selects the correct architecture variant.
 
 ### Registry Configuration (GHCR + Docker Hub)
 
@@ -428,7 +428,7 @@ The workflow pushes to two registries simultaneously:
     password: ${{ secrets.GITHUB_TOKEN }}
 ```
 - Uses the automatic `GITHUB_TOKEN` — no extra secrets needed
-- Image: `ghcr.io/davidmonterocrespo24/velxio`
+- Image: `ghcr.io/davidmonterocrespo24/soundmind`
 
 **Docker Hub:**
 ```yaml
@@ -439,13 +439,13 @@ The workflow pushes to two registries simultaneously:
     password: ${{ secrets.DOCKERHUB_TOKEN }}
 ```
 - Requires `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` secrets
-- Image: `docker.io/<username>/velxio`
+- Image: `docker.io/<username>/soundmind`
 
 The `docker/metadata-action` generates tags for both registries:
 ```yaml
 images: |
   ghcr.io/${{ env.IMAGE_NAME }}
-  docker.io/${{ secrets.DOCKERHUB_USERNAME }}/velxio
+  docker.io/${{ secrets.DOCKERHUB_USERNAME }}/soundmind
 ```
 
 ### Build Caching with GitHub Actions Cache
@@ -468,13 +468,13 @@ After a successful build:
 ```yaml
 - name: Ping search engines with sitemap
   run: |
-    curl -s "https://www.google.com/ping?sitemap=https%3A%2F%2Fvelxio.dev%2Fsitemap.xml"
-    curl -s "https://www.bing.com/ping?sitemap=https%3A%2F%2Fvelxio.dev%2Fsitemap.xml"
+    curl -s "https://www.google.com/ping?sitemap=https%3A%2F%2Fsoundmind.dev%2Fsitemap.xml"
+    curl -s "https://www.bing.com/ping?sitemap=https%3A%2F%2Fsoundmind.dev%2Fsitemap.xml"
 
 - name: Update Docker Hub description
   uses: peter-evans/dockerhub-description@v4
   with:
-    repository: ${{ secrets.DOCKERHUB_USERNAME }}/velxio
+    repository: ${{ secrets.DOCKERHUB_USERNAME }}/soundmind
     short-description: "Local, open-source Arduino emulator..."
     readme-filepath: ./README.md
 ```
@@ -665,18 +665,18 @@ add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 
 ```yaml
 services:
-  velxio:
+  soundmind:
     build:
       context: .
       dockerfile: Dockerfile.standalone
-    container_name: velxio-dev
+    container_name: soundmind-dev
     restart: unless-stopped
     ports:
       - "3080:80"
     env_file:
       - ./backend/.env
     environment:
-      - DATABASE_URL=sqlite+aiosqlite:////app/data/velxio.db
+      - DATABASE_URL=sqlite+aiosqlite:////app/data/soundmind.db
       - DATA_DIR=/app/data
       - IDF_PATH=/opt/esp-idf
       - IDF_TOOLS_PATH=/root/.espressif
@@ -700,7 +700,7 @@ volumes:
 docker compose up --build       # Build and start
 docker compose up -d            # Start in background (detached)
 docker compose down             # Stop and remove
-docker compose logs -f velxio   # Follow logs
+docker compose logs -f soundmind   # Follow logs
 ```
 
 **Access:** `http://localhost:3080`
@@ -709,23 +709,23 @@ docker compose logs -f velxio   # Follow logs
 
 **Location:** `docker-compose.prod.yml`
 
-Nearly identical to the dev compose file, with `container_name: velxio-app` instead of `velxio-dev`. In production, the image is typically pulled from a registry rather than built locally:
+Nearly identical to the dev compose file, with `container_name: soundmind-app` instead of `soundmind-dev`. In production, the image is typically pulled from a registry rather than built locally:
 
 ```bash
 # Pull and run the pre-built image
 docker run -d \
-  --name velxio \
+  --name soundmind \
   -p 3080:80 \
-  -v velxio-data:/app/data \
+  -v soundmind-data:/app/data \
   -v arduino-libs:/root/.arduino15 \
-  ghcr.io/davidmonterocrespo24/velxio:master
+  ghcr.io/davidmonterocrespo24/soundmind:master
 ```
 
 ### Environment Variables
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `DATABASE_URL` | `sqlite+aiosqlite:////app/data/velxio.db` | SQLAlchemy async database URL |
+| `DATABASE_URL` | `sqlite+aiosqlite:////app/data/soundmind.db` | SQLAlchemy async database URL |
 | `DATA_DIR` | `/app/data` | Directory for persistent data (SQLite DB) |
 | `IDF_PATH` | `/opt/esp-idf` | ESP-IDF framework path |
 | `IDF_TOOLS_PATH` | `/root/.espressif` | ESP-IDF cross-compiler toolchains |
@@ -740,7 +740,7 @@ docker run -d \
 
 | Volume | Mount Point | Purpose |
 |--------|-------------|---------|
-| `./data` (bind mount) | `/app/data` | SQLite database file (`velxio.db`) |
+| `./data` (bind mount) | `/app/data` | SQLite database file (`soundmind.db`) |
 | `arduino-libs` (named volume) | `/root/.arduino15` | arduino-cli config, board cores, libraries |
 
 The bind mount for `./data` allows easy database backup and inspection from the host. The named volume for `arduino-libs` persists board core installations across container restarts.
@@ -788,7 +788,7 @@ healthcheck:
 | Arg | Default | Description |
 |-----|---------|-------------|
 | `TARGETARCH` | (auto-injected by Buildx) | Target architecture: `amd64` or `arm64` |
-| `QEMU_RELEASE_URL` | `https://github.com/davidmonterocrespo24/velxio/releases/download/qemu-prebuilt` | URL prefix for QEMU binary downloads |
+| `QEMU_RELEASE_URL` | `https://github.com/davidmonterocrespo24/soundmind/releases/download/qemu-prebuilt` | URL prefix for QEMU binary downloads |
 | `ESPIDF_IMAGE` | (unused, legacy) | Was used for external ESP-IDF image reference |
 
 ---
@@ -800,33 +800,33 @@ healthcheck:
 ```bash
 # Pull and run (auto-selects amd64 or arm64)
 docker run -d \
-  --name velxio \
+  --name soundmind \
   -p 3080:80 \
-  -v velxio-data:/app/data \
-  -v velxio-arduino:/root/.arduino15 \
-  ghcr.io/davidmonterocrespo24/velxio:master
+  -v soundmind-data:/app/data \
+  -v soundmind-arduino:/root/.arduino15 \
+  ghcr.io/davidmonterocrespo24/soundmind:master
 
 # Open in browser
 open http://localhost:3080
 
 # First boot takes ~2 minutes (downloading arduino board cores)
 # Check progress:
-docker logs -f velxio
+docker logs -f soundmind
 ```
 
 ### Build locally
 
 ```bash
 # Clone the repository
-git clone https://github.com/davidmonterocrespo24/velxio.git
-cd velxio
+git clone https://github.com/davidmonterocrespo24/soundmind.git
+cd soundmind
 
 # Build and run with docker compose
 docker compose up --build
 
 # Or build just the image
-docker build -f Dockerfile.standalone -t velxio .
-docker run -d -p 3080:80 velxio
+docker build -f Dockerfile.standalone -t soundmind .
+docker run -d -p 3080:80 soundmind
 ```
 
 ### Build for a specific architecture
@@ -836,14 +836,14 @@ docker run -d -p 3080:80 velxio
 docker buildx build \
   --platform linux/arm64 \
   -f Dockerfile.standalone \
-  -t velxio:arm64 \
+  -t soundmind:arm64 \
   --load .
 
 # Build for both architectures (requires push to registry)
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
   -f Dockerfile.standalone \
-  -t ghcr.io/user/velxio:latest \
+  -t ghcr.io/user/soundmind:latest \
   --push .
 ```
 
@@ -884,7 +884,7 @@ This strips carriage returns from the file inside the container. No git configur
 
 If running manually inside the container, source it yourself:
 ```bash
-docker exec -it velxio bash
+docker exec -it soundmind bash
 source /opt/esp-idf/export.sh
 ```
 
@@ -901,7 +901,7 @@ libglib2.0-0 libgcrypt20 libslirp0 libpixman-1-0 libfdt1
 
 To debug which dependencies are missing:
 ```bash
-docker exec -it velxio bash
+docker exec -it soundmind bash
 ldd /app/lib/libqemu-xtensa.so
 # Look for "not found" entries
 ```

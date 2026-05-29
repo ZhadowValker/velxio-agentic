@@ -1,7 +1,7 @@
 {
   "name": "test_circuit",
   "version": "0.1.0",
-  "description": "Pure-JS circuit emulator sandbox for Velxio — MNA solver + avr8js integration",
+  "description": "Pure-JS circuit emulator sandbox for SoundMind — MNA solver + avr8js integration",
   "type": "module",
   "scripts": {
     "test": "vitest run",

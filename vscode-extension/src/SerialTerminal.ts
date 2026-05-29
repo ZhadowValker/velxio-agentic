@@ -27,7 +27,7 @@ export class SerialTerminal {
       onDidWrite: this.writeEmitter.event,
       onDidClose: this.closeEmitter.event,
       open: () => {
-        this.writeEmitter.fire(`\x1b[36m--- Velxio Serial Monitor (${boardName}) ---\x1b[0m\r\n`);
+        this.writeEmitter.fire(`\x1b[36m--- SoundMind Serial Monitor (${boardName}) ---\x1b[0m\r\n`);
       },
       close: () => {
         this.terminal = null;
@@ -40,7 +40,7 @@ export class SerialTerminal {
     };
 
     this.terminal = vscode.window.createTerminal({
-      name: `Velxio Serial (${boardName})`,
+      name: `SoundMind Serial (${boardName})`,
       pty,
       iconPath: new vscode.ThemeIcon('circuit-board'),
     });

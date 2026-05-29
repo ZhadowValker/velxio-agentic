@@ -17,7 +17,7 @@ import { AppHeader } from '../components/layout/AppHeader';
 import { CircuitPreview } from '../components/examples/CircuitPreview';
 import { useSEO } from '../utils/useSEO';
 
-const DOMAIN = 'https://velxio.dev';
+const DOMAIN = 'https://soundmind.dev';
 
 const BOARD_LABELS: Record<string, string> = {
   'arduino-uno': 'Arduino Uno',
@@ -52,8 +52,8 @@ export const ExampleDetailPage: React.FC = () => {
 
   // SEO — called unconditionally (hooks must not be inside conditionals).
   const seoTitle = example
-    ? `${example.title} — Free Arduino Simulator Example | Velxio`
-    : 'Example Not Found | Velxio';
+    ? `${example.title} — Free Arduino Simulator Example | SoundMind`
+    : 'Example Not Found | SoundMind';
 
   const boardLabel = example
     ? (BOARD_LABELS[example.boardType ?? 'arduino-uno'] ?? example.boardType ?? 'Arduino Uno')
@@ -145,7 +145,7 @@ export const ExampleDetailPage: React.FC = () => {
           style={{ width: '100%', maxWidth: 760, marginBottom: 32, fontSize: 13, color: '#666' }}
         >
           <Link to="/" style={{ color: '#666', textDecoration: 'none' }}>
-            Velxio
+            SoundMind
           </Link>
           {' / '}
           <Link to="/examples" style={{ color: '#666', textDecoration: 'none' }}>
@@ -364,7 +364,7 @@ export const ExampleDetailPage: React.FC = () => {
               url: `${DOMAIN}/examples/${example.id}`,
               educationalLevel: example.difficulty,
               learningResourceType: 'Simulation',
-              provider: { '@type': 'Organization', name: 'Velxio', url: DOMAIN },
+              provider: { '@type': 'Organization', name: 'SoundMind', url: DOMAIN },
               about: { '@type': 'Thing', name: boardLabel },
             }),
           }}

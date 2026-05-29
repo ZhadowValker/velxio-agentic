@@ -1,6 +1,6 @@
 # Electrical Simulation — User Guide
 
-Velxio can now simulate **real electrical behaviour** of your circuits alongside the Arduino/ESP32/RP2040 sketch you are running. Voltages are computed by a full SPICE engine (ngspice) running in your browser.
+SoundMind can now simulate **real electrical behaviour** of your circuits alongside the Arduino/ESP32/RP2040 sketch you are running. Voltages are computed by a full SPICE engine (ngspice) running in your browser.
 
 ## Enabling it
 
@@ -66,7 +66,7 @@ Some circuits, especially those with many non-linear devices (BJTs / MOSFETs), c
 
 ### The ⚡ button isn't showing
 
-Electrical simulation may have been disabled at build time via `VITE_ELECTRICAL_SIM=false`. This is an ops/admin-level flag; ask your Velxio deployer.
+Electrical simulation may have been disabled at build time via `VITE_ELECTRICAL_SIM=false`. This is an ops/admin-level flag; ask your SoundMind deployer.
 
 ## Performance
 
@@ -82,7 +82,7 @@ Solves are debounced 50 ms so interactive edits feel instant.
 
 - The ngspice engine is loaded **lazily, client-side only**. Nothing about your circuit is sent to our servers.
 - Once downloaded, the engine is cached by your browser. Subsequent uses are free.
-- If you are on a metered connection, you can keep the ⚡ button off. Everything else about Velxio still works exactly as before.
+- If you are on a metered connection, you can keep the ⚡ button off. Everything else about SoundMind still works exactly as before.
 
 ## Advanced: inspecting the netlist
 

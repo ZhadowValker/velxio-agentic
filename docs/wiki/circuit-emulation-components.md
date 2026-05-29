@@ -191,7 +191,7 @@ For flip-flops / latches, pair the above with a voltage-controlled switch (`S-el
 
 ## Integrated circuits (not yet modeled)
 
-For the Velxio integration, these will need either ngspice `.subckt` macromodels (many available in vendor-provided SPICE libraries) or behavioral B-source blocks:
+For the SoundMind integration, these will need either ngspice `.subckt` macromodels (many available in vendor-provided SPICE libraries) or behavioral B-source blocks:
 
 - 555 timer — vendor .subckt or our relaxation-osc behavioral model
 - Shift registers (74HC595) — behavioral gate network, clocked switches
@@ -323,7 +323,7 @@ Implemented via a shared `edgeTriggeredFF` helper that tracks the previous CLK s
 
 ## The `_customComponents` mechanism
 
-Velxio-specific parts (everything not defined in `wokwi-libs/wokwi-elements`) are declared in `scripts/component-overrides.json` under the `_customComponents[]` array. The metadata generator ([`scripts/generate-component-metadata.ts`](../../scripts/generate-component-metadata.ts), function `applyOverrides`) injects them before the standard property-patching loop. An entry must have: `id`, `tagName`, `name`, `category`, `pinCount`, `tags` — other fields default.
+SoundMind-specific parts (everything not defined in `wokwi-libs/wokwi-elements`) are declared in `scripts/component-overrides.json` under the `_customComponents[]` array. The metadata generator ([`scripts/generate-component-metadata.ts`](../../scripts/generate-component-metadata.ts), function `applyOverrides`) injects them before the standard property-patching loop. An entry must have: `id`, `tagName`, `name`, `category`, `pinCount`, `tags` — other fields default.
 
 Example:
 

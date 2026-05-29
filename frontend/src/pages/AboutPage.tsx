@@ -4,15 +4,15 @@ import { useSEO } from '../utils/useSEO';
 import { getSeoMeta } from '../seoRoutes';
 import './AboutPage.css';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/velxio';
+const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/davidmonterocrespo24';
 const GITHUB_PROFILE = 'https://github.com/davidmonterocrespo24';
 const MEDIUM_URL = 'https://medium.com/@davidmonterocrespo24';
 const MEDIUM_ARTICLE_URL =
-  'https://medium.com/@davidmonterocrespo24/velxio-architecture-and-development-of-a-strictly-local-execution-microcontroller-emulator-62b4c1157a72';
+  'https://medium.com/@davidmonterocrespo24/soundmind-architecture-and-development-of-a-strictly-local-execution-microcontroller-emulator-62b4c1157a72';
 const HN_THREAD_V2 = 'https://news.ycombinator.com/item?id=47548013';
-const PRODUCT_HUNT_URL = 'https://www.producthunt.com/products/velxio';
-const HACKADAY_URL = 'https://hackaday.io/project/205186-velxio-browser-based-arduino-emulator';
+const PRODUCT_HUNT_URL = 'https://www.producthunt.com/products/soundmind';
+const HACKADAY_URL = 'https://hackaday.io/project/205186-soundmind-browser-based-arduino-emulator';
 const REDDIT_URL =
   'https://www.reddit.com/r/esp32/comments/1s2naya/a_browserbased_esp32_emulator_using_qemu_supports/';
 
@@ -57,9 +57,9 @@ export const AboutPage: React.FC = () => {
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'AboutPage',
-      name: 'About Velxio',
-      description: 'Learn about Velxio and its creator David Montero Crespo.',
-      url: 'https://velxio.dev/about',
+      name: 'About SoundMind',
+      description: 'Learn about SoundMind and its creator David Montero Crespo.',
+      url: 'https://soundmind.dev/about',
     },
   });
 
@@ -70,7 +70,7 @@ export const AboutPage: React.FC = () => {
       {/* Hero */}
       <section className="about-hero">
         <div className="about-hero-inner">
-          <h1 className="about-hero-title">About Velxio</h1>
+          <h1 className="about-hero-title">About SoundMind</h1>
           <p className="about-hero-sub">
             A free, open-source embedded systems emulator — built by a single developer with a
             passion for hardware and open source.
@@ -84,7 +84,7 @@ export const AboutPage: React.FC = () => {
           <div className="about-story">
             <h2 className="about-heading">The Story</h2>
             <p>
-              Velxio started as a personal exploration into how microcontroller emulators work
+              SoundMind started as a personal exploration into how microcontroller emulators work
               internally — CPU instructions, memory management, peripheral timing, and low-level
               architecture. What began as a learning project during a vacation quickly grew into
               something bigger.
@@ -98,12 +98,12 @@ export const AboutPage: React.FC = () => {
               </strong>
             </p>
             <p>
-              Velxio v1 launched on Product Hunt and Hacker News, supporting Arduino Uno and
+              SoundMind v1 launched on Product Hunt and Hacker News, supporting Arduino Uno and
               Raspberry Pi Pico. The feedback from the maker and embedded community was incredible —
               and it pushed the project forward.
             </p>
             <p>
-              <strong>Velxio 2.0</strong> shipped with ESP32 emulation via QEMU (using the lcgamboa
+              <strong>SoundMind 2.0</strong> shipped with ESP32 emulation via QEMU (using the lcgamboa
               fork), a Raspberry Pi 3 running real Linux, RISC-V support for ESP32-C3 and CH32V003,
               realistic sensor simulation (DHT22, HC-SR04, WS2812B NeoPixel), and 19 boards across 5
               CPU architectures — all running real compiled code.
@@ -184,7 +184,7 @@ export const AboutPage: React.FC = () => {
         <div className="about-container">
           <h2 className="about-heading">Open Source Philosophy</h2>
           <p>
-            Velxio is <strong>100% open source</strong> under the AGPLv3 license. No cloud
+            SoundMind is <strong>100% open source</strong> under the AGPLv3 license. No cloud
             dependency, no student accounts, no data leaving your network. Universities and
             bootcamps can deploy it on their own servers with a single Docker command and give every
             student access to a complete embedded development environment — for free.
@@ -231,11 +231,11 @@ export const AboutPage: React.FC = () => {
             </li>
           </ul>
           <p>
-            Velxio was inspired by{' '}
+            SoundMind was inspired by{' '}
             <a href="https://wokwi.com" target="_blank" rel="noopener noreferrer">
               Wokwi
             </a>
-            , which is a fantastic tool. The goal of Velxio is to take a different path: fully open
+            , which is a fantastic tool. The goal of SoundMind is to take a different path: fully open
             source, self-hostable, and supporting multiple heterogeneous boards in the same circuit.
           </p>
         </div>
@@ -428,7 +428,7 @@ export const AboutPage: React.FC = () => {
       {/* CTA */}
       <section className="about-cta">
         <div className="about-container">
-          <h2>Ready to try Velxio?</h2>
+          <h2>Ready to try SoundMind?</h2>
           <p>No signup required. Runs 100% in your browser. Free and open source.</p>
           <div className="about-cta-btns">
             <Link to="/editor" className="about-btn-primary">
@@ -450,7 +450,7 @@ export const AboutPage: React.FC = () => {
       <footer className="landing-footer">
         <div className="footer-brand">
           <IcoChip />
-          <span>Velxio</span>
+          <span>SoundMind</span>
         </div>
         <div className="footer-links">
           <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">

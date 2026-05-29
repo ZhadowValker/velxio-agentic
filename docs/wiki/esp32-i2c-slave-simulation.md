@@ -1,7 +1,7 @@
 # ESP32 I2C Slave Simulation — Investigation, Root Causes & Fixes
 
 > **Scope**: This document covers the full debugging journey and all fixes applied to make
-> I2C sensor simulation work correctly in the lcgamboa QEMU ESP32 emulation layer used by Velxio.
+> I2C sensor simulation work correctly in the lcgamboa QEMU ESP32 emulation layer used by SoundMind.
 > Specifically, it documents the work to make `Adafruit_MPU6050::begin()` and `Adafruit_BMP280::begin()`
 > return `true` so that the serial monitor shows real sensor data instead of "MPU6050 not found!" /
 > "BMP280 not found! Check wiring.".
@@ -28,7 +28,7 @@
 
 ## 1. Background
 
-The Velxio ESP32 simulation runs on the [lcgamboa fork of QEMU](https://github.com/lcgamboa/qemu)
+The SoundMind ESP32 simulation runs on the [lcgamboa fork of QEMU](https://github.com/lcgamboa/qemu)
 (`wokwi-libs/qemu-lcgamboa`), which exposes a set of C callback hooks called **picsimlab hooks**.
 These allow Python code to respond to hardware events — GPIO changes, UART bytes, and I2C
 transactions — without modifying QEMU itself.

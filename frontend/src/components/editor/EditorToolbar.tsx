@@ -273,7 +273,7 @@ export const EditorToolbar = ({
         boardType: legacyBoardType,
       } = useSimulatorStore.getState();
       const projectName =
-        files.find((f) => f.name.endsWith('.ino'))?.name.replace('.ino', '') || 'velxio-project';
+        files.find((f) => f.name.endsWith('.ino'))?.name.replace('.ino', '') || 'soundmind-project';
       await exportToWokwiZip(files, components, wires, legacyBoardType, projectName, boardPosition);
     } catch (err) {
       setMessage({ type: 'error', text: 'Export failed.' });
@@ -657,9 +657,9 @@ export const EditorToolbar = ({
                     onClick={() => hasIp && window.open(gatewayUrl, '_blank')}
                     title={
                       hasIp
-                        ? `WiFi: ${activeBoard.wifiStatus.ssid ?? 'Velxio-GUEST'} — IP: ${activeBoard.wifiStatus.ip}\nClick to open IoT Gateway ↗`
+                        ? `WiFi: ${activeBoard.wifiStatus.ssid ?? 'SoundMind-GUEST'} — IP: ${activeBoard.wifiStatus.ip}\nClick to open IoT Gateway ↗`
                         : status === 'connected'
-                          ? `WiFi: ${activeBoard.wifiStatus.ssid ?? 'Velxio-GUEST'} — Connecting...`
+                          ? `WiFi: ${activeBoard.wifiStatus.ssid ?? 'SoundMind-GUEST'} — Connecting...`
                           : status === 'initializing'
                             ? 'WiFi: Initializing...'
                             : 'WiFi: Disconnected'

@@ -59,9 +59,9 @@ export interface DiagramPart {
 /** [fromPin, toPin, wireColor, routingHints?] */
 export type DiagramConnection = [string, string, string, string[]?];
 
-/** velxio.toml parsed config */
-export interface VelxioConfig {
-  velxio: {
+/** soundmind.toml parsed config */
+export interface SoundMindConfig {
+  soundmind: {
     version: number;
     board?: string;
     firmware?: string;

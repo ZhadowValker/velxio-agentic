@@ -68,7 +68,7 @@ export class ComponentRegistry {
       // Inject Raspberry Pi 3 metadata
       data.components.push({
         id: 'raspberry-pi-3',
-        tagName: 'velxio-raspberry-pi-3',
+        tagName: 'soundmind-raspberry-pi-3',
         name: 'Raspberry Pi 3',
         category: 'boards',
         description: 'Raspberry Pi 3 Model B with 40-pin GPIO. Connects to backend QEMU simulator.',
@@ -80,13 +80,13 @@ export class ComponentRegistry {
         tags: ['raspberry', 'pi', 'rp3', 'board', 'qemu', 'linux'],
       });
 
-      // Inject SPICE probe instruments — these are Velxio-specific React
+      // Inject SPICE probe instruments — these are SoundMind-specific React
       // components (not wokwi web elements), so they have no auto-generated
       // metadata but still need a registry entry so the picker can offer
       // them and the canvas can resolve them by id.
       data.components.push({
         id: 'instr-voltmeter',
-        tagName: 'velxio-instr-voltmeter',
+        tagName: 'soundmind-instr-voltmeter',
         name: 'Voltmeter',
         category: 'analog',
         description:
@@ -100,7 +100,7 @@ export class ComponentRegistry {
       });
       data.components.push({
         id: 'instr-ammeter',
-        tagName: 'velxio-instr-ammeter',
+        tagName: 'soundmind-instr-ammeter',
         name: 'Ammeter',
         category: 'analog',
         description:

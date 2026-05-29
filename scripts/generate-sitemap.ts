@@ -10,7 +10,7 @@ import { resolve } from 'path';
 // Import the single source of truth
 import { SEO_ROUTES } from '../frontend/src/seoRoutes';
 
-const DOMAIN = 'https://velxio.dev';
+const DOMAIN = 'https://soundmind.dev';
 const TODAY = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 
 const indexableRoutes = SEO_ROUTES.filter((r) => !r.noindex);

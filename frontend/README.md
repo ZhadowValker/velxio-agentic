@@ -61,7 +61,7 @@ npm run lint
 frontend/
 ├── src/
 │   ├── components/
-│   │   ├── velxio-components/    # React wrappers for wokwi-elements + Velxio-original parts
+│   │   ├── soundmind-components/    # React wrappers for wokwi-elements + SoundMind-original parts
 │   │   ├── editor/               # Monaco Editor components
 │   │   │   ├── CodeEditor.tsx
 │   │   │   └── EditorToolbar.tsx
@@ -120,7 +120,7 @@ resolve: {
 
 ### Component System
 Components are Web Components from wokwi-elements:
-1. React wrappers in `velxio-components/`
+1. React wrappers in `soundmind-components/`
 2. Dynamic loading via ComponentRegistry
 3. Pin info extracted from component metadata
 4. State updates via refs and callbacks
@@ -158,7 +158,7 @@ See [backend documentation](../backend/README.md) for API details.
    ls ../wokwi-libs/wokwi-elements/src/
    ```
 
-2. Create React wrapper in `src/components/velxio-components/`:
+2. Create React wrapper in `src/components/soundmind-components/`:
    ```typescript
    import React, { useRef, useEffect } from 'react';
 

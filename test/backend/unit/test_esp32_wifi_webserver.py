@@ -17,7 +17,7 @@ import unittest
 WEBSERVER_SKETCH = r'''#include <WiFi.h>
 #include <WebServer.h>
 
-const char* ssid = "Velxio-GUEST";
+const char* ssid = "SoundMind-GUEST";
 const char* password = "";
 
 WebServer server(80);
@@ -49,8 +49,8 @@ void loop() {
 
 # Simulated QEMU serial output for this sketch
 SIMULATED_SERIAL_OUTPUT = """I (432) wifi:wifi sta start
-I (500) wifi:new:Velxio-GUEST, old: , ASSOC
-I (800) wifi:connected with Velxio-GUEST, aid = 1, channel 6
+I (500) wifi:new:SoundMind-GUEST, old: , ASSOC
+I (800) wifi:connected with SoundMind-GUEST, aid = 1, channel 6
 I (1200) esp_netif_handlers: sta ip: 192.168.4.2, mask: 255.255.255.0
 Conectando...
 Conectado!
@@ -68,8 +68,8 @@ class TestSketchStructure(unittest.TestCase):
     def test_has_webserver_include(self):
         self.assertIn('#include <WebServer.h>', WEBSERVER_SKETCH)
 
-    def test_uses_velxio_guest_ssid(self):
-        self.assertIn('"Velxio-GUEST"', WEBSERVER_SKETCH)
+    def test_uses_soundmind_guest_ssid(self):
+        self.assertIn('"SoundMind-GUEST"', WEBSERVER_SKETCH)
 
     def test_empty_password(self):
         self.assertIn('password = ""', WEBSERVER_SKETCH)
@@ -184,12 +184,12 @@ class TestSerialOutputParsing(unittest.TestCase):
         wifi_events, _ = parse_serial_text(SIMULATED_SERIAL_OUTPUT)
         self.assertEqual(wifi_events[0]['status'], 'initializing')
 
-    def test_connected_event_has_velxio_guest_ssid(self):
+    def test_connected_event_has_soundmind_guest_ssid(self):
         from app.services.wifi_status_parser import parse_serial_text
         wifi_events, _ = parse_serial_text(SIMULATED_SERIAL_OUTPUT)
         connected = [e for e in wifi_events if e['status'] == 'connected']
         self.assertTrue(len(connected) > 0)
-        self.assertIn('Velxio-GUEST', connected[0].get('ssid', ''))
+        self.assertIn('SoundMind-GUEST', connected[0].get('ssid', ''))
 
     def test_got_ip_event_has_correct_ip(self):
         from app.services.wifi_status_parser import parse_serial_text

@@ -31,7 +31,7 @@ if (!existsSync(join(distDir, 'index.html'))) {
 }
 
 const baseHtml = readFileSync(join(distDir, 'index.html'), 'utf-8');
-const DOMAIN = 'https://velxio.dev';
+const DOMAIN = 'https://soundmind.dev';
 
 // ── Mock browser globals for SSR ────────────────────────────────────────────
 // Zustand's persist middleware and some components access these at import time.

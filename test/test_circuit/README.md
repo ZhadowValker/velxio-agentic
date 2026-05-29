@@ -1,6 +1,6 @@
 # test_circuit — sandbox de emulación de circuitos
 
-Sandbox para validar la emulación de circuitos analógicos + digitales + Arduino en JS puro antes de tocar Velxio.
+Sandbox para validar la emulación de circuitos analógicos + digitales + Arduino en JS puro antes de tocar SoundMind.
 
 ## Estructura
 
@@ -10,7 +10,7 @@ test_circuit/
 ├── src/
 │   ├── solver/             # MNA hand-rolled (legacy, baseline)
 │   ├── components/         # Modelos JS (legacy, baseline)
-│   ├── avr/                # AVRHarness (avr8js estilo Velxio)
+│   ├── avr/                # AVRHarness (avr8js estilo SoundMind)
 │   └── spice/              # SpiceEngine (ngspice-WASM) + AVRSpiceBridge
 ├── test/                   # Vitest tests
 │   ├── passive.test.js               # baseline JS

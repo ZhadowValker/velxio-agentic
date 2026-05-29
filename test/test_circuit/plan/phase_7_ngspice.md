@@ -25,7 +25,7 @@ Tras la primera iteración con el solver MNA hand-rolled, el usuario pidió **no
 ### Vigente
 
 - `src/avr/` — AVRHarness, parser Intel HEX, mini-assembler. Sin cambios.
-- `fixtures/blink.hex` — sigue siendo la misma .hex que Velxio usa.
+- `fixtures/blink.hex` — sigue siendo la misma .hex que SoundMind usa.
 - Plan phases 0–6 como referencia histórica.
 
 ### Nuevo

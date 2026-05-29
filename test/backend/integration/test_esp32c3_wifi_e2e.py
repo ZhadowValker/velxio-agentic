@@ -156,7 +156,7 @@ class TestEsp32C3Compilation(unittest.TestCase):
         self.assertGreater(os.path.getsize(paths['app']), 100000)
 
     def test_wifi_connect_compiles_for_c3(self):
-        sketch = '#include <WiFi.h>\nvoid setup() { WiFi.begin("Velxio-GUEST","",6); }\nvoid loop() {}'
+        sketch = '#include <WiFi.h>\nvoid setup() { WiFi.begin("SoundMind-GUEST","",6); }\nvoid loop() {}'
         paths = compile_sketch(sketch, fqbn='esp32:esp32:esp32c3')
         self.assertGreater(os.path.getsize(paths['app']), 100000)
 
@@ -165,7 +165,7 @@ class TestEsp32C3Compilation(unittest.TestCase):
 #include <WebServer.h>
 WebServer server(80);
 void setup() {
-  WiFi.begin("Velxio-GUEST","",6);
+  WiFi.begin("SoundMind-GUEST","",6);
   server.on("/",[](){server.send(200,"text/html","<h1>C3</h1>");});
   server.begin();
 }
@@ -178,7 +178,7 @@ void loop() { server.handleClient(); }
         sketch = """#include <BLEDevice.h>
 #include <BLEServer.h>
 void setup() {
-  BLEDevice::init("Velxio-C3");
+  BLEDevice::init("SoundMind-C3");
   BLEDevice::getAdvertising()->start();
 }
 void loop() { delay(2000); }
@@ -187,7 +187,7 @@ void loop() { delay(2000); }
         self.assertGreater(os.path.getsize(paths['app']), 100000)
 
     def test_wifi_connect_compiles_for_xtensa(self):
-        sketch = '#include <WiFi.h>\nvoid setup() { WiFi.begin("Velxio-GUEST","",6); }\nvoid loop() {}'
+        sketch = '#include <WiFi.h>\nvoid setup() { WiFi.begin("SoundMind-GUEST","",6); }\nvoid loop() {}'
         paths = compile_sketch(sketch, fqbn='esp32:esp32:esp32')
         self.assertGreater(os.path.getsize(paths['app']), 100000)
 

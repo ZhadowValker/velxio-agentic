@@ -15,15 +15,15 @@ import type { ComponentMetadata, ComponentCategory } from '../types/component-me
 import type { BoardKind } from '../types/board';
 import { BOARD_KIND_LABELS } from '../types/board';
 import raspberryPi3Svg from '../assets/Raspberry_Pi_3_illustration.svg';
-import { Attiny85 } from './velxio-components/Attiny85';
-import './velxio-components/Esp32Element'; // registers velxio-esp32
-import './velxio-components/PiPicoWElement'; // registers velxio-pi-pico-w
+import { Attiny85 } from './soundmind-components/Attiny85';
+import './soundmind-components/Esp32Element'; // registers soundmind-esp32
+import './soundmind-components/PiPicoWElement'; // registers soundmind-pi-pico-w
 // Register every wokwi tag that the picker might try to instantiate as a
 // thumbnail. The picker calls `document.createElement(tagName)`, so any tag
 // that isn't already a registered custom element renders as an empty
 // HTMLUnknownElement (blank card preview).
 import '@wokwi/elements';
-import '../velxio-elements';
+import '../soundmind-elements';
 import './ComponentPickerModal.css';
 
 interface ComponentPickerModalProps {
@@ -297,7 +297,7 @@ interface ComponentCardProps {
 const PASSIVE_TAGS = new Set([
   'wokwi-resistor',
   'wokwi-capacitor',
-  'velxio-capacitor-electrolytic',
+  'soundmind-capacitor-electrolytic',
   'wokwi-inductor',
 ]);
 
@@ -388,17 +388,17 @@ const BOARD_TAG: Partial<Record<BoardKind, string>> = {
   'arduino-nano': 'wokwi-arduino-nano',
   'arduino-mega': 'wokwi-arduino-mega',
   'raspberry-pi-pico': 'wokwi-nano-rp2040-connect',
-  'pi-pico-w': 'velxio-pi-pico-w',
-  esp32: 'velxio-esp32',
-  'esp32-devkit-c-v4': 'velxio-esp32',
-  'esp32-cam': 'velxio-esp32',
-  'wemos-lolin32-lite': 'velxio-esp32',
-  'esp32-s3': 'velxio-esp32',
-  'xiao-esp32-s3': 'velxio-esp32',
-  'arduino-nano-esp32': 'velxio-esp32',
-  'esp32-c3': 'velxio-esp32',
-  'xiao-esp32-c3': 'velxio-esp32',
-  'aitewinrobot-esp32c3-supermini': 'velxio-esp32',
+  'pi-pico-w': 'soundmind-pi-pico-w',
+  esp32: 'soundmind-esp32',
+  'esp32-devkit-c-v4': 'soundmind-esp32',
+  'esp32-cam': 'soundmind-esp32',
+  'wemos-lolin32-lite': 'soundmind-esp32',
+  'esp32-s3': 'soundmind-esp32',
+  'xiao-esp32-s3': 'soundmind-esp32',
+  'arduino-nano-esp32': 'soundmind-esp32',
+  'esp32-c3': 'soundmind-esp32',
+  'xiao-esp32-c3': 'soundmind-esp32',
+  'aitewinrobot-esp32c3-supermini': 'soundmind-esp32',
 };
 
 interface BoardCardProps {

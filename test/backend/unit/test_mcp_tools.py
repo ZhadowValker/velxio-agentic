@@ -1,5 +1,5 @@
 """
-Tests for the Velxio MCP server tools.
+Tests for the SoundMind MCP server tools.
 
 These tests exercise the tool functions directly (without a running MCP transport)
 and mock the ArduinoCLIService to avoid requiring arduino-cli to be installed.
@@ -203,7 +203,7 @@ class TestExportWokwiJson:
         result = await export_wokwi_json(circuit)
         assert "parts" in result
         assert "connections" in result
-        assert result["editor"] == "velxio"
+        assert result["editor"] == "soundmind"
 
     @pytest.mark.asyncio
     async def test_invalid_input(self):

@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     SECRET_KEY: str = "change-me-in-production-use-a-long-random-string"
-    DATABASE_URL: str = "sqlite+aiosqlite:///./velxio.db"
+    DATABASE_URL: str = "sqlite+aiosqlite:///./soundmind.db"
     DATA_DIR: str = "."
     GOOGLE_CLIENT_ID: str = ""
     GOOGLE_CLIENT_SECRET: str = ""

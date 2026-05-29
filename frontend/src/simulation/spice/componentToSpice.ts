@@ -1,5 +1,5 @@
 /**
- * Map Velxio components (identified by `metadataId`) to SPICE netlist cards.
+ * Map SoundMind components (identified by `metadataId`) to SPICE netlist cards.
  *
  * Public contract:
  *   componentToSpice(comp, netLookup, context)
@@ -101,7 +101,7 @@ function ntcResistance(Tc: number, R0 = 10_000, T0 = 298.15, beta = 3950): numbe
 // ── Mappers (one per metadataId) ───────────────────────────────────────────
 
 const MAPPERS: Record<string, Mapper> = {
-  // Passive — Velxio existing parts
+  // Passive — SoundMind existing parts
   resistor: (comp, netLookup) => {
     const pins = twoPin(comp, netLookup, '1', '2');
     if (!pins) return null;
@@ -1144,7 +1144,7 @@ for (const [presetId, baseId] of Object.entries(PASSIVE_PRESETS)) {
 }
 
 /**
- * Public entry: map one Velxio component to SPICE cards.
+ * Public entry: map one SoundMind component to SPICE cards.
  * Returns null if we have no mapping for this metadataId (caller should
  * skip the component gracefully — it just won't participate in the solve).
  */

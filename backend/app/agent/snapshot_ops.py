@@ -862,7 +862,7 @@ def _resolve_entity_id(snapshot: ProjectSnapshotV2, entity_id: str) -> str | Non
     if raw in ids:
         return raw
 
-    normalized = raw.removeprefix("wokwi-").removeprefix("velxio-")
+    normalized = raw.removeprefix("wokwi-").removeprefix("soundmind-")
     if normalized in ids:
         return normalized
 

@@ -24,7 +24,7 @@ import { runNetlist } from '../src/spice/SpiceEngine.js';
  * been driven by analogWrite, pm.getPinState(9) returns false → NO V source
  * is stamped on pin 9):
  *
- *     * Velxio circuit @ ...
+ *     * SoundMind circuit @ ...
  *     R_r1 n0 n1 10000
  *     C_c1 n1 0 10u IC=0
  *     .op

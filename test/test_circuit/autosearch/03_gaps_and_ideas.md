@@ -15,7 +15,7 @@
 - **GMIN stepping**: empezar con `GMIN` grande (1e-3) y reducirlo iterativamente. Truco clásico de SPICE para mejorar convergencia.
 - **Matriz dispersa**: para > 50 nodos, cambiar a sparse CSR (librería `mathjs` o nativa). No urgente; nuestros circuitos son pequeños.
 
-## Integración Velxio
+## Integración SoundMind
 
 ### 1. Parseo automático de `useSimulatorStore.wires[]` → `Circuit`
 

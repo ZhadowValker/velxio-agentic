@@ -1,6 +1,6 @@
 # Analytics Events
 
-Velxio uses **Google Analytics 4 (GA4)** to measure key user interactions. Events are fired via `gtag` and should be marked as **Key Events** in the GA4 dashboard to track conversions and engagement.
+SoundMind uses **Google Analytics 4 (GA4)** to measure key user interactions. Events are fired via `gtag` and should be marked as **Key Events** in the GA4 dashboard to track conversions and engagement.
 
 The tracking utility lives in [`frontend/src/utils/analytics.ts`](../frontend/src/utils/analytics.ts).
 
@@ -59,7 +59,7 @@ Fired when code compilation starts (user clicks the **Compile** button).
 
 ### `visit_github`
 
-Fired when a user clicks any link pointing to the Velxio GitHub repository.
+Fired when a user clicks any link pointing to the SoundMind GitHub repository.
 
 | Property         | Value           |
 |------------------|-----------------|

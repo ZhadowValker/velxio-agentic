@@ -1,9 +1,9 @@
 {
-  "name": "velxio-e2e-tests",
+  "name": "soundmind-e2e-tests",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "E2E test dependencies for Velxio simulator",
+  "description": "E2E test dependencies for SoundMind simulator",
   "dependencies": {
     "eecircuit-engine": "^1.7.0",
     "rp2040js": "^1.3.0"

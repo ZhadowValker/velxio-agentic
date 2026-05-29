@@ -5,7 +5,7 @@ import { useProjectStore } from '../../store/useProjectStore';
 import { ShareModal } from './ShareModal';
 import { trackVisitGitHub, trackVisitDiscord } from '../../utils/analytics';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/velxio';
+const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
 const DISCORD_URL = 'https://discord.gg/3mARjJrh4E';
 
 interface AppHeaderProps {}
@@ -52,7 +52,7 @@ export const AppHeader: React.FC<AppHeaderProps> = () => {
           <div className="header-brand">
             <img src="/favicon.svg" alt="" style={{ width: 32, height: 32 }} />
             <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <span className="header-title" style={{ color: '#f8fafc', fontWeight: 800 }}>IntelliBoard</span>
+              <span className="header-title" style={{ color: '#f8fafc', fontWeight: 800 }}>SoundMind</span>
             </Link>
           </div>
 

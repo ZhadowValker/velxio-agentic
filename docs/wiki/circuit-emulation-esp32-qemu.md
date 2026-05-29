@@ -1,6 +1,6 @@
 # ESP32 family — QEMU Waveform Injection for the SAR ADC
 
-> How Velxio achieves per-read ADC fidelity on ESP32 / ESP32-S3 / ESP32-C3,
+> How SoundMind achieves per-read ADC fidelity on ESP32 / ESP32-S3 / ESP32-C3,
 > the QEMU-side data contract, the WebSocket protocol that delivers
 > waveforms to the subprocess, and how to rebuild `qemu-lcgamboa` when you
 > change the C code.

@@ -1,8 +1,8 @@
-# IntelliBoard Agentic Layer Methodology
+# SoundMind Agentic Layer Methodology
 
 ## Overview
 
-The IntelliBoard agentic layer is an autonomous embedded hardware engineering agent that designs circuits, writes firmware, compiles, debugs, and simulates directly on the IntelliBoard canvas. It is built on **Pydantic AI** with a structured methodology emphasizing **operation-based mutations**, **deterministic safety**, and **streaming observability**.
+The SoundMind agentic layer is an autonomous embedded hardware engineering agent that designs circuits, writes firmware, compiles, debugs, and simulates directly on the SoundMind canvas. It is built on **Pydantic AI** with a structured methodology emphasizing **operation-based mutations**, **deterministic safety**, and **streaming observability**.
 
 ---
 
@@ -14,7 +14,7 @@ The agent follows a strict **operation-based** (rather than state-based) mutatio
 
 ```
 Traditional approach: Agent generates full JSON → replaces entire state
-IntelliBoard approach: Agent calls granular tools → each tool performs single operation
+SoundMind approach: Agent calls granular tools → each tool performs single operation
 ```
 
 **Rationale:**
@@ -434,7 +434,7 @@ with agent.override(model=effective_override):
 
 ## Summary
 
-The IntelliBoard agentic layer methodology emphasizes:
+The SoundMind agentic layer methodology emphasizes:
 
 1. **Deterministic safety** — Operation-based mutations, budgeting, validation
 2. **Streaming observability** — SSE events for every state change

@@ -9,7 +9,7 @@ Modified Nodal Analysis (MNA) is the standard algorithm every SPICE uses. We imp
 ### Why implement it at all?
 
 1. A **transparent baseline** to cross-check ngspice on toy problems.
-2. A **fallback** for Velxio environments where `eecircuit-engine` (39 MB) cannot be loaded.
+2. A **fallback** for SoundMind environments where `eecircuit-engine` (39 MB) cannot be loaded.
 3. **Educational value**: every line is readable; comparing this to ngspice makes ngspice's behaviour concrete.
 
 ## The matrix
@@ -270,7 +270,7 @@ The correct approach: **seed `prev` directly from `Vinit` without an initial DC 
 - **No inductor model**. Would need companion model: `G_L = 2L/dt, I_eq = V_prev·G_L + I_prev`. Plus tracking inductor branch currents.
 - **No MOSFET model** (the ngspice pipeline covers this).
 
-See [circuit-emulation-velxio-integration.md](circuit-emulation-velxio-integration.md) for which of these would need to be added before Velxio could use this solver as a production fallback.
+See [circuit-emulation-soundmind-integration.md](circuit-emulation-soundmind-integration.md) for which of these would need to be added before SoundMind could use this solver as a production fallback.
 
 ## Comparing solver vs ngspice on the same problem
 

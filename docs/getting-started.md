@@ -1,12 +1,12 @@
 # Getting Started
 
-Velxio is an open-source Arduino emulator that runs entirely in your browser. Follow these steps to simulate your first Arduino sketch.
+SoundMind is an open-source Arduino emulator that runs entirely in your browser. Follow these steps to simulate your first Arduino sketch.
 
 ---
 
 ## Option 1: Use the Hosted Version
 
-No installation needed — go to **[https://velxio.dev](https://velxio.dev)** and start coding immediately.
+No installation needed — go to **[https://soundmind.dev](https://soundmind.dev)** and start coding immediately.
 
 ---
 
@@ -16,10 +16,10 @@ Run a single Docker command to start a fully local instance:
 
 ```bash
 docker run -d \
-  --name velxio \
+  --name soundmind \
   -p 3080:80 \
   -v $(pwd)/data:/app/data \
-  ghcr.io/davidmonterocrespo24/velxio:master
+  ghcr.io/davidmonterocrespo24/soundmind:master
 ```
 
 Then open **http://localhost:3080** in your browser.
@@ -33,8 +33,8 @@ Then open **http://localhost:3080** in your browser.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/davidmonterocrespo24/velxio.git
-cd velxio
+git clone https://github.com/davidmonterocrespo24/soundmind.git
+cd soundmind
 ```
 
 ### 2. Start the backend
@@ -73,7 +73,7 @@ arduino-cli core install rp2040:rp2040
 
 ## Your First Simulation
 
-1. **Open the editor** at [velxio.dev/editor](https://velxio.dev/editor) (or your local instance).
+1. **Open the editor** at [soundmind.dev/editor](https://soundmind.dev/editor) (or your local instance).
 2. **Select a board** from the toolbar (e.g., *Arduino Uno*).
 3. **Write Arduino code** in the Monaco editor, for example:
 
@@ -119,9 +119,9 @@ void loop() {
 
 ## Community & Links
 
-- **GitHub:** [github.com/davidmonterocrespo24/velxio](https://github.com/davidmonterocrespo24/velxio) — source code, issues, pull requests
+- **GitHub:** [github.com/davidmonterocrespo24/soundmind](https://github.com/davidmonterocrespo24/soundmind) — source code, issues, pull requests
 - **Discord:** [YOUR_DISCORD_INVITE_URL] — ask questions, share projects, report issues
-- **Live Demo:** [velxio.dev](https://velxio.dev)
+- **Live Demo:** [soundmind.dev](https://soundmind.dev)
 
 ---
 
@@ -129,7 +129,7 @@ void loop() {
 
 ### Orientation
 
-- [Introduction](./intro.md) — What is Velxio and why use it
+- [Introduction](./intro.md) — What is SoundMind and why use it
 - [Getting Started](./getting-started.md) — This page
 
 ### Architecture & Internals

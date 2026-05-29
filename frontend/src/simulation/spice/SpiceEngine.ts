@@ -6,7 +6,7 @@
  * code should import from `./SpiceEngine.lazy` instead, which code-splits
  * the 39 MB dependency behind a dynamic `import()`.
  *
- * See plan: test/test_circuit/plan/phase_8_velxio_implementation.md
+ * See plan: test/test_circuit/plan/phase_8_soundmind_implementation.md
  * See sandbox: test/test_circuit/src/spice/SpiceEngine.js
  */
 import { Simulation, type ResultType, type ComplexNumber } from 'eecircuit-engine';

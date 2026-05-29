@@ -8,7 +8,7 @@
 | `circuit-json` | **DESCARTADA** para esta sandbox | Tipos buenos pero innecesarios; el modelo propio es más pequeño y suficiente. |
 | `circuit-json-to-spice` | **DESCARTADA** | Sin SPICE backend no aplica. |
 | `mathjs` | **ADOPTADA** | Inversión LU, resolución `Ax=b`, manejo de matrices densas. MIT, ~650 kB, sin build step. |
-| `avr8js` | **ADOPTADA** | Misma usada por Velxio — los tests deben ejercitar la misma API. |
+| `avr8js` | **ADOPTADA** | Misma usada por SoundMind — los tests deben ejercitar la misma API. |
 | `vitest` | **ADOPTADA** | Runner de pruebas rápido, compatible con ESM, mismo que el frontend. |
 
 ## Descartadas sin probar
@@ -18,4 +18,4 @@
 
 ## Decisión final
 
-Implementar el **solver MNA (Modified Nodal Analysis) propio** en JS. Es pequeño (< 500 líneas), transparente, y fácil de integrar después en Velxio si el experimento funciona.
+Implementar el **solver MNA (Modified Nodal Analysis) propio** en JS. Es pequeño (< 500 líneas), transparente, y fácil de integrar después en SoundMind si el experimento funciona.

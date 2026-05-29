@@ -1,4 +1,4 @@
-# Project Architecture - Velxio Arduino Emulator
+# Project Architecture - SoundMind Arduino Emulator
 
 ## Overview
 

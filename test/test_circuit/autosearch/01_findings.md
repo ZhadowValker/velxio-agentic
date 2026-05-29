@@ -26,15 +26,15 @@ Se construyó un sandbox bajo `test/test_circuit/` que valida end-to-end la emul
 | No-lineales | Diode (Shockley), LED (5 colores), BJT_NPN (Ebers-Moll simplificado) |
 | Paramétricos | NTCThermistor (modelo β) |
 
-### Integración avr8js ≡ Velxio
+### Integración avr8js ≡ SoundMind
 
-Se copió fielmente el patrón de Velxio:
+Se copió fielmente el patrón de SoundMind:
 - `new CPU(program, 8192)`, `new AVRIOPort(cpu, portXConfig)`, `new AVRADC(cpu, adcConfig)`, `new AVRTimer(cpu, timerXConfig)`.
 - Listeners por puerto → mapeo `(portName, bit) → Arduino pin`.
 - `adc.channelValues[ch] = volts` para inyectar voltajes en tiempo real.
 - `cpu.data[ocrAddr]` para leer duty de PWM.
 
-El test `avr_blink.test.js` carga la **misma `.hex` que usa Velxio** y dispara el mismo LED simulado con corriente real calculada por el solver. Funciona.
+El test `avr_blink.test.js` carga la **misma `.hex` que usa SoundMind** y dispara el mismo LED simulado con corriente real calculada por el solver. Funciona.
 
 ### E2E: potenciómetro → PWM → LED
 
@@ -77,14 +77,14 @@ Error máximo de recuperación de temperatura: **0.05 °C** en el rango 0-50 °C
 - **Síntoma**: loop saltaba a dirección equivocada tras añadir más instrucciones.
 - **Fix**: cálculo manual cuidadoso. Cada `STS`/`LDS` ocupa 2 words. `RJMP k` salta a `PC+1+k`.
 
-## Mejoras sugeridas para Velxio (main app)
+## Mejoras sugeridas para SoundMind (main app)
 
 1. **Adoptar este solver** para la simulación eléctrica en lugar de `ngspice-wasm`. Ventajas:
    - 0 KB de dependencia WASM (vs 40 MB)
    - Inicialización instantánea
    - Fácil extender con componentes custom de wokwi-elements
 
-2. **LED brightness realista**. Actualmente Velxio muestra LEDs como on/off booleanos. Con el solver:
+2. **LED brightness realista**. Actualmente SoundMind muestra LEDs como on/off booleanos. Con el solver:
    - `led.brightness(state)` ∈ [0, 1] basado en corriente directa
    - El ajuste del brillo del componente wokwi-led puede hacerse con `--wokwi-led-brightness` CSS var o similar.
 

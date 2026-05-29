@@ -68,7 +68,7 @@ const ARDUINO_CLI_AVAILABLE = (() => {
 
 // ─── Hex cache ───────────────────────────────────────────────────────────────
 
-const HEX_CACHE = join(tmpdir(), 'velxio-ili9341-nano.hex');
+const HEX_CACHE = join(tmpdir(), 'soundmind-ili9341-nano.hex');
 
 function compileSketch(): string {
   if (existsSync(HEX_CACHE)) {
@@ -78,7 +78,7 @@ function compileSketch(): string {
 
   console.log('[compile] Compiling ili9341-test-sketch.ino for Arduino Nano…');
 
-  const workDir = mkdtempSync(join(tmpdir(), 'velxio-ili9341-'));
+  const workDir = mkdtempSync(join(tmpdir(), 'soundmind-ili9341-'));
   const sketchDir = join(workDir, 'ili9341-test-sketch');
   mkdirSync(sketchDir);
   writeFileSync(join(sketchDir, 'ili9341-test-sketch.ino'), readFileSync(SKETCH_INO, 'utf-8'));

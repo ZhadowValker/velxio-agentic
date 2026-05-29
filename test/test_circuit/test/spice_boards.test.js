@@ -4,7 +4,7 @@ import { AVRHarness } from '../src/avr/AVRHarness.js';
 import { adcReadProgram, potToPwmProgram } from '../src/avr/programs.js';
 
 /**
- * Board-level integration tests: exercise the Velxio supported boards under
+ * Board-level integration tests: exercise the SoundMind supported boards under
  * realistic external circuits through ngspice. Boards split into two groups:
  *
  *   5 V group  — Arduino Uno, Nano, Mega, Raspberry Pi 3 (GPIO @ 3.3 V but
@@ -17,7 +17,7 @@ import { adcReadProgram, potToPwmProgram } from '../src/avr/programs.js';
  *                 Validated by running the same topologies at 3.3 V and
  *                 checking that logic-level MOSFETs / BJTs still switch.
  *
- * These tests validate that the SPICE netlists produced by Velxio's pin-group
+ * These tests validate that the SPICE netlists produced by SoundMind's pin-group
  * config (see frontend/src/simulation/spice/boardPinGroups.ts) stay internally
  * consistent: GND at 0 V, supply rail at the expected Vcc, peripherals behave.
  */
@@ -59,7 +59,7 @@ Rbot a0 0 ${Rbot}
     // Model a pin outputting 5V with a realistic 40Ω output impedance (ATmega328P
     // typical) driving a red LED through a 220Ω series resistor.
     // Use a standard diode model (Is=1e-14) — the ultra-small Is values used
-    // for LED Vf-tuning in Velxio's SPICE layer give ngspice convergence
+    // for LED Vf-tuning in SoundMind's SPICE layer give ngspice convergence
     // trouble under Newton's method during .op; for system-level verification
     // a generic diode captures the topology fine.
     const netlist = `Uno pin to LED

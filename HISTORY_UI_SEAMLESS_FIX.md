@@ -88,7 +88,7 @@ const AgUiChatCore = ({ sessionId, ...props }) => {
   return (
     <>
       <AgentHistoryInjector sessionId={sessionId} />
-      <CopilotChat className="agu-chat" agentId="velxio" threadId={sessionId} />
+      <CopilotChat className="agu-chat" agentId="soundmind" threadId={sessionId} />
     </>
   );
 };
@@ -130,7 +130,7 @@ if (injectedRef.current) return;
 **4. Thread Persistence:**
 ```typescript
 <CopilotChat 
-  agentId="velxio" 
+  agentId="soundmind" 
   threadId={sessionId}  // Pass sessionId as threadId
 />
 ```

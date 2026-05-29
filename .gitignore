@@ -109,7 +109,7 @@ test/esp32-emulator/out_*/
 .claude/settings.json
 
 # Google Cloud service account credentials
-velxio-ba3355a41944.json
+soundmind-ba3355a41944.json
 marketing/*
 docs/github-issues/*
 

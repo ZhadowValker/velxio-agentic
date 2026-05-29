@@ -1,7 +1,7 @@
 # Agentic Embedded Build Layer
 
 ## Summary
-Build an in-app Pydantic AI agent that can autonomously edit Velxio projects through safe, structured tools, while streaming every action to the frontend for review. The main fix is to add a canonical `ProjectSnapshotV2` so board changes, multi-board files, circuit state, and pin mapping update from one source of truth instead of the current legacy `board_type + active files + components_json + wires_json` path.
+Build an in-app Pydantic AI agent that can autonomously edit SoundMind projects through safe, structured tools, while streaming every action to the frontend for review. The main fix is to add a canonical `ProjectSnapshotV2` so board changes, multi-board files, circuit state, and pin mapping update from one source of truth instead of the current legacy `board_type + active files + components_json + wires_json` path.
 
 ## Key Changes
 

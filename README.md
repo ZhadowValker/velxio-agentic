@@ -1,28 +1,28 @@
-# Velxio: Arduino & Embedded Board Emulator
+# SoundMind: Arduino & Embedded Board Emulator
 
-**Live at [velxio.dev](https://velxio.dev)**
+**Live at [soundmind.dev](https://soundmind.dev)**
 
 A fully local, open-source multi-board emulator. Write Arduino C++ or Python, compile it, and simulate it with real CPU emulation and 48+ interactive electronic components — all running in your browser.
 
 **19 boards &middot; 5 CPU architectures**: AVR8 (ATmega / ATtiny), ARM Cortex-M0+ (RP2040), RISC-V RV32IMC/EC (ESP32-C3 / CH32V003), Xtensa LX6/LX7 (ESP32 / ESP32-S3 via QEMU), and ARM Cortex-A53 (Raspberry Pi 3 Linux via QEMU).
 
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=davidmonterocrespo24/velxio)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-velxio.dev-007acc?style=for-the-badge)](https://velxio.dev)
-[![Docker Image](https://img.shields.io/badge/Docker-ghcr.io%2Fdavidmonterocrespo24%2Fvelxio-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/davidmonterocrespo24/velxio/pkgs/container/velxio)
-[![GitHub stars](https://img.shields.io/github/stars/davidmonterocrespo24/velxio?style=for-the-badge)](https://github.com/davidmonterocrespo24/velxio/stargazers)
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=davidmonterocrespo24/soundmind)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-soundmind.dev-007acc?style=for-the-badge)](https://soundmind.dev)
+[![Docker Image](https://img.shields.io/badge/Docker-ghcr.io%2Fdavidmonterocrespo24%2Fsoundmind-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/davidmonterocrespo24/soundmind/pkgs/container/soundmind)
+[![GitHub stars](https://img.shields.io/github/stars/davidmonterocrespo24/soundmind?style=for-the-badge)](https://github.com/davidmonterocrespo24/soundmind/stargazers)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/3mARjJrh4E)
 [![License: AGPLv3](https://img.shields.io/badge/License-AGPL%20v3-blue?style=for-the-badge)](LICENSE)
 [![Commercial License](https://img.shields.io/badge/Commercial%20License-Available-green?style=for-the-badge)](COMMERCIAL_LICENSE.md)
 
 ---
 
-[![Product Hunt](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1092514&theme=dark&t=1772998619179)](https://www.producthunt.com/products/velxio)
+[![Product Hunt](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1092514&theme=dark&t=1772998619179)](https://www.producthunt.com/products/soundmind)
 
 ---
 
 ## Support the Project
 
-Velxio is free and open-source. Building and maintaining a full multi-board emulator takes a lot of time — if it saves you time or you enjoy the project, sponsoring me directly helps keep development going.
+SoundMind is free and open-source. Building and maintaining a full multi-board emulator takes a lot of time — if it saves you time or you enjoy the project, sponsoring me directly helps keep development going.
 
 | Platform | Link |
 | --- | --- |
@@ -35,12 +35,12 @@ Your support helps cover server costs, library maintenance, and frees up time to
 
 ## Try it now
 
-**[https://velxio.dev](https://velxio.dev)** — no installation needed. Open the editor, write your sketch, and simulate directly in the browser.
+**[https://soundmind.dev](https://soundmind.dev)** — no installation needed. Open the editor, write your sketch, and simulate directly in the browser.
 
 To self-host with Docker (single command):
 
 ```bash
-docker run -d -p 3080:80 ghcr.io/davidmonterocrespo24/velxio:master
+docker run -d -p 3080:80 ghcr.io/davidmonterocrespo24/soundmind:master
 ```
 
 Then open <http://localhost:3080>.
@@ -249,24 +249,24 @@ See [docs/RASPBERRYPI3_EMULATION.md](docs/RASPBERRYPI3_EMULATION.md) for full te
 ```bash
 # Pull and run
 docker run -d \
-  --name velxio \
+  --name soundmind \
   -p 3080:80 \
   -v $(pwd)/data:/app/data \
-  ghcr.io/davidmonterocrespo24/velxio:master
+  ghcr.io/davidmonterocrespo24/soundmind:master
 ```
 
 Open <http://localhost:3080>.
 
 The `/app/data` volume contains:
 
-- `velxio.db` — SQLite database (users, projects metadata)
+- `soundmind.db` — SQLite database (users, projects metadata)
 - `projects/{id}/` — sketch files per project
 
 ### Option B: Docker Compose
 
 ```bash
-git clone https://github.com/davidmonterocrespo24/velxio.git
-cd velxio
+git clone https://github.com/davidmonterocrespo24/soundmind.git
+cd soundmind
 cp backend/.env.example backend/.env   # edit as needed
 docker compose -f docker-compose.prod.yml up -d
 ```
@@ -276,7 +276,7 @@ docker compose -f docker-compose.prod.yml up -d
 | Variable | Default | Description |
 | --- | --- | --- |
 | `SECRET_KEY` | *(required)* | JWT signing secret |
-| `DATABASE_URL` | `sqlite+aiosqlite:////app/data/velxio.db` | SQLite path |
+| `DATABASE_URL` | `sqlite+aiosqlite:////app/data/soundmind.db` | SQLite path |
 | `DATA_DIR` | `/app/data` | Directory for project files |
 | `FRONTEND_URL` | `http://localhost:5173` | Used for OAuth redirect |
 | `GOOGLE_CLIENT_ID` | — | Google OAuth client ID |
@@ -289,8 +289,8 @@ docker compose -f docker-compose.prod.yml up -d
 **Prerequisites:** Node.js 18+, Python 3.12+, arduino-cli
 
 ```bash
-git clone --recurse-submodules https://github.com/davidmonterocrespo24/velxio.git
-cd velxio
+git clone --recurse-submodules https://github.com/davidmonterocrespo24/soundmind.git
+cd soundmind
 ```
 
 > **Already cloned without `--recurse-submodules`?** The `wokwi-libs/` directories will be empty. Run:
@@ -356,7 +356,7 @@ arduino-cli core install esp32:esp32@2.0.17
 ## Project Structure
 
 ```text
-velxio/
+soundmind/
 ├── frontend/                    # React + Vite + TypeScript
 │   └── src/
 │       ├── pages/               # LandingPage, EditorPage, UserProfilePage, ...
@@ -447,7 +447,7 @@ Join the Discord server to ask questions, share projects, and follow updates:
 
 ## Contributing
 
-Suggestions, bug reports, and pull requests are welcome at [github.com/davidmonterocrespo24/velxio](https://github.com/davidmonterocrespo24/velxio).
+Suggestions, bug reports, and pull requests are welcome at [github.com/davidmonterocrespo24/soundmind](https://github.com/davidmonterocrespo24/soundmind).
 
 If you'd like to support the project financially, see the [Support the Project](#support-the-project) section above or sponsor directly at [github.com/sponsors/davidmonterocrespo24](https://github.com/sponsors/davidmonterocrespo24).
 
@@ -455,7 +455,7 @@ If you'd like to support the project financially, see the [Support the Project](
 
 ## License
 
-Velxio uses a **dual-licensing** model:
+SoundMind uses a **dual-licensing** model:
 
 | Use case | License | Cost |
 | --- | --- | --- |
@@ -470,7 +470,7 @@ See [LICENSE](LICENSE) and [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md) for fu
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=davidmonterocrespo24/velxio&type=Date)](https://star-history.com/#davidmonterocrespo24/velxio&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=davidmonterocrespo24/soundmind&type=Date)](https://star-history.com/#davidmonterocrespo24/soundmind&Date)
 
 ---
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import type { BoardInstance } from '../../types/board';
-import { ArduinoUno } from '../velxio-components/ArduinoUno';
-import { ArduinoNano } from '../velxio-components/ArduinoNano';
-import { ArduinoMega } from '../velxio-components/ArduinoMega';
-import { NanoRP2040 } from '../velxio-components/NanoRP2040';
-import { RaspberryPi3 } from '../velxio-components/RaspberryPi3';
-import { Esp32 } from '../velxio-components/Esp32';
-import { Attiny85 } from '../velxio-components/Attiny85';
-import { PiPicoW } from '../velxio-components/PiPicoW';
+import { ArduinoUno } from '../soundmind-components/ArduinoUno';
+import { ArduinoNano } from '../soundmind-components/ArduinoNano';
+import { ArduinoMega } from '../soundmind-components/ArduinoMega';
+import { NanoRP2040 } from '../soundmind-components/NanoRP2040';
+import { RaspberryPi3 } from '../soundmind-components/RaspberryPi3';
+import { Esp32 } from '../soundmind-components/Esp32';
+import { Attiny85 } from '../soundmind-components/Attiny85';
+import { PiPicoW } from '../soundmind-components/PiPicoW';
 import { PinOverlay } from './PinOverlay';
 
 // Board visual dimensions (width × height) for the drag-overlay sizing.

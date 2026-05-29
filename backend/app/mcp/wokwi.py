@@ -1,6 +1,6 @@
 """
 Wokwi diagram.json parse/format utilities (Python port of frontend/src/utils/wokwiZip.ts).
-Handles conversion between Wokwi diagram format and the Velxio internal circuit format.
+Handles conversion between Wokwi diagram format and the SoundMind internal circuit format.
 """
 
 from __future__ import annotations
@@ -82,7 +82,7 @@ def hex_to_color_name(hex_color: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Wokwi → Velxio conversion
+# Wokwi → SoundMind conversion
 # ---------------------------------------------------------------------------
 
 BOARD_PART_TYPES = set(WOKWI_TO_VELXIO_BOARD.keys())
@@ -99,7 +99,7 @@ def _detect_board_fqbn(parts: list[dict[str, Any]]) -> str:
 
 def parse_wokwi_diagram(diagram: dict[str, Any]) -> dict[str, Any]:
     """
-    Convert a Wokwi diagram.json payload into a Velxio circuit object.
+    Convert a Wokwi diagram.json payload into a SoundMind circuit object.
 
     The returned object has the shape:
     {
@@ -161,16 +161,16 @@ def parse_wokwi_diagram(diagram: dict[str, Any]) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
-# Velxio → Wokwi conversion
+# SoundMind → Wokwi conversion
 # ---------------------------------------------------------------------------
 
 
 def format_wokwi_diagram(
     circuit: dict[str, Any],
-    author: str = "velxio",
+    author: str = "soundmind",
 ) -> dict[str, Any]:
     """
-    Convert a Velxio circuit object back into a Wokwi diagram.json payload.
+    Convert a SoundMind circuit object back into a Wokwi diagram.json payload.
     """
     board_fqbn: str = circuit.get("board_fqbn", DEFAULT_BOARD_FQBN)
     wokwi_board_type: str = VELXIO_TO_WOKWI_BOARD.get(board_fqbn, "wokwi-arduino-uno")
@@ -216,7 +216,7 @@ def format_wokwi_diagram(
     return {
         "version": int(circuit.get("version", 1)),
         "author": author,
-        "editor": "velxio",
+        "editor": "soundmind",
         "parts": parts,
         "connections": connections,
     }
@@ -236,7 +236,7 @@ COMPONENT_PIN_TEMPLATES: dict[str, str] = {
 
 def generate_arduino_sketch(circuit: dict[str, Any], sketch_name: str = "sketch") -> str:
     """
-    Generate a minimal Arduino sketch (.ino) from a Velxio circuit definition.
+    Generate a minimal Arduino sketch (.ino) from a SoundMind circuit definition.
 
     Returns the .ino file content as a string.
     """

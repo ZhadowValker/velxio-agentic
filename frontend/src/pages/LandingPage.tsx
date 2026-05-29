@@ -8,7 +8,7 @@ import { getSeoMeta } from '../seoRoutes';
 import raspberryPi3Svg from '../assets/Raspberry_Pi_3_illustration.svg';
 import './LandingPage.css';
 
-const GITHUB_URL = 'https://github.com/dath2006/IntelliBoard';
+const GITHUB_URL = 'https://github.com/dath2006/SoundMind';
 
 /* ── Icons ───────────────────────────────────────────── */
 const IcoZap = () => (
@@ -352,7 +352,7 @@ export const LandingPage: React.FC = () => {
           <div className="hero-container">
             <div className="hero-badge">
               <span className="badge-dot" />
-              IntelliBoard v1 Professional
+              SoundMind v1 Professional
             </div>
             <h1 className="hero-heading">
               Engineer Your Idea.

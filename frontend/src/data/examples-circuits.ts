@@ -875,7 +875,7 @@ void loop() {
       UNO,
       { type: 'wokwi-pushbutton', id: 'btn1', x: 260, y: 80, properties: {} },
       { type: 'wokwi-pushbutton', id: 'btn2', x: 260, y: 180, properties: {} },
-      { type: 'velxio-logic-gate-and', id: 'u1', x: 400, y: 130, properties: {} },
+      { type: 'soundmind-logic-gate-and', id: 'u1', x: 400, y: 130, properties: {} },
       { type: 'wokwi-resistor', id: 'rl', x: 520, y: 60, properties: { value: '220' } },
       { type: 'wokwi-led', id: 'led1', x: 520, y: 160, properties: { color: 'red' } },
     ],
@@ -914,7 +914,7 @@ void loop() {
       UNO,
       { type: 'wokwi-pushbutton', id: 'sw1', x: 260, y: 80, properties: {} },
       { type: 'wokwi-pushbutton', id: 'sw2', x: 260, y: 180, properties: {} },
-      { type: 'velxio-logic-gate-xor', id: 'u1', x: 400, y: 130, properties: {} },
+      { type: 'soundmind-logic-gate-xor', id: 'u1', x: 400, y: 130, properties: {} },
       { type: 'wokwi-resistor', id: 'rl', x: 520, y: 60, properties: { value: '220' } },
       { type: 'wokwi-led', id: 'led1', x: 520, y: 160, properties: { color: 'yellow' } },
     ],
@@ -959,8 +959,8 @@ void loop() {
       { type: 'wokwi-resistor', id: 'rpuS', x: 320, y: 40, properties: { value: '10000' } },
       { type: 'wokwi-resistor', id: 'rpuR', x: 320, y: 280, properties: { value: '10000' } },
       // Cross-coupled NANDs
-      { type: 'velxio-logic-gate-nand', id: 'g1', x: 420, y: 100, properties: {} },
-      { type: 'velxio-logic-gate-nand', id: 'g2', x: 420, y: 220, properties: {} },
+      { type: 'soundmind-logic-gate-nand', id: 'g1', x: 420, y: 100, properties: {} },
+      { type: 'soundmind-logic-gate-nand', id: 'g2', x: 420, y: 220, properties: {} },
       { type: 'wokwi-resistor', id: 'rl', x: 540, y: 60, properties: { value: '220' } },
       { type: 'wokwi-led', id: 'qled', x: 540, y: 160, properties: { color: 'green' } },
     ],
@@ -1142,7 +1142,7 @@ void loop() {
       UNO,
       { type: 'wokwi-resistor', id: 'rb', x: 340, y: 140, properties: { value: '1000' } },
       { type: 'wokwi-bjt-2n2222', id: 'q1', x: 420, y: 200, properties: {} },
-      { type: 'velxio-relay', id: 'rly', x: 520, y: 140, properties: { coil_voltage: 5 } },
+      { type: 'soundmind-relay', id: 'rly', x: 520, y: 140, properties: { coil_voltage: 5 } },
       { type: 'wokwi-resistor', id: 'rl', x: 640, y: 60, properties: { value: '220' } },
       { type: 'wokwi-led', id: 'led1', x: 640, y: 160, properties: { color: 'red' } },
     ],
@@ -1181,7 +1181,7 @@ void loop() {
     components: [
       UNO,
       { type: 'wokwi-resistor', id: 'rled', x: 340, y: 80, properties: { value: '270' } },
-      { type: 'velxio-opto-4n25', id: 'u1', x: 450, y: 120, properties: {} },
+      { type: 'soundmind-opto-4n25', id: 'u1', x: 450, y: 120, properties: {} },
       { type: 'wokwi-resistor', id: 'rpull', x: 560, y: 80, properties: { value: '10000' } },
     ],
     wires: [
@@ -1219,7 +1219,7 @@ void loop() {
 }`,
     components: [
       UNO,
-      { type: 'velxio-motor-driver-l293d', id: 'u1', x: 420, y: 140, properties: {} },
+      { type: 'soundmind-motor-driver-l293d', id: 'u1', x: 420, y: 140, properties: {} },
       // Simple resistive motor model (5Ω winding)
       { type: 'wokwi-resistor', id: 'rm', x: 560, y: 200, properties: { value: '5' } },
     ],
@@ -1262,7 +1262,7 @@ void loop() {
     components: [
       UNO,
       { type: 'wokwi-potentiometer', id: 'pot', x: 260, y: 200, properties: {} },
-      { type: 'velxio-motor-driver-l293d', id: 'u1', x: 420, y: 140, properties: {} },
+      { type: 'soundmind-motor-driver-l293d', id: 'u1', x: 420, y: 140, properties: {} },
       { type: 'wokwi-resistor', id: 'rm', x: 560, y: 200, properties: { value: '5' } },
     ],
     wires: [

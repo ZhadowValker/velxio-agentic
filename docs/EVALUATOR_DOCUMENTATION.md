@@ -1,8 +1,8 @@
-# IntelliBoard: AI-Powered Browser-Based Embedded System Simulator
+# SoundMind: AI-Powered Browser-Based Embedded System Simulator
 
 ## Executive Summary
 
-IntelliBoard is a comprehensive browser-based embedded systems development platform featuring **autonomous AI-powered circuit design**, **multi-architecture emulation**, and **real-time collaborative editing**. The platform uniquely combines:
+SoundMind is a comprehensive browser-based embedded systems development platform featuring **autonomous AI-powered circuit design**, **multi-architecture emulation**, and **real-time collaborative editing**. The platform uniquely combines:
 
 - **Agentic AI system** for autonomous hardware engineering using Pydantic AI
 - **Browser-native emulation** (AVR, RP2040) + **Backend QEMU emulation** (ESP32, ESP32-S3, ESP32-C3)
@@ -96,7 +96,7 @@ Traditional embedded development requires:
 3. Firmware writing and compilation
 4. Iterative debugging
 
-IntelliBoard's agentic system **automates this entire workflow** through an intelligent agent that reasons about hardware, manipulates the canvas directly, and validates its work through simulation.
+SoundMind's agentic system **automates this entire workflow** through an intelligent agent that reasons about hardware, manipulates the canvas directly, and validates its work through simulation.
 
 ### Agent Architecture (Pydantic AI)
 
@@ -123,9 +123,9 @@ agent = Agent(
 
 ### Operation-Based Mutation Methodology
 
-Unlike traditional AI systems that regenerate entire outputs, IntelliBoard uses **granular operations**:
+Unlike traditional AI systems that regenerate entire outputs, SoundMind uses **granular operations**:
 
-| Approach | Traditional | IntelliBoard (Operation-Based) |
+| Approach | Traditional | SoundMind (Operation-Based) |
 |----------|-------------|-------------------------------|
 | Circuit edit | Regenerate entire JSON | `add_component()`, `connect_pins()`, `route_wire()` |
 | Code edit | Rewrite whole file | `patch_file_lines()`, `apply_file_patch()` |
@@ -336,7 +336,7 @@ async def get_canvas_runtime_pins(snapshot, instance_id) -> dict:
 
 ### Custom UI Component Library
 
-IntelliBoard uses **@ai-sdk/react** with a custom component library (`ai-elements`) for streaming AI interactions:
+SoundMind uses **@ai-sdk/react** with a custom component library (`ai-elements`) for streaming AI interactions:
 
 ```typescript
 // Key components from frontend/src/components/ai-elements/
@@ -515,7 +515,7 @@ BOARD_KIND_FQBN = {
 
 ## Conclusion
 
-IntelliBoard represents a paradigm shift in embedded systems development by combining:
+SoundMind represents a paradigm shift in embedded systems development by combining:
 
 1. **Autonomous AI agent** capable of end-to-end hardware engineering
 2. **Multi-architecture emulation** spanning 8+ board families

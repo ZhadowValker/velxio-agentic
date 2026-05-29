@@ -1,5 +1,5 @@
 """
-generate_examples.py — Velxio example project generator helper
+generate_examples.py — SoundMind example project generator helper
 ================================================================
 This script catalogs board × sensor combinations and can generate
 TypeScript example stubs for inserting into
@@ -223,7 +223,7 @@ CATALOGUE: dict[str, list[tuple]] = {
 
 def print_catalog():
     print("=" * 60)
-    print("Velxio Example Catalog")
+    print("SoundMind Example Catalog")
     print("=" * 60)
     total = 0
     for board_id, combos in CATALOGUE.items():

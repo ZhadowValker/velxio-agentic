@@ -189,7 +189,7 @@ Cuando EN = LOW, los outputs flotan (alta impedancia) — representado con una r
 ## 5. Referencias
 
 - [`phase_9_component_catalog_expansion.md`](phase_9_component_catalog_expansion.md) — fase previa
-- [`autosearch/05_velxio_component_inventory.md`](../autosearch/05_velxio_component_inventory.md) — gap analysis
+- [`autosearch/05_soundmind_component_inventory.md`](../autosearch/05_soundmind_component_inventory.md) — gap analysis
 - [`autosearch/06_ngspice_convergence.md`](../autosearch/06_ngspice_convergence.md) — gotchas conocidos
 - ngspice manual §B.4 "S-switch" (histéresis Vt/Vh)
 - ngspice manual §B.2 "F-source" (CCCS para optoacopladores)

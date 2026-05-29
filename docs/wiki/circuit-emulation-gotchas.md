@@ -173,7 +173,7 @@ This gives the solver a DC reference without materially affecting the circuit (1
 
 **Principle**: for **every** node in your SPICE netlist, make sure DC current can reach ground. Capacitors are DC-open; inductors are DC-shorts (usually OK); diodes and transistors vary by bias. When in doubt, add a 10 MΩ pull.
 
-In Velxio's main app, the netlist builder should detect floating nodes automatically and add pulls.
+In SoundMind's main app, the netlist builder should detect floating nodes automatically and add pulls.
 
 ## G-9. ngspice behavioral model of 555 — cascaded B-sources don't hold state
 

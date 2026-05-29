@@ -10,9 +10,9 @@ export const UserProfilePage: React.FC = () => {
   const { username } = useParams<{ username: string }>();
 
   useSEO({
-    title: `${username ?? 'User'} — Velxio Profile`,
-    description: `View Arduino and ESP32 projects by ${username ?? 'this user'} on Velxio.`,
-    url: `https://velxio.dev/${username ?? ''}`,
+    title: `${username ?? 'User'} — SoundMind Profile`,
+    description: `View Arduino and ESP32 projects by ${username ?? 'this user'} on SoundMind.`,
+    url: `https://soundmind.dev/${username ?? ''}`,
     noindex: true,
   });
   const user = useAuthStore((s) => s.user);

@@ -26,6 +26,7 @@ from pydantic_ai.messages import (
 
 from app.agent import snapshot_ops
 from app.agent import tools as agent_tools
+from app.agent.orchestrator import SoundMindOrchestrator
 from app.agent.deps import AgentDeps
 from app.agent.frontend_actions import (
     create_frontend_action_request,

@@ -1,7 +1,7 @@
 import React from 'react';
 import './GitHubStarBanner.css';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
+const GITHUB_URL = 'https://github.com/ZhadowValker/soundmind';
 
 interface Props {
   onClose: () => void;

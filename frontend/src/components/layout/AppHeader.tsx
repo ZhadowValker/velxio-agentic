@@ -5,7 +5,7 @@ import { useProjectStore } from '../../store/useProjectStore';
 import { ShareModal } from './ShareModal';
 import { trackVisitGitHub, trackVisitDiscord } from '../../utils/analytics';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
+const GITHUB_URL = 'https://github.com/ZhadowValker/soundmind';
 const DISCORD_URL = 'https://discord.gg/3mARjJrh4E';
 
 interface AppHeaderProps {}

@@ -6,10 +6,10 @@ A fully local, open-source multi-board emulator. Write Arduino C++ or Python, co
 
 **19 boards &middot; 5 CPU architectures**: AVR8 (ATmega / ATtiny), ARM Cortex-M0+ (RP2040), RISC-V RV32IMC/EC (ESP32-C3 / CH32V003), Xtensa LX6/LX7 (ESP32 / ESP32-S3 via QEMU), and ARM Cortex-A53 (Raspberry Pi 3 Linux via QEMU).
 
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=davidmonterocrespo24/soundmind)
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=ZhadowValker/soundmind)
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-soundmind.dev-007acc?style=for-the-badge)](https://soundmind.dev)
-[![Docker Image](https://img.shields.io/badge/Docker-ghcr.io%2Fdavidmonterocrespo24%2Fsoundmind-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/davidmonterocrespo24/soundmind/pkgs/container/soundmind)
-[![GitHub stars](https://img.shields.io/github/stars/davidmonterocrespo24/soundmind?style=for-the-badge)](https://github.com/davidmonterocrespo24/soundmind/stargazers)
+[![Docker Image](https://img.shields.io/badge/Docker-ghcr.io%2FZhadowValker%2Fsoundmind-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/ZhadowValker/soundmind/pkgs/container/soundmind)
+[![GitHub stars](https://img.shields.io/github/stars/ZhadowValker/soundmind?style=for-the-badge)](https://github.com/ZhadowValker/soundmind/stargazers)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/3mARjJrh4E)
 [![License: AGPLv3](https://img.shields.io/badge/License-AGPL%20v3-blue?style=for-the-badge)](LICENSE)
 [![Commercial License](https://img.shields.io/badge/Commercial%20License-Available-green?style=for-the-badge)](COMMERCIAL_LICENSE.md)
@@ -26,7 +26,7 @@ SoundMind is free and open-source. Building and maintaining a full multi-board e
 
 | Platform | Link |
 | --- | --- |
-| **GitHub Sponsors** (preferred) | [github.com/sponsors/davidmonterocrespo24](https://github.com/sponsors/davidmonterocrespo24) |
+| **GitHub Sponsors** (preferred) | [github.com/sponsors/ZhadowValker](https://github.com/sponsors/ZhadowValker) |
 | **PayPal** | [paypal.me/odoonext](https://paypal.me/odoonext) |
 
 Your support helps cover server costs, library maintenance, and frees up time to add new boards, components, and features. Thank you!
@@ -40,7 +40,7 @@ Your support helps cover server costs, library maintenance, and frees up time to
 To self-host with Docker (single command):
 
 ```bash
-docker run -d -p 3080:80 ghcr.io/davidmonterocrespo24/soundmind:master
+docker run -d -p 3080:80 ghcr.io/ZhadowValker/soundmind:master
 ```
 
 Then open <http://localhost:3080>.
@@ -252,7 +252,7 @@ docker run -d \
   --name soundmind \
   -p 3080:80 \
   -v $(pwd)/data:/app/data \
-  ghcr.io/davidmonterocrespo24/soundmind:master
+  ghcr.io/ZhadowValker/soundmind:master
 ```
 
 Open <http://localhost:3080>.
@@ -265,7 +265,7 @@ The `/app/data` volume contains:
 ### Option B: Docker Compose
 
 ```bash
-git clone https://github.com/davidmonterocrespo24/soundmind.git
+git clone https://github.com/ZhadowValker/soundmind.git
 cd soundmind
 cp backend/.env.example backend/.env   # edit as needed
 docker compose -f docker-compose.prod.yml up -d
@@ -289,7 +289,7 @@ docker compose -f docker-compose.prod.yml up -d
 **Prerequisites:** Node.js 18+, Python 3.12+, arduino-cli
 
 ```bash
-git clone --recurse-submodules https://github.com/davidmonterocrespo24/soundmind.git
+git clone --recurse-submodules https://github.com/ZhadowValker/soundmind.git
 cd soundmind
 ```
 
@@ -447,9 +447,9 @@ Join the Discord server to ask questions, share projects, and follow updates:
 
 ## Contributing
 
-Suggestions, bug reports, and pull requests are welcome at [github.com/davidmonterocrespo24/soundmind](https://github.com/davidmonterocrespo24/soundmind).
+Suggestions, bug reports, and pull requests are welcome at [github.com/ZhadowValker/soundmind](https://github.com/ZhadowValker/soundmind).
 
-If you'd like to support the project financially, see the [Support the Project](#support-the-project) section above or sponsor directly at [github.com/sponsors/davidmonterocrespo24](https://github.com/sponsors/davidmonterocrespo24).
+If you'd like to support the project financially, see the [Support the Project](#support-the-project) section above or sponsor directly at [github.com/sponsors/ZhadowValker](https://github.com/sponsors/ZhadowValker).
 
 > **Note:** All contributors must sign a Contributor License Agreement (CLA) so that the dual-licensing model remains valid. A CLA check runs automatically on pull requests.
 
@@ -464,13 +464,13 @@ SoundMind uses a **dual-licensing** model:
 
 The AGPLv3 is a certified Open Source license. It is free for all uses — including commercial — as long as any modifications or network-accessible deployments make their source code available under the same license. Companies that cannot comply with that requirement can purchase a Commercial License.
 
-For commercial licensing inquiries: [davidmonterocrespo24@gmail.com](mailto:davidmonterocrespo24@gmail.com)
+For commercial licensing inquiries: [ZhadowValker@gmail.com](mailto:ZhadowValker@gmail.com)
 
 See [LICENSE](LICENSE) and [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md) for full terms.
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=davidmonterocrespo24/soundmind&type=Date)](https://star-history.com/#davidmonterocrespo24/soundmind&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=ZhadowValker/soundmind&type=Date)](https://star-history.com/#ZhadowValker/soundmind&Date)
 
 ---
 

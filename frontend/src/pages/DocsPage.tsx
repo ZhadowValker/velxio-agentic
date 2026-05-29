@@ -4,12 +4,12 @@ import { AppHeader } from '../components/layout/AppHeader';
 import { CodeBlock } from '../components/layout/CodeBlock';
 import './DocsPage.css';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
+const GITHUB_URL = 'https://github.com/ZhadowValker/soundmind';
 const BASE_URL = 'https://soundmind.dev';
 const AUTHOR = {
   '@type': 'Person',
   name: 'David Montero Crespo',
-  url: 'https://github.com/davidmonterocrespo24',
+  url: 'https://github.com/ZhadowValker',
 } as const;
 
 /* ── Icons ─────────────────────────────────────────────── */
@@ -249,7 +249,7 @@ const GettingStartedSection: React.FC = () => (
   --name soundmind \\
   -p 3080:80 \\
   -v $(pwd)/data:/app/data \\
-  ghcr.io/davidmonterocrespo24/soundmind:master`}</CodeBlock>
+  ghcr.io/ZhadowValker/soundmind:master`}</CodeBlock>
     <p>
       Then open <strong>http://localhost:3080</strong> in your browser.
     </p>
@@ -260,7 +260,7 @@ const GettingStartedSection: React.FC = () => (
     </p>
 
     <h3>1. Clone the repository</h3>
-    <CodeBlock language="bash">{`git clone https://github.com/davidmonterocrespo24/soundmind.git
+    <CodeBlock language="bash">{`git clone https://github.com/ZhadowValker/soundmind.git
 cd soundmind`}</CodeBlock>
 
     <h3>2. Start the backend</h3>
@@ -903,7 +903,7 @@ const RoadmapSection: React.FC = () => (
       <strong>Want to contribute?</strong> Feature requests, bug reports, and pull requests are
       welcome at{' '}
       <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-        github.com/davidmonterocrespo24/soundmind
+        github.com/ZhadowValker/soundmind
       </a>
       .
     </div>
@@ -2359,7 +2359,7 @@ const Rp2040EmulationSection: React.FC = () => (
     <p>
       See the complete technical reference:{' '}
       <a
-        href="https://github.com/davidmonterocrespo24/soundmind/blob/master/docs/RP2040_EMULATION.md"
+        href="https://github.com/ZhadowValker/soundmind/blob/master/docs/RP2040_EMULATION.md"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -2465,7 +2465,7 @@ const RaspberryPi3EmulationSection: React.FC = () => (
     <p>
       See the complete technical reference:{' '}
       <a
-        href="https://github.com/davidmonterocrespo24/soundmind/blob/master/docs/RASPBERRYPI3_EMULATION.md"
+        href="https://github.com/ZhadowValker/soundmind/blob/master/docs/RASPBERRYPI3_EMULATION.md"
         target="_blank"
         rel="noopener noreferrer"
       >

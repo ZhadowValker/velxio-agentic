@@ -4,12 +4,12 @@ import { useSEO } from '../utils/useSEO';
 import { getSeoMeta } from '../seoRoutes';
 import './AboutPage.css';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
-const LINKEDIN_URL = 'https://www.linkedin.com/in/davidmonterocrespo24';
-const GITHUB_PROFILE = 'https://github.com/davidmonterocrespo24';
-const MEDIUM_URL = 'https://medium.com/@davidmonterocrespo24';
+const GITHUB_URL = 'https://github.com/ZhadowValker/soundmind';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/ZhadowValker';
+const GITHUB_PROFILE = 'https://github.com/ZhadowValker';
+const MEDIUM_URL = 'https://medium.com/@ZhadowValker';
 const MEDIUM_ARTICLE_URL =
-  'https://medium.com/@davidmonterocrespo24/soundmind-architecture-and-development-of-a-strictly-local-execution-microcontroller-emulator-62b4c1157a72';
+  'https://medium.com/@ZhadowValker/soundmind-architecture-and-development-of-a-strictly-local-execution-microcontroller-emulator-62b4c1157a72';
 const HN_THREAD_V2 = 'https://news.ycombinator.com/item?id=47548013';
 const PRODUCT_HUNT_URL = 'https://www.producthunt.com/products/soundmind';
 const HACKADAY_URL = 'https://hackaday.io/project/205186-soundmind-browser-based-arduino-emulator';
@@ -271,7 +271,7 @@ export const AboutPage: React.FC = () => {
                 Programming and robotics enthusiast. Creator of other open-source projects including
                 a{' '}
                 <a
-                  href="https://github.com/davidmonterocrespo24"
+                  href="https://github.com/ZhadowValker"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

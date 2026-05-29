@@ -100,6 +100,6 @@ This document lists the features that are implemented, in progress, and planned 
 
 ## Contributing
 
-Feature requests, bug reports, and pull requests are welcome at [github.com/davidmonterocrespo24/soundmind](https://github.com/davidmonterocrespo24/soundmind).
+Feature requests, bug reports, and pull requests are welcome at [github.com/ZhadowValker/soundmind](https://github.com/ZhadowValker/soundmind).
 
 All contributors must sign a Contributor License Agreement (CLA); a CLA check runs automatically on pull requests.

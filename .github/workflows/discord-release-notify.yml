@@ -156,7 +156,7 @@ jobs:
                 + 'All notable changes to SoundMind will be documented in this file.\n'
                 + 'The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).\n\n'
                 + changelogEntry + '\n\n'
-                + `[${version}]: https://github.com/davidmonterocrespo24/soundmind/releases/tag/v${version}\n`;
+                + `[${version}]: https://github.com/ZhadowValker/soundmind/releases/tag/v${version}\n`;
             } else {
               const existing = fs.readFileSync(changelogPath, 'utf8');
               const lines = existing.split('\n');
@@ -169,7 +169,7 @@ jobs:
 
               lines.splice(insertIdx, 0, changelogEntry, '');
 
-              const linkLine = `[${version}]: https://github.com/davidmonterocrespo24/soundmind/releases/tag/v${version}`;
+              const linkLine = `[${version}]: https://github.com/ZhadowValker/soundmind/releases/tag/v${version}`;
               if (!existing.includes(linkLine)) lines.push(linkLine);
 
               changelogContent = lines.join('\n');
@@ -198,7 +198,7 @@ jobs:
 
             SoundMind is a fully local, open-source Arduino/RP2040 emulator and circuit simulator that runs in the browser.
             Website: https://soundmind.dev/
-            GitHub: https://github.com/davidmonterocrespo24/soundmind
+            GitHub: https://github.com/ZhadowValker/soundmind
 
             CRITICAL: The announcement MUST be 1900 characters or less.
 
@@ -225,7 +225,7 @@ jobs:
             The SSD1306 OLED display now supports both I2C and SPI. Switch protocols from the component property dialog.
 
             Try it now: https://soundmind.dev/
-            Full release details: https://github.com/davidmonterocrespo24/soundmind/releases/tag/v2.0.0
+            Full release details: https://github.com/ZhadowValker/soundmind/releases/tag/v2.0.0
 
             EXAMPLE 2:
             v2.0.1 @everyone

@@ -14,7 +14,7 @@ import { trackClickCTA } from '../utils/analytics';
 import './SEOPage.css';
 import './SoundMind2Page.css';
 
-const GITHUB_URL = 'https://github.com/davidmonterocrespo24/soundmind';
+const GITHUB_URL = 'https://github.com/ZhadowValker/soundmind';
 const DISCORD_URL = 'https://discord.gg/3mARjJrh4E';
 
 /* ── SVG Icons (no emojis) ─────────────────────────────── */

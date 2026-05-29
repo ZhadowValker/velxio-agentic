@@ -65,5 +65,5 @@ Write Arduino C++ code, compile it with a real `arduino-cli` backend, and simula
 ## Community & Links
 
 - [Live Demo](https://soundmind.dev)
-- [GitHub Repository](https://github.com/davidmonterocrespo24/soundmind)
+- [GitHub Repository](https://github.com/ZhadowValker/soundmind)
 - [Discord](YOUR_DISCORD_INVITE_URL) — Ask questions, share projects, report issues

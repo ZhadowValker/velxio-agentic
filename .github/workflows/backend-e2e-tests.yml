@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 30
 
     env:
-      QEMU_RELEASE_URL: https://github.com/davidmonterocrespo24/soundmind/releases/download/qemu-prebuilt
+      QEMU_RELEASE_URL: https://github.com/ZhadowValker/soundmind/releases/download/qemu-prebuilt
       QEMU_DIR: /opt/soundmind-qemu
       BACKEND_URL: http://localhost:8001
 
